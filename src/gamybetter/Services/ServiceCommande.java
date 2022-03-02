@@ -29,12 +29,12 @@ public class ServiceCommande implements IService<Commande> {
     //java.sql.Date sqlDate=new java.sql.Date(date.getTime());
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date date = new Date();
-
+//Object date,Object  nom_personne,Object  prenom_personne,Object addresse_personne, Object  email_personne, Object IDpersonne, Object prix_totale,Object liste_produits
     @Override
     public void ajouter(Commande c) {
 
-        String query = "INSERT INTO `commande` (`id`,`date_commande`,`nom_personne`, `prenom_personne` ,`address_personne`,`email_personne`,`IDpersonne`,`prix_totale`) VALUES(?,?,?,?,?,?,?,?)";
-        String sql = "Select nom,prenom from `personne` Where id=" + c.getId_personne();
+        String query = "INSERT INTO `commande` (`date_commande`,`nom_personne`, `prenom_personne` ,`address_personne`,`email_personne`,`IDpersonne`,`prix_totale`,`liste_produits`) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "Select nom_personne from `personne` Where id_personne=" + c.getIDpersonne();
         try {
             //String[] Produits = null ;
             PreparedStatement ps = cnx.prepareStatement(query);
@@ -42,14 +42,15 @@ public class ServiceCommande implements IService<Commande> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
             rs.next();
-            ps.setObject(1, c.getId_commande());
-            ps.setObject(2, formatter.format(date));
+            
+            ps.setObject(1, formatter.format(date));
+            ps.setObject(2, rs.getObject(1));
             ps.setObject(3, rs.getObject(1));
-            ps.setObject(4, rs.getObject(2));
-            ps.setObject(5, c.getAddresse_personne());
-            ps.setObject(6, c.getEmail_personne());
-            ps.setObject(7, c.getId_personne());
-            ps.setObject(8, c.getPrix_totale());
+            ps.setObject(4, c.getAddresse_personne());
+            ps.setObject(5, c.getEmail_personne());
+            ps.setObject(6, c.getIDpersonne());
+            ps.setObject(7, c.getPrix_totale());
+            ps.setObject(8, c.getListe_produits());
 
             //ps.setObject(7, c.getId_produit());
             /* for (int i = 0; i < c.getList_Produit().size(); i++) {
@@ -79,16 +80,17 @@ public class ServiceCommande implements IService<Commande> {
 
     @Override
     public boolean modifier(Commande c) {
-        String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?, prenom_personne=? ,address_personne=?,email_personne=?,IDpersonne=?,prix_totale=? WHERE id=?";
+        String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?, prenom_personne=? ,address_personne=?,email_personne=?,IDpersonne=?,prix_totale=?,liste_produits WHERE id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
 
             ps.setObject(1, formatter.format(date));
             ps.setObject(4, c.getAddresse_personne());
             ps.setObject(5, c.getEmail_personne());
-            ps.setObject(6, c.getId_personne());
+            ps.setObject(6, c.getIDpersonne());
             ps.setObject(7, c.getPrix_totale());
-            ps.setObject(8, c.getId_commande());
+            ps.setObject(8, c.getListe_produits());
+            ps.setObject(9, c.getId_commande());
 
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
@@ -104,7 +106,7 @@ public class ServiceCommande implements IService<Commande> {
 
     @Override
     public boolean supprimer(Commande c) {
-        String query = "DELETE FROM `commande` WHERE image=?";
+        String query = "DELETE FROM `commande` WHERE id_commande=?";
         boolean rowDeleted = false;
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
@@ -130,7 +132,7 @@ public class ServiceCommande implements IService<Commande> {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8),rs.getObject(9));
                 list.add(com);
             }
         } catch (SQLException ex) {
@@ -143,12 +145,12 @@ public class ServiceCommande implements IService<Commande> {
     @Override
     public Commande getOne(Commande c) {
 
-        String query = "select * from `commande` where id=" + c.getId_commande();
+        String query = "select * from `commande` where id_commande=" + c.getId_commande();
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8), rs.getObject(9));
                 return com;
             }
 
@@ -162,12 +164,12 @@ public class ServiceCommande implements IService<Commande> {
     @Override
     public Commande getById(int id) {
 
-        String query = "select * from `commande` where id=" + id;
+        String query = "select * from `commande` where id_commande=" + id;
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8),rs.getObject(9));
                 return com;
             }
 

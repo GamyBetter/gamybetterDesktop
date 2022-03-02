@@ -15,17 +15,18 @@ import java.util.Date;
  */
 public class Evenement {
 
-    private int id_event, id_proprietaire, nb_eq;
+    private int id_event,id_proprietaire, nb_eq;
     private String Nom_event, description_event;
     private String date_debut_event, date_fin_event;
+    private String liste_equipe;
     private float prix;
     private int etat;
 
     public Evenement() {
     }
 
-    public Evenement(Object id_event, Object id_proprietaire, Object nb_eq, Object Nom_event, Object description_event, Object date_debut_event, Object date_fin_event, Object prix, Object etat) {
-        this.id_event = (int) id_event;
+    public Evenement(Object id_proprietaire, Object nb_eq, Object Nom_event, Object description_event, Object date_debut_event, Object date_fin_event, Object prix, Object etat,Object liste_equipe) {
+  
         this.id_proprietaire = (int) id_proprietaire;
         this.nb_eq = (int) nb_eq;
         this.Nom_event = (String) Nom_event;
@@ -34,9 +35,23 @@ public class Evenement {
         this.date_fin_event = (String) date_fin_event;
         this.prix = (float) prix;
         this.etat = (int) etat;
+        this.liste_equipe=(String) liste_equipe;
+    }
+    
+    public Evenement(Object id_event,Object id_proprietaire, Object nb_eq, Object Nom_event, Object description_event, Object date_debut_event, Object date_fin_event, Object prix, Object etat,Object liste_equipe) {
+        this.id_event=(int) id_event;
+        this.id_proprietaire = (int) id_proprietaire;
+        this.nb_eq = (int) nb_eq;
+        this.Nom_event = (String) Nom_event;
+        this.description_event = (String) description_event;
+        this.date_debut_event = (String) date_debut_event;
+        this.date_fin_event = (String) date_fin_event;
+        this.prix = (float) prix;
+        this.etat = (int) etat;
+        this.liste_equipe=(String) liste_equipe;
     }
 
-    public Evenement(Object id_event, Object id_proprietaire, Object nb_eq, String Nom_event, Object description_event, Object date_debut_event, Object date_fin_event, Object prix) {
+   /* public Evenement(Object id_event, Object id_proprietaire, Object nb_eq, String Nom_event, Object description_event, Object date_debut_event, Object date_fin_event, Object prix,Object liste_equipe) {
         this.id_event = (int) id_event;
         this.id_proprietaire = (int) id_proprietaire;
         this.nb_eq = (int) nb_eq;
@@ -45,7 +60,8 @@ public class Evenement {
         this.date_debut_event = (String) date_debut_event;
         this.date_fin_event = (String) date_fin_event;
         this.prix = (float) prix;
-    }
+        this.liste_equipe=(String) liste_equipe;
+    }*/
 
     public int getId_event() {
         return id_event;
@@ -117,6 +133,14 @@ public class Evenement {
 
     public void setEtat(int etat) {
         this.etat = etat;
+    }
+
+    public String getListe_equipe() {
+        return liste_equipe;
+    }
+
+    public void setListe_equipe(String liste_equipe) {
+        this.liste_equipe = liste_equipe;
     }
 
     @Override

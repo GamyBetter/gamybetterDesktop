@@ -22,19 +22,19 @@ import gamybetter.Utils.DataSource;
 public class ServicePublication implements gamybetter.Services.IService<Publication> {
 
     Connection cnx = DataSource.getInstance().getCnx();
-
+    //Object id_personne, Object publication, Object titre, Object nbr_commentaire,Object date
     @Override
     public void ajouter(Publication p) {
-        String query = "INSERT INTO `publication` (`id_publication`,`id_personne`,`publication`,`titre`,`nbr_commentaire`,`date`) VALUES (?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'))";
+        String query = "INSERT INTO `publication` (`id_personne`,`publication`,`titre`,`nbr_commentaire`,`date`) VALUES (?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'))";
         try {
 
             PreparedStatement ps = cnx.prepareStatement(query);
-            ps.setInt(1, p.getIdPublication());
-            ps.setInt(2, p.getId_personne());
-            ps.setString(3, p.getPublication());
-            ps.setString(4, p.getTitre());
-            ps.setInt(5, p.getNbr_commentaire());
-            ps.setString(6, p.getDate());
+          
+            ps.setInt(1, p.getId_personne());
+            ps.setString(2, p.getPublication());
+            ps.setString(3, p.getTitre());
+            ps.setInt(4, p.getNbr_commentaire());
+            ps.setString(5, p.getDate());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -43,18 +43,17 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
 
     @Override
     public boolean modifier(Publication p) {
-        String query = "UPDATE `publication` SET id_publication=?, id_personne=? , publication=?,titre=?,nbr_commentaire=?, date=STR_TO_DATE(? ,'%d-%m-%Y') WHERE id_Publication=?";
+        String query = "UPDATE `publication` SET id_personne=? , publication=?,titre=?,nbr_commentaire=?, date=STR_TO_DATE(? ,'%d-%m-%Y') WHERE id_Publication=?";
         boolean rowUpdated = false;
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
-            ps.setInt(1, p.getIdPublication());
-           
-            ps.setInt(2, p.getId_personne());
-            ps.setString(3, p.getPublication());
-            ps.setString(4, p.getTitre());
-            ps.setInt(5, p.getNbr_commentaire());
-            ps.setString(6, p.getDate());
-            ps.setInt(7, p.getIdPublication());
+          
+            ps.setInt(1, p.getId_personne());
+            ps.setString(2, p.getPublication());
+            ps.setString(3, p.getTitre());
+            ps.setInt(4, p.getNbr_commentaire());
+            ps.setString(5, p.getDate());
+            ps.setInt(6, p.getId_Publication());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing Publication updated successfully");
@@ -73,7 +72,7 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
         boolean rowDeleted = false;
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
-            statement.setObject(1, p.getIdPublication());
+            statement.setObject(1, p.getId_Publication());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -90,12 +89,12 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
     public List<Publication> getAll() {
         List<Publication> list = new ArrayList<>();
         try {
-            String req = "Select * from `publication`";
+            String req = "SELECT * FROM publication";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 Publication p;
-                p = new Publication(rs.getInt(1),  rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+                p = new Publication(rs.getObject(1),rs.getObject(2),rs.getObject(3),rs.getObject(4),rs.getObject(5),rs.getObject(6));
                 System.out.println(p + "-------------------");
                 list.add(p);
             }
@@ -129,13 +128,13 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
     @Override
     public Publication getOne(Publication p) {
 
-    System.out.println(p.getIdPublication());
-     String query = "select * from publication where id_publication=" + p.getIdPublication();
+    System.out.println(p.getId_Publication());
+     String query = "select * from publication where id_publication=" + p.getId_Publication();
      try {
      Statement st = cnx.createStatement();
      ResultSet rs = st.executeQuery(query);
      if (rs.next()) {
-Publication p1 = new Publication(rs.getInt(1),  rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(7));
+Publication p1 = new Publication(rs.getInt(1),  rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6));
 return p1;
      }
 

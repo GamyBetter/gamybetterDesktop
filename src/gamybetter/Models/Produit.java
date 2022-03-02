@@ -18,9 +18,9 @@ public class Produit {
     private String description;
     private int quantite_stock;
     
-    public Produit(){
-}
-    
+
+      public Produit() {
+    }
     public Produit(Object nom_produit , Object prix , Object categorie , Object image , Object description, Object quantite  ){
         
         this.nom_produit =(String) nom_produit;
@@ -30,8 +30,18 @@ public class Produit {
         this.quantite_stock =(int) quantite;
         this.description =(String) description;
     }
+    
+    public Produit(Object id,Object nom_produit , Object prix , Object categorie , Object image , Object description, Object quantite  ){
+        this.id=(int) id;
+        this.nom_produit =(String) nom_produit;
+        this.categorie =(String) categorie;
+        this.prix = (float) prix;
+        this.image =(String) image;
+        this.quantite_stock =(int) quantite;
+        this.description =(String) description;
+    }
 
-     public Produit(Object image , Object nom_produit , Object prix ){
+    /* public Produit(Object image , Object nom_produit , Object prix ){
         
         this.nom_produit =(String) nom_produit;
         this.prix = (float) prix;
@@ -48,7 +58,7 @@ public class Produit {
         this.description =(String) description;
         this.quantite_stock =(int) quantite;
     }
-
+*/
   
     /**
      * @return the id

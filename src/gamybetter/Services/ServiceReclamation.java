@@ -26,12 +26,12 @@ public class ServiceReclamation implements IService<Reclamation> {
     @Override
     public void ajouter(Reclamation r) {
         try {
-            String req = "INSERT INTO `reclamation` (`id_reclamation`,`titre`,`reclamation`,`email_sender`) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `reclamation` (`titre`,`reclamation`,`email_sender`) VALUES (?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, r.getId_reclamation());
-            ps.setString(2, r.getTitre());
-            ps.setString(3, r.getReclamation());
-            ps.setString(4, r.getEmail_sender());
+         
+            ps.setString(1, r.getTitre());
+            ps.setString(2, r.getReclamation());
+            ps.setString(3, r.getEmail_sender());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -41,14 +41,14 @@ public class ServiceReclamation implements IService<Reclamation> {
 
     @Override
     public boolean modifier(Reclamation r) {
-        String sql = "UPDATE `reclamation` SET id_reclamation=?, titre=?,reclamation=?,email_sender=? WHERE id_reclamation=?";
+        String sql = "UPDATE `reclamation` SET  titre=?,reclamation=?,email_sender=? WHERE id_reclamation=?";
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setInt(1, r.getId_reclamation());
-            statement.setString(2, r.getTitre());
-            statement.setString(3, r.getReclamation());
-            statement.setString(4, r.getEmail_sender());
-            statement.setInt(5, r.getId_reclamation());
+         
+            statement.setString(1, r.getTitre());
+            statement.setString(2, r.getReclamation());
+            statement.setString(3, r.getEmail_sender());
+            statement.setInt(4, r.getId_reclamation());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully");

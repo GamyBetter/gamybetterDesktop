@@ -110,6 +110,7 @@ public class ServiceProduit implements IService<Produit> {
     public Produit getOne(Produit t) {
 
         String query = "select * from `produit` where id=" + t.getId();
+        
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);

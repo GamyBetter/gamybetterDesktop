@@ -16,7 +16,6 @@ import java.util.Objects;
  */
 public class Session {
     int id;
-    int id_coach;
     String email_coach;
     String email_joueur;
     int duree;
@@ -28,18 +27,30 @@ public class Session {
     public Session() {
     }
 
-    public Session(int id_coach, String email_coach, String email_joueur, int duree, String date, String jeu, String categorie, float prix) {
-        this.id_coach = id_coach;
-        this.email_coach = email_coach;
-        this.email_joueur = email_joueur;
-        this.duree = duree;
-        this.daate = date;
-        this.jeu = jeu;
-        this.categorie = categorie;
-        this.prix = prix;
+    public Session(Object email_coach, Object email_joueur, Object duree, Object date, Object jeu, Object categorie, Object prix) {
+         this.email_coach = (String)email_coach;
+        this.email_joueur = (String)email_joueur;
+        this.duree = (int)duree;
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        this.daate = (String)df.format(date);
+        this.jeu = (String)jeu;
+        this.categorie = (String)categorie;
+        this.prix = (float)prix;
     }
     
-    public Session(int id, int id_coach, String email_coach, String email_joueur, int duree, String date, String jeu, String categorie, float prix) {
+    public Session(Object id,Object email_coach, Object email_joueur, Object duree, Object date, Object jeu, Object categorie, Object prix) {
+         this.id=(int) id;
+        this.email_coach = (String)email_coach;
+        this.email_joueur = (String)email_joueur;
+        this.duree = (int)duree;
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        this.daate = (String)df.format(date);
+        this.jeu = (String)jeu;
+        this.categorie = (String)categorie;
+        this.prix = (float)prix;
+    }
+    
+   /* public Session(int id, int id_coach, String email_coach, String email_joueur, int duree, String date, String jeu, String categorie, float prix) {
         this.id = id;
         this.id_coach = id_coach;
         this.email_coach = email_coach;
@@ -61,7 +72,7 @@ public class Session {
         this.jeu = (String)jeu;
         this.categorie = (String)categorie;
         this.prix = (float)prix;
-    }
+    }*/
 
     public int getId() {
         return id;
@@ -71,13 +82,7 @@ public class Session {
         this.id = id;
     }
 
-    public int getId_coach() {
-        return id_coach;
-    }
 
-    public void setId_coach(int id_coach) {
-        this.id_coach = id_coach;
-    }
 
     public String getEmail_coach() {
         return email_coach;
@@ -137,7 +142,7 @@ public class Session {
 
     @Override
     public String toString() {
-        return "Session{" + "id=" + id + ", id_coach=" + id_coach + ", email_coach=" + email_coach + ", email_joueur=" + email_joueur + ", duree=" + duree + ", date=" + daate + ", jeu=" + jeu + ", categorie=" + categorie + ", prix=" + prix + '}';
+        return "Session{" + "id=" + id + ", email_coach=" + email_coach + ", email_joueur=" + email_joueur + ", duree=" + duree + ", date=" + daate + ", jeu=" + jeu + ", categorie=" + categorie + ", prix=" + prix + '}';
     }
 
     @Override
@@ -155,9 +160,7 @@ public class Session {
             return false;
         }
         final Session other = (Session) obj;
-        if (this.id_coach != other.id_coach) {
-            return false;
-        }
+        
         if (!Objects.equals(this.email_coach, other.email_coach)) {
             return false;
         }

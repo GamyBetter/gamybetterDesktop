@@ -23,10 +23,10 @@ import gamybetter.Utils.DataSource;
 public class ServiceMatch implements IService<Match> {
 
     Connection cnx = DataSource.getInstance().getCnx();
-
+//Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe
     @Override
     public void ajouter(Match t) {
-        String query = "INSERT INTO `match` (`score`,`lien_streaming`,`status`,`gold`,`duree`,`date`,`heros`,`id_equipe`,`id_personne`) VALUES(?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),?,?,?)";
+        String query = "INSERT INTO `match` (`score`,`lien_streaming`,`status`,`gold`,`duree`,`date`,`heros`,`id_equipe`) VALUES(?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
             
@@ -38,7 +38,7 @@ public class ServiceMatch implements IService<Match> {
             ps.setString(6, t.getDate());
             ps.setString(7, t.getHeros());
             ps.setInt(8, t.getId_equipe());
-            ps.setInt(9, t.getId_personne());
+   
             
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -48,7 +48,7 @@ public class ServiceMatch implements IService<Match> {
 
     @Override
     public boolean modifier(Match t) {
-        String query = "UPDATE `match` SET id_match=? ,score=? ,lien_streaming=?, status=?, gold=?, duree=?, date=STR_TO_DATE(? ,'%d-%m-%Y'), heros=?, id_equipe=? , id_personne=? WHERE id_match=?";
+        String query = "UPDATE `match` SET id_match=? ,score=? ,lien_streaming=?, status=?, gold=?, duree=?, date=STR_TO_DATE(? ,'%d-%m-%Y'), heros=?, id_equipe=? WHERE id_match=?";
         boolean rowUpdated = false;
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
@@ -61,8 +61,8 @@ public class ServiceMatch implements IService<Match> {
             ps.setString(7, t.getDate());
             ps.setString(8, t.getHeros());
             ps.setInt(9, t.getId_equipe());
-            ps.setInt(10,t.getId_personne());
-            ps.setInt(11, t.getId_match());
+        
+            ps.setInt(10, t.getId_match());
             
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
@@ -94,7 +94,7 @@ public class ServiceMatch implements IService<Match> {
        
        
     }
-
+//Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe
     @Override
     public List<Match> getAll() {
         List<Match> list = new ArrayList<>();
@@ -103,7 +103,7 @@ public class ServiceMatch implements IService<Match> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                Match m = new Match(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
+                Match m = new Match(rs.getObject(1),rs.getObject(2),rs.getObject(3),rs.getObject(4),rs.getObject(5),rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9));
                 System.out.println(m);
                 list.add(m);
 
@@ -137,11 +137,12 @@ public class ServiceMatch implements IService<Match> {
     public Match getById(int id_match) {
 
         String query = "Select * from `match` where id_match=" +id_match;
+        Match m1=new Match();
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Match m1 = new Match(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
+                m1 = new Match(rs.getObject(1),rs.getObject(2),rs.getObject(3),rs.getObject(4),rs.getObject(5),rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9));
 
                 System.out.println(m1);
             }
@@ -149,7 +150,7 @@ public class ServiceMatch implements IService<Match> {
             System.out.println(ex.getMessage());
         }
 
-        return new Match();
+        return m1;
     }
 
     @Override

@@ -19,22 +19,37 @@ public class Cours {
     String jeu;
     float prix;
     String lien_session;
+    String liste_personnes;
+    int id_session;
 
-    public Cours() {
+ public Cours() {
     }
     //without id
-    public Cours(int id_coach, String email_coach, String categorie, String jeu, float prix, String lien_session) {
-        this.id_coach = id_coach;
-        this.email_coach = email_coach;
-        this.categorie = categorie;
-        this.jeu = jeu;
-        this.prix = prix;
-        this.lien_session = lien_session;
+    public Cours(Object id_coach, Object email_coach, Object categorie, Object jeu, Object prix, Object lien_session,Object liste_personnes, Object id_session) {
+        this.id_coach =(int) id_coach;
+        this.email_coach =(String) email_coach;
+        this.categorie =(String) categorie;
+        this.jeu =(String) jeu;
+        this.prix =(float) prix;
+        this.lien_session =(String) lien_session;
+        this.liste_personnes=(String)liste_personnes;
+        this.id_session=(int)id_session;
+    }
+     public Cours(Object id,Object id_coach, Object email_coach, Object categorie, Object jeu, Object prix, Object lien_session,Object liste_personnes, Object id_session) {
+         this.id=(int) id;
+         this.id_coach =(int) id_coach;
+        this.email_coach =(String) email_coach;
+        this.categorie =(String) categorie;
+        this.jeu =(String) jeu;
+        this.prix =(float) prix;
+        this.lien_session =(String) lien_session;
+        this.liste_personnes=(String)liste_personnes;
+        this.id_session=(int)id_session;
     }
     
     
     //with id
-    public Cours(int id, int id_coach, String email_coach, String categorie, String jeu, float prix, String lien_session) {
+   /* public Cours(int id, int id_coach, String email_coach, String categorie, String jeu, float prix, String lien_session) {
         this.id = id > 0 ? id : 0;
         this.id_coach = id_coach;
         this.email_coach = email_coach;
@@ -52,7 +67,7 @@ public class Cours {
         this.jeu = (String)jeu;
         this.prix = (float)prix;
         this.lien_session = (String)lien_session;
-    }
+    }*/
 
     public int getId() {
         return id;
@@ -108,6 +123,22 @@ public class Cours {
 
     public void setLien_session(String lien_session) {
         this.lien_session = lien_session;
+    }
+
+    public String getListe_personnes() {
+        return liste_personnes;
+    }
+
+    public void setListe_personnes(String liste_personnes) {
+        this.liste_personnes = liste_personnes;
+    }
+
+    public int getId_session() {
+        return id_session;
+    }
+
+    public void setId_session(int id_session) {
+        this.id_session = id_session;
     }
 
     @Override

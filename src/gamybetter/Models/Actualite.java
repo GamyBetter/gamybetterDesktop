@@ -10,21 +10,22 @@ package gamybetter.Models;
  * @author MAG028
  */
 public class Actualite {
-    private int id_match;
+    private int id_match,id_personne;
     private String image,video ;
 
     public Actualite() {
     }
-
+/*
     public Actualite(Object image, Object video) {
         this.image = (String) image;
         this.video = (String) video;
-    }
+    }*/
 
-    public Actualite(Object image, Object video,Object id_match) {
+    public Actualite(Object image, Object video,Object id_match,Object id_personne) {
         this.image = (String) image;
         this.video = (String) video;
         this.id_match = (int) id_match;
+        this.id_personne=(int) id_personne;
     }
 
     public String getImage() {
@@ -50,6 +51,16 @@ public class Actualite {
     public void setId_match(int id_match) {
         this.id_match = id_match;
     }
+
+    public int getId_personne() {
+        return id_personne;
+    }
+
+    public void setId_personne(int id_personne) {
+        this.id_personne = id_personne;
+    }
+    
+    
 
     @Override
     public String toString() {

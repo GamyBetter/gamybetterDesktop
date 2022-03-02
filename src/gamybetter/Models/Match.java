@@ -13,19 +13,19 @@ import java.util.ArrayList;
  * @author MAG028
  */
 public class Match {
-    private int id_match,score,id_equipe,id_personne;
+    private int id_match,score,id_equipe;
     private String lien_streaming,status,gold,duree ;
     private String Date,heros;
      /*private equipe [] Equipe ; ArrayList equipe = new ArrayList(); */
    /* private coach [] Coach ; ArrayList coach = new ArrayList(); */
     /*private String [] heros;*ArrayList heros = new ArrayList(); */ 
 
-    public Match() {
-    }
+   
          
-
-    public Match(Object id_match, Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe,Object id_personne) {
-        this.id_match = (int) id_match;
+public Match() {
+    }
+    public Match(Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe) {
+    
         this.score = (int) score;
         this.lien_streaming = (String) lien_streaming;
         this.status = (String) status;
@@ -34,11 +34,25 @@ public class Match {
         this.Date = (String) Date;
         this.heros = (String) heros;
         this.id_equipe = (int) id_equipe;
-        this.id_personne = (int) id_personne;
+      
+        
+    }
+    public Match(Object id_match,Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe) {
+    
+        this.id_match=(int) id_match;
+        this.score = (int) score;
+        this.lien_streaming = (String) lien_streaming;
+        this.status = (String) status;
+        this.gold = (String) gold;
+        this.duree = (String) duree;
+        this.Date = (String) Date;
+        this.heros = (String) heros;
+        this.id_equipe = (int) id_equipe;
+      
         
     }
 
-    public Match(Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe,Object id_personne) {
+   /* public Match(Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe,Object id_personne) {
       this.score = (int) score;
         this.lien_streaming = (String) lien_streaming;
         this.status = (String) status;
@@ -49,7 +63,7 @@ public class Match {
         this.id_equipe = (int) id_equipe;
         this.id_personne = (int) id_personne;
         
-    }
+    }*/
 
    
 
@@ -65,9 +79,7 @@ public class Match {
         return id_equipe;
     }
 
-    public int getId_personne() {
-        return id_personne;
-    }
+ 
 
     public String getHeros() {
         return heros;
@@ -105,9 +117,7 @@ public class Match {
         this.id_equipe = id_equipe;
     }
 
-    public void setCoach(int id_personne) {
-        this.id_personne = id_personne;
-    }
+
 
     public void setHeros(String heros) {
         this.heros = heros;
@@ -135,7 +145,7 @@ public class Match {
 
     @Override
     public String toString() {
-        return "Match{" + "id=" + id_match + ", score=" + score + ", equipe=" + id_equipe + ", coach=" + id_personne  + ", lien_streaming=" + lien_streaming + ", status=" + status + ", gold=" + gold + ", duree=" + duree + ", Date=" + Date + ", heros=" + heros + '}';
+        return "Match{" + "id=" + id_match + ", score=" + score + ", equipe=" + id_equipe + ", lien_streaming=" + lien_streaming + ", status=" + status + ", gold=" + gold + ", duree=" + duree + ", Date=" + Date + ", heros=" + heros + '}';
     }
 
    

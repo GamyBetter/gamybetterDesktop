@@ -17,9 +17,9 @@ public class DataSource {
 
     private Connection cnx;
     private String server = "";
-    private String url = "jdbc:mysql://remotemysql.com:3306/8eR4dA7c79";
-    private String user = "8eR4dA7c79";
-    private String password = "b5Ypx3FC4f";
+    private String url = "jdbc:mysql://localhost:3306/8eR4dA7c79";
+    private String user = "root";
+    private String password = "";
     private String database_name = "esprit3a21";
     
 
@@ -35,10 +35,12 @@ public class DataSource {
     }
 
     private DataSource() {
+        System.out.println("Hey bro");
         try {
             cnx = DriverManager.getConnection(this.url,this.user,this.password);
             System.out.println("Connected !");
         } catch (SQLException ex) {
+            System.out.println("Error here"+ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }

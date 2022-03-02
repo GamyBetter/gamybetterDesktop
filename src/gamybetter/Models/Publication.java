@@ -4,34 +4,53 @@
  * and open the template in the editor.
  */
 package gamybetter.Models;
-
+import java.text.DateFormat;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author Mariem
  */
 public class Publication {
-      private int idPublication, nbr_commentaire,nbr_Like,nbr_Dislike,id_personne;
+      private int id_publication, nbr_commentaire,nbr_Like,nbr_Dislike,id_personne;
     private String  publication, titre;
    // Date date;
     private String date;
 
-    public Publication(int idPublication, int id_personne, String publication, String titre, int nbr_commentaire,String date) {
+    public Publication(Object id_personne, Object publication, Object titre, Object nbr_commentaire,Object date) {
 
-        this.idPublication = idPublication;
+      
 
         
-        this.id_personne = id_personne;
-        this.publication = publication;
-        this.titre = titre;
-        this.nbr_commentaire = nbr_commentaire;
+        this.id_personne =(int) id_personne;
+        this.publication = (String)publication;
+        this.titre = (String)titre;
+        this.nbr_commentaire =(int) nbr_commentaire;
        
-        this.date = date;
+        this.date =(String) date;
         
 
     }
  
+      public Publication(Object id_publication,Object id_personne, Object publication, Object titre, Object nbr_commentaire,Object date) {
+
+      
+
+        this.id_publication=(int) id_publication;
+       this.id_personne =(int) id_personne;
+        this.publication = (String)publication;
+        this.titre = (String)titre;
+        this.nbr_commentaire =(int) nbr_commentaire;
+       
+
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        this.date = (String)df.format(date);
         
 
+    }  
+
+        public Publication() {
+    }
     public int getNbr_Like() {
         return nbr_Like;
     }
@@ -49,16 +68,14 @@ public class Publication {
     }
     
 
-    public Publication() {
+  
 
+    public int getId_Publication() {
+        return id_publication;
     }
 
-    public int getIdPublication() {
-        return idPublication;
-    }
-
-    public void setIdPublication(int idPublication) {
-        this.idPublication = idPublication;
+    public void setId_Publication(int idPublication) {
+        this.id_publication = idPublication;
     }
 
     public int getNbr_commentaire() {
@@ -106,7 +123,7 @@ public class Publication {
    
     @Override
     public String toString() {
-        return "Publication{" + "idPublication=" + idPublication + ", nbr_commentaire=" + nbr_commentaire + ", nbr_Like=" + nbr_Like + ", nbr_Dislike=" + nbr_Dislike + ", id_personne=" + id_personne + ", publication=" + publication + ", titre=" + titre + ", date=" + date + '}';
+        return "Publication{" + "idPublication=" + id_publication + ", nbr_commentaire=" + nbr_commentaire + ", nbr_Like=" + nbr_Like + ", nbr_Dislike=" + nbr_Dislike + ", id_personne=" + id_personne + ", publication=" + publication + ", titre=" + titre + ", date=" + date + '}';
     }
   
     

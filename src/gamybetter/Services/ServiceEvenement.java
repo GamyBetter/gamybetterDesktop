@@ -29,20 +29,22 @@ public class ServiceEvenement implements IService<Evenement> {
 
     Connection cnx = DataSource.getInstance().getCnx();
     DateFormat dateFormat = new SimpleDateFormat("DD-MM-YYYY");
+    //Object id_proprietaire, Object nb_eq, Object Nom_event, Object description_event, Object date_debut_event, Object date_fin_event, Object prix, Object etat,Object liste_equipe
     @Override
     public void ajouter(Evenement t) {
-        String query = "INSERT INTO `evenement`( `id_event` , `id_proprietaire`, `nb_eq`, `Nom_event`, `description_event`, `date_debut_event`, `date_fin_event`, `prix`, `etat`) VALUES (?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),STR_TO_DATE(? ,'%d-%m-%Y'),?,?)";
+        String query = "INSERT INTO `evenement`(`id_proprietaire`, `nb_eq`, `Nom_event`, `description_event`, `date_debut_event`, `date_fin_event`, `prix`, `etat`,`liste_equipe`) VALUES (?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),STR_TO_DATE(? ,'%d-%m-%Y'),?,?,?)";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
-            statement.setObject(1, t.getId_event());
-            statement.setObject(2, t.getId_proprietaire());
-            statement.setObject(3, t.getNb_eq());
-            statement.setObject(4, t.getNom_event());
-            statement.setObject(5, t.getDescription_event());
-            statement.setObject(6, t.getDate_debut_event());
-            statement.setObject(7, t.getDate_fin_event());
-            statement.setObject(8, t.getPrix());
-            statement.setObject(9, t.getEtat());
+         
+            statement.setObject(1, t.getId_proprietaire());
+            statement.setObject(2, t.getNb_eq());
+            statement.setObject(3, t.getNom_event());
+            statement.setObject(4, t.getDescription_event());
+            statement.setObject(5, t.getDate_debut_event());
+            statement.setObject(6, t.getDate_fin_event());
+            statement.setObject(7, t.getPrix());
+            statement.setObject(8, t.getEtat());
+             statement.setObject(9, t.getListe_equipe());
             
             statement.executeUpdate();
         } catch (SQLException ex) {
@@ -52,7 +54,7 @@ public class ServiceEvenement implements IService<Evenement> {
 
     @Override
     public boolean modifier(Evenement t) {
-        String query = "UPDATE `evenement` SET `id_proprietaire`=?,`nb_eq`=?,`Nom_event`=?,`description_event`=?,`date_debut_event`=STR_TO_DATE(? , '%d-%m-%Y'),`date_fin_event`=STR_TO_DATE(? ,'%d-%m-%Y'),`prix`=?,`etat`=? WHERE `id_event`=" + t.getId_event();
+        String query = "UPDATE `evenement` SET `id_proprietaire`=?,`nb_eq`=?,`Nom_event`=?,`description_event`=?,`date_debut_event`=STR_TO_DATE(? , '%d-%m-%Y'),`date_fin_event`=STR_TO_DATE(? ,'%d-%m-%Y'),`prix`=?,`etat`=?,`liste_equipe`=? WHERE `id_event`=" + t.getId_event();
         boolean rowUpdated = false;
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
@@ -64,6 +66,7 @@ public class ServiceEvenement implements IService<Evenement> {
             statement.setObject(6, t.getDate_fin_event());
             statement.setObject(7, t.getPrix());
             statement.setObject(8, t.getEtat());
+            statement.setObject(8, t.getListe_equipe());
             rowUpdated = statement.executeUpdate() > 0;
 
         } catch (SQLException ex) {
@@ -95,7 +98,7 @@ public class ServiceEvenement implements IService<Evenement> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                Evenement e = new Evenement(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6).toString(), rs.getObject(7).toString(), rs.getObject(8), rs.getObject(9));
+                Evenement e = new Evenement(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6).toString(), rs.getObject(7).toString(), rs.getObject(8), rs.getObject(9),rs.getObject(10));
                 list.add(e);
 
             }
@@ -114,7 +117,7 @@ public class ServiceEvenement implements IService<Evenement> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Evenement e = new Evenement(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6).toString(), rs.getObject(7).toString(), rs.getObject(8), rs.getObject(9));
+                Evenement e = new Evenement(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6).toString(), rs.getObject(7).toString(), rs.getObject(8), rs.getObject(9),rs.getObject(10));
                 return e;
             }
 
@@ -132,7 +135,7 @@ public class ServiceEvenement implements IService<Evenement> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Evenement e1 = new Evenement(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6).toString(), rs.getObject(7).toString(), rs.getObject(8), rs.getObject(9));
+                Evenement e1 = new Evenement(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6).toString(), rs.getObject(7).toString(), rs.getObject(8), rs.getObject(9),rs.getObject(10));
 
                 return e1;
             }

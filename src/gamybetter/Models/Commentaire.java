@@ -10,16 +10,23 @@ package gamybetter.Models;
  * @author Mariem
  */
 public class Commentaire {
-    
-    
-    
-     private int id_commentaire, nbr_like, nbr_dislike,id_personne;
-    private String  cont_commentaire;
+
+    private int id_commentaire, nbr_like, nbr_dislike, id_personne;
+    private String cont_commentaire;
 
     private String date;
 
-    public Commentaire(Object id_commentaire, Object id_personne, Object date, Object cont_commentaire) {
-        this.id_commentaire = (int) id_commentaire;
+  
+
+ 
+
+    public Commentaire(Object id_personne, Object date, Object cont_commentaire) {
+        this.id_personne = (int) id_personne;
+        this.date = (String) date;
+        this.cont_commentaire = (String) cont_commentaire;
+    }
+    public Commentaire(Object id_commentaire,Object id_personne, Object date, Object cont_commentaire) {
+        this.id_commentaire=(int) id_commentaire;
         this.id_personne = (int) id_personne;
         this.date = (String) date;
         this.cont_commentaire = (String) cont_commentaire;
@@ -88,5 +95,7 @@ public class Commentaire {
     public String toString() {
         return "Commentaire{" + "id_commentaire=" + id_commentaire + ", nbr_like=" + nbr_like + ", nbr_dislike=" + nbr_dislike + ", id_personne=" + id_personne + ", cont_commentaire=" + cont_commentaire + ", date=" + date + '}';
     }
-    
+
+   
+
 }
