@@ -17,9 +17,9 @@ public class DataSource {
 
     private Connection cnx;
     private String server = "";
-    private String url = "jdbc:mysql://www.phpmyadmin.co:3306/db_structure.php?server=1&db=sql11472700";
-    private String user = "root";
-    private String password = "";
+    private String url = "jdbc:mysql://remotemysql.com:3306/8eR4dA7c79";
+    private String user = "8eR4dA7c79";
+    private String password = "b5Ypx3FC4f";
     private String database_name = "esprit3a21";
     
 
@@ -36,15 +36,15 @@ public class DataSource {
 
     private DataSource() {
         try {
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/esprit3a21","root","");
+            cnx = DriverManager.getConnection(this.url,this.user,this.password);
             System.out.println("Connected !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
     }
 
+
     public Connection getCnx() {
         return cnx;
     }
-
 }
