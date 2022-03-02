@@ -26,12 +26,13 @@ public class ServiceReclamation implements IService<Reclamation> {
     @Override
     public void ajouter(Reclamation r) {
         try {
-            String req = "INSERT INTO `reclamation` (`titre`,`reclamation`,`email_sender`) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `reclamation` (`titre`,`reclamation`,`email_sender`,`id_personne`) VALUES (?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
          
             ps.setString(1, r.getTitre());
             ps.setString(2, r.getReclamation());
             ps.setString(3, r.getEmail_sender());
+            ps.setInt(4,r.getId_personne());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -41,14 +42,15 @@ public class ServiceReclamation implements IService<Reclamation> {
 
     @Override
     public boolean modifier(Reclamation r) {
-        String sql = "UPDATE `reclamation` SET  titre=?,reclamation=?,email_sender=? WHERE id_reclamation=?";
+        String sql = "UPDATE `reclamation` SET  titre=?,reclamation=?,email_sender=?,id_personne=? WHERE id_reclamation=?";
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
          
             statement.setString(1, r.getTitre());
             statement.setString(2, r.getReclamation());
             statement.setString(3, r.getEmail_sender());
-            statement.setInt(4, r.getId_reclamation());
+            statement.setInt(4,r.getId_personne());
+            statement.setInt(5, r.getId_reclamation());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully");
@@ -87,7 +89,7 @@ public class ServiceReclamation implements IService<Reclamation> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Reclamation r1 = new Reclamation(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4));
+                Reclamation r1 = new Reclamation(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5));
 
                 return r1;
             }
@@ -107,7 +109,7 @@ public class ServiceReclamation implements IService<Reclamation> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Reclamation r = new Reclamation(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4));
+                Reclamation r = new Reclamation(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4),rs.getObject(5));
                 System.out.println(r + "-------------------");
                 list.add(r);
             }
