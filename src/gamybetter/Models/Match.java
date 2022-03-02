@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author MAG028
  */
 public class Match {
-    private int id_match,score,id_equipe;
+    private int id_match,score,id_equipe,id_equipe1;
     private String lien_streaming,status,gold,duree ;
     private String Date,heros;
      /*private equipe [] Equipe ; ArrayList equipe = new ArrayList(); */
@@ -24,7 +24,7 @@ public class Match {
          
 public Match() {
     }
-    public Match(Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe) {
+    public Match(Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe,Object id_equipe1) {
     
         this.score = (int) score;
         this.lien_streaming = (String) lien_streaming;
@@ -34,10 +34,11 @@ public Match() {
         this.Date = (String) Date;
         this.heros = (String) heros;
         this.id_equipe = (int) id_equipe;
+        this.id_equipe1=(int) id_equipe1;
       
         
     }
-    public Match(Object id_match,Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe) {
+    public Match(Object id_match,Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe,Object id_equipe1) {
     
         this.id_match=(int) id_match;
         this.score = (int) score;
@@ -48,6 +49,7 @@ public Match() {
         this.Date = (String) Date;
         this.heros = (String) heros;
         this.id_equipe = (int) id_equipe;
+        this.id_equipe1=(int) id_equipe1;
       
         
     }
@@ -77,6 +79,14 @@ public Match() {
 
     public int getId_equipe() {
         return id_equipe;
+    }
+
+    public int getId_equipe1() {
+        return id_equipe1;
+    }
+
+    public void setId_equipe1(int id_equipe1) {
+        this.id_equipe1 = id_equipe1;
     }
 
  

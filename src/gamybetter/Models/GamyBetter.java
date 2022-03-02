@@ -32,9 +32,11 @@ public class GamyBetter {
     public static void main(String[] args) {
         // TODO code application logic here
         DataSource ds = DataSource.getInstance();
+        //Algorithme pour les ids (ajout des ids et récupération des ids)
         
         //creation equipe
         //creation personne
+         
         //ajout de plusieurs equipes à un evenements
         
         //ajout de produits

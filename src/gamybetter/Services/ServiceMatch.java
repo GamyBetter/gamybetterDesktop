@@ -26,7 +26,7 @@ public class ServiceMatch implements IService<Match> {
 //Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe
     @Override
     public void ajouter(Match t) {
-        String query = "INSERT INTO `match` (`score`,`lien_streaming`,`status`,`gold`,`duree`,`date`,`heros`,`id_equipe`) VALUES(?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),?,?)";
+        String query = "INSERT INTO `match` (`score`,`lien_streaming`,`status`,`gold`,`duree`,`date`,`heros`,`id_equipe`,`id_equipe1`) VALUES(?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
             
@@ -38,6 +38,7 @@ public class ServiceMatch implements IService<Match> {
             ps.setString(6, t.getDate());
             ps.setString(7, t.getHeros());
             ps.setInt(8, t.getId_equipe());
+             ps.setInt(9, t.getId_equipe1());
    
             
             ps.executeUpdate();
@@ -48,7 +49,7 @@ public class ServiceMatch implements IService<Match> {
 
     @Override
     public boolean modifier(Match t) {
-        String query = "UPDATE `match` SET id_match=? ,score=? ,lien_streaming=?, status=?, gold=?, duree=?, date=STR_TO_DATE(? ,'%d-%m-%Y'), heros=?, id_equipe=? WHERE id_match=?";
+        String query = "UPDATE `match` SET id_match=? ,score=? ,lien_streaming=?, status=?, gold=?, duree=?, date=STR_TO_DATE(? ,'%d-%m-%Y'), heros=?, id_equipe=?, id_equipe1=? WHERE id_match=?";
         boolean rowUpdated = false;
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
@@ -61,8 +62,9 @@ public class ServiceMatch implements IService<Match> {
             ps.setString(7, t.getDate());
             ps.setString(8, t.getHeros());
             ps.setInt(9, t.getId_equipe());
+            ps.setInt(10, t.getId_equipe1());
         
-            ps.setInt(10, t.getId_match());
+            ps.setInt(11, t.getId_match());
             
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
@@ -94,7 +96,7 @@ public class ServiceMatch implements IService<Match> {
        
        
     }
-//Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe
+//Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe, Object id_equipe1
     @Override
     public List<Match> getAll() {
         List<Match> list = new ArrayList<>();
@@ -103,7 +105,7 @@ public class ServiceMatch implements IService<Match> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                Match m = new Match(rs.getObject(1),rs.getObject(2),rs.getObject(3),rs.getObject(4),rs.getObject(5),rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9));
+                Match m = new Match(rs.getObject(1),rs.getObject(2),rs.getObject(3),rs.getObject(4),rs.getObject(5),rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9),rs.getObject(10));
                 System.out.println(m);
                 list.add(m);
 
@@ -142,7 +144,7 @@ public class ServiceMatch implements IService<Match> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                m1 = new Match(rs.getObject(1),rs.getObject(2),rs.getObject(3),rs.getObject(4),rs.getObject(5),rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9));
+                m1 = new Match(rs.getObject(1),rs.getObject(2),rs.getObject(3),rs.getObject(4),rs.getObject(5),rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9),rs.getObject(10));
 
                 System.out.println(m1);
             }
