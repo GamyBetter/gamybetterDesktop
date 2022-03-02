@@ -11,7 +11,7 @@ package gamybetter.Models;
  */
 public class Commentaire {
 
-    private int id_commentaire, nbr_like, nbr_dislike, id_personne;
+    private int id_commentaire, nbr_like, nbr_dislike, id_personne,id_publication;
     private String cont_commentaire;
 
     private String date;
@@ -20,16 +20,18 @@ public class Commentaire {
 
  
 
-    public Commentaire(Object id_personne, Object date, Object cont_commentaire) {
+    public Commentaire(Object id_personne, Object date, Object cont_commentaire,Object id_publication) {
+        this.id_publication=(int) id_publication;
         this.id_personne = (int) id_personne;
         this.date = (String) date;
         this.cont_commentaire = (String) cont_commentaire;
     }
-    public Commentaire(Object id_commentaire,Object id_personne, Object date, Object cont_commentaire) {
+    public Commentaire(Object id_commentaire,Object id_personne, Object date, Object cont_commentaire,Object id_publication) {
         this.id_commentaire=(int) id_commentaire;
         this.id_personne = (int) id_personne;
         this.date = (String) date;
         this.cont_commentaire = (String) cont_commentaire;
+        this.id_publication=(int) id_publication;
     }
 
     public Commentaire() {
@@ -67,6 +69,16 @@ public class Commentaire {
         this.id_personne = id_personne;
     }
 
+    public int getId_publication() {
+        return id_publication;
+    }
+
+    public void setId_publication(int id_publication) {
+        this.id_publication = id_publication;
+    }
+
+    
+    
     public String getDate() {
         return date;
     }
