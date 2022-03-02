@@ -23,16 +23,17 @@ import java.sql.ResultSetMetaData;
 public class ServiceCommentaire implements gamybetter.Services.IService<Commentaire> {
 
     Connection cnx = DataSource.getInstance().getCnx();
-//Object id_personne, Object date, Object cont_commentaire
+//Object id_personne, Object date, Object cont_commentaire, Object id_publication
     @Override
     public void ajouter(Commentaire c) {
-        String query = "INSERT INTO `commentaire` (`id_personne`,`date`,`cont_commentaire`) VALUES(?,STR_TO_DATE(? ,'%d-%m-%Y'),?)";
+        String query = "INSERT INTO `commentaire` (`id_personne`,`date`,`cont_commentaire`,`id_publication`) VALUES(?,STR_TO_DATE(? ,'%d-%m-%Y'),?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
        
             ps.setInt(1, c.getId_personne());
             ps.setString(2, c.getDate());
             ps.setString(3, c.getCont_commentaire());
+            ps.setInt(4, c.getId_publication());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -41,7 +42,7 @@ public class ServiceCommentaire implements gamybetter.Services.IService<Commenta
 
     @Override
     public boolean modifier(Commentaire c) {
-        String sql = "UPDATE `commentaire` SET  id_personne=?, date=STR_TO_DATE(? ,'%d-%m-%Y'), cont_commentaire=?   WHERE id_commentaire=?";
+        String sql = "UPDATE `commentaire` SET  id_personne=?, date=STR_TO_DATE(? ,'%d-%m-%Y'), cont_commentaire=?, id_publication=?   WHERE id_commentaire=?";
         boolean rowUpdated = false;
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
@@ -49,7 +50,8 @@ public class ServiceCommentaire implements gamybetter.Services.IService<Commenta
             statement.setObject(1, c.getId_personne());
             statement.setObject(2, c.getDate());
             statement.setObject(3, c.getCont_commentaire());
-            statement.setObject(4, c.getIdCommentaire());
+            statement.setObject(4, c.getId_publication());
+            statement.setObject(5, c.getIdCommentaire());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully");
@@ -96,7 +98,8 @@ public class ServiceCommentaire implements gamybetter.Services.IService<Commenta
                         rs.getObject(1),
                         rs.getObject("id_personne"),
                         rs.getObject("date"),
-                        rs.getObject("cont_commentaire"));
+                        rs.getObject("cont_commentaire"),
+                rs.getObject("id_publication"));
                 System.out.println(c + "-------------------");
                 list.add(c);
             }
@@ -117,7 +120,7 @@ public class ServiceCommentaire implements gamybetter.Services.IService<Commenta
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                Commentaire c = new Commentaire( rs.getObject(1), rs.getObject(2), rs.getObject(3),rs.getObject(4));
+                Commentaire c = new Commentaire( rs.getObject(1), rs.getObject(2), rs.getObject(3),rs.getObject(4),rs.getObject(5));
                 System.out.println(c + "-------------------");
 
             }
@@ -135,7 +138,7 @@ public class ServiceCommentaire implements gamybetter.Services.IService<Commenta
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Commentaire c1 = new Commentaire(rs.getInt(1), rs.getDate(2), rs.getString(3),rs.getObject(4));
+                Commentaire c1 = new Commentaire(rs.getInt(1), rs.getDate(2), rs.getString(3),rs.getObject(4),rs.getObject(5));
                 return c1;
             }
 
