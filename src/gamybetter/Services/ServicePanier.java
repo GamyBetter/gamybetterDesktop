@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import gamybetter.Models.Panier;
-import tn.edu.esprit.utils.DataSource;
+import gamybetter.Utils.DataSource;
 
 /**
  *
@@ -23,7 +23,7 @@ public class ServicePanier implements IService<Panier>{
      Connection cnx = DataSource.getInstance().getCnx();  
     
     @Override
-    public void add(Panier p) {
+    public void ajouter(Panier p) {
         
         String query = "INSERT INTO `panier` (`id_commande`,`itemCode`,`quanite_order`, `prix_unitaire` ) VALUES(?,?,?,?)";
         String sql ="Select prix_unitair from `produit` Where itemCode="+p.getId_produit();
@@ -51,8 +51,9 @@ public class ServicePanier implements IService<Panier>{
     }
 
     @Override
-    public void update(Panier p) {
+    public boolean modifier(Panier p) {
         String sql = "UPDATE `panier` SET `quanite_order`=? WHERE id_commande=? AND itemCode=?";
+        boolean rowsUpdated = false;
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
 
@@ -62,18 +63,17 @@ public class ServicePanier implements IService<Panier>{
             ps.setObject(2, p.getId_commande());
             ps.setObject(3, p.getId_produit());
             
-            int rowsUpdated = ps.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("An existing product from cart was updated successfully");
-            }
+            rowsUpdated = ps.executeUpdate() > 0;
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        return rowsUpdated;
 
     }
 
     @Override
-    public void delete(Panier p) {
+    public boolean supprimer(Panier p) {
         String sql = "DELETE FROM panier WHERE id_commande=? AND itemCode=?";
         
         try {
@@ -85,10 +85,12 @@ public class ServicePanier implements IService<Panier>{
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("A product  was deleted successfully from cart !");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        return false;
     }
 
     @Override

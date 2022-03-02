@@ -25,7 +25,7 @@ public class ServiceMatch implements IService<Match> {
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void add(Match t) {
+    public void ajouter(Match t) {
         String query = "INSERT INTO `match` (`score`,`lien_streaming`,`status`,`gold`,`duree`,`date`,`heros`,`id_equipe`,`id_personne`) VALUES(?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
@@ -47,7 +47,7 @@ public class ServiceMatch implements IService<Match> {
     }
 
     @Override
-    public boolean update(Match t) {
+    public boolean modifier(Match t) {
         String query = "UPDATE `match` SET id_match=? ,score=? ,lien_streaming=?, status=?, gold=?, duree=?, date=STR_TO_DATE(? ,'%d-%m-%Y'), heros=?, id_equipe=? , id_personne=? WHERE id_match=?";
         boolean rowUpdated = false;
         try {
@@ -67,6 +67,7 @@ public class ServiceMatch implements IService<Match> {
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -76,7 +77,7 @@ public class ServiceMatch implements IService<Match> {
     }
 
     @Override
-   public boolean delete(Match t) {
+   public boolean supprimer(Match t) {
        String query ="DELETE FROM `match` WHERE id_match=?";
        boolean rowDeleted= false ;
         try {
@@ -149,5 +150,10 @@ public class ServiceMatch implements IService<Match> {
         }
 
         return new Match();
+    }
+
+    @Override
+    public Match getOne(Match t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

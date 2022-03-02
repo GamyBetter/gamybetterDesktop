@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import gamybetter.Models.Commande;
-import tn.edu.esprit.utils.DataSource;
+import gamybetter.Utils.DataSource;
 
 /**
  *
@@ -24,20 +24,21 @@ import tn.edu.esprit.utils.DataSource;
 public class ServiceCommande implements IService<Commande> {
 
     Connection cnx = DataSource.getInstance().getCnx();
-    
+
     //java.util.Date date=new java.util.Date();
     //java.sql.Date sqlDate=new java.sql.Date(date.getTime());
-      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
-    Date date = new Date();  
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Date date = new Date();
+
     @Override
-    public void add(Commande c) {
-        
+    public void ajouter(Commande c) {
+
         String query = "INSERT INTO `commande` (`id`,`date_commande`,`nom_personne`, `prenom_personne` ,`address_personne`,`email_personne`,`IDpersonne`,`prix_totale`) VALUES(?,?,?,?,?,?,?,?)";
-        String sql ="Select nom,prenom from `personne` Where id="+c.getId_personne();
+        String sql = "Select nom,prenom from `personne` Where id=" + c.getId_personne();
         try {
             //String[] Produits = null ;
             PreparedStatement ps = cnx.prepareStatement(query);
-            
+
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
             rs.next();
@@ -49,8 +50,7 @@ public class ServiceCommande implements IService<Commande> {
             ps.setObject(6, c.getEmail_personne());
             ps.setObject(7, c.getId_personne());
             ps.setObject(8, c.getPrix_totale());
-            
-            
+
             //ps.setObject(7, c.getId_produit());
             /* for (int i = 0; i < c.getList_Produit().size(); i++) {
                 System.out.println(c.get(i));
@@ -71,50 +71,54 @@ public class ServiceCommande implements IService<Commande> {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
     }
 
     public void ajouter2(Commande t) {
     }
 
     @Override
-    public void update(Commande c) {
+    public boolean modifier(Commande c) {
         String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?, prenom_personne=? ,address_personne=?,email_personne=?,IDpersonne=?,prix_totale=? WHERE id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
 
-            ps.setObject(1, formatter.format(date)); 
+            ps.setObject(1, formatter.format(date));
             ps.setObject(4, c.getAddresse_personne());
             ps.setObject(5, c.getEmail_personne());
             ps.setObject(6, c.getId_personne());
             ps.setObject(7, c.getPrix_totale());
             ps.setObject(8, c.getId_commande());
-            
+
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing commande was updated successfully");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        return false;
 
     }
 
     @Override
-    public void delete(Commande c) {
-        String sql = "DELETE FROM commande WHERE id=?";
-        
+    public boolean supprimer(Commande c) {
+        String query = "DELETE FROM `commande` WHERE image=?";
+        boolean rowDeleted = false;
         try {
-            PreparedStatement statement = cnx.prepareStatement(sql);
+            PreparedStatement statement = cnx.prepareStatement(query);
             statement.setObject(1, c.getId_commande());
-
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("A commande was deleted successfully!");
+                rowDeleted = true;
+                System.out.println("Une commande was deleted successfully");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        return rowDeleted;
+
     }
 
     @Override
@@ -126,8 +130,8 @@ public class ServiceCommande implements IService<Commande> {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
-                 list.add(com);
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
+                list.add(com);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -144,10 +148,9 @@ public class ServiceCommande implements IService<Commande> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
                 return com;
-            } 
-            
+            }
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -164,7 +167,7 @@ public class ServiceCommande implements IService<Commande> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
                 return com;
             }
 

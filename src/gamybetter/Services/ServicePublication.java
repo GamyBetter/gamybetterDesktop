@@ -12,19 +12,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import tn.edu.esprit.modeles.Publication;
-import tn.edu.esprit.utils.DataSource;
+import gamybetter.Models.Publication;
+import gamybetter.Utils.DataSource;
 
 /**
  *
  * @author Mariem
  */
-public class ServicePublication implements tn.edu.esprit.service.IService<Publication> {
+public class ServicePublication implements gamybetter.Services.IService<Publication> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void add(Publication p) {
+    public void ajouter(Publication p) {
         String query = "INSERT INTO `publication` (`id_publication`,`id_personne`,`publication`,`titre`,`nbr_commentaire`,`date`) VALUES (?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'))";
         try {
 
@@ -42,7 +42,7 @@ public class ServicePublication implements tn.edu.esprit.service.IService<Public
     }
 
     @Override
-    public boolean update(Publication p) {
+    public boolean modifier(Publication p) {
         String query = "UPDATE `publication` SET id_publication=?, id_personne=? , publication=?,titre=?,nbr_commentaire=?, date=STR_TO_DATE(? ,'%d-%m-%Y') WHERE id_Publication=?";
         boolean rowUpdated = false;
         try {
@@ -58,16 +58,17 @@ public class ServicePublication implements tn.edu.esprit.service.IService<Public
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing Publication updated successfully");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-        return rowUpdated;
+        return false;
     }
 
     @Override
-    public boolean delete(Publication p) {
+    public boolean supprimer(Publication p) {
         String query = "DELETE FROM publication WHERE id_publication=?";
         boolean rowDeleted = false;
         try {
@@ -77,11 +78,12 @@ public class ServicePublication implements tn.edu.esprit.service.IService<Public
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println(" deleted successfully!");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return rowDeleted;
+        return false;
     }
 
     @Override

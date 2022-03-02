@@ -17,8 +17,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import tn.edu.esprit.modeles.Evenement;
-import tn.edu.esprit.utils.DataSource;
+//gamybetter.Models
+import gamybetter.Models.Evenement;
+import gamybetter.Utils.DataSource;
 
 /**
  *
@@ -29,7 +30,7 @@ public class ServiceEvenement implements IService<Evenement> {
     Connection cnx = DataSource.getInstance().getCnx();
     DateFormat dateFormat = new SimpleDateFormat("DD-MM-YYYY");
     @Override
-    public void add(Evenement t) {
+    public void ajouter(Evenement t) {
         String query = "INSERT INTO `evenement`( `id_event` , `id_proprietaire`, `nb_eq`, `Nom_event`, `description_event`, `date_debut_event`, `date_fin_event`, `prix`, `etat`) VALUES (?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),STR_TO_DATE(? ,'%d-%m-%Y'),?,?)";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
@@ -50,7 +51,7 @@ public class ServiceEvenement implements IService<Evenement> {
     }
 
     @Override
-    public boolean update(Evenement t) {
+    public boolean modifier(Evenement t) {
         String query = "UPDATE `evenement` SET `id_proprietaire`=?,`nb_eq`=?,`Nom_event`=?,`description_event`=?,`date_debut_event`=STR_TO_DATE(? , '%d-%m-%Y'),`date_fin_event`=STR_TO_DATE(? ,'%d-%m-%Y'),`prix`=?,`etat`=? WHERE `id_event`=" + t.getId_event();
         boolean rowUpdated = false;
         try {
@@ -72,7 +73,7 @@ public class ServiceEvenement implements IService<Evenement> {
     }
 
     @Override
-    public boolean delete(Evenement t) {
+    public boolean supprimer(Evenement t) {
         String query = "DELETE FROM evenement where id_event=? ";
 
         boolean rowDeleted = false;

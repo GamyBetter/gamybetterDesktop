@@ -23,7 +23,7 @@ public class ServiceProduit implements IService<Produit> {
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void add(Produit t) {
+    public void ajouter(Produit t) {
         String query = "INSERT INTO `produit` (`nom_produit`, `prix_unitair`, `categorie`,`image`,`description`,`quantite_stock`) VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
@@ -43,7 +43,7 @@ public class ServiceProduit implements IService<Produit> {
     }
 
     @Override
-    public void update(Produit t) {
+    public boolean modifier(Produit t) {
         String sql = "UPDATE `produit` SET nom_produit=?, prix_unitair=?, categorie=? , image=?, description=? ,quantite_stock=? WHERE itemCode =?";
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
@@ -58,15 +58,17 @@ public class ServiceProduit implements IService<Produit> {
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        return false;
 
     }
 
     @Override
-    public void delete(Produit t) {
+    public boolean supprimer(Produit t) {
         String sql = "DELETE FROM produit WHERE id=?";
 
         try {
@@ -76,10 +78,12 @@ public class ServiceProduit implements IService<Produit> {
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("A user was deleted successfully!");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        return false;
     }
 
     @Override

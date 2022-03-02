@@ -116,4 +116,9 @@ public class ServiceReclamation implements IService<Reclamation> {
         }
         return list;
     }
+
+    @Override
+    public Reclamation getOne(Reclamation t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

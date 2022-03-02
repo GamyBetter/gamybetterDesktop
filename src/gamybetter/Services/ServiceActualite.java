@@ -24,7 +24,7 @@ public class ServiceActualite implements IService <Actualite>  {
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void add(Actualite t) {
+    public void ajouter(Actualite t) {
       String query = "INSERT INTO `actualite` (`image`, `video`,`id_match`) VALUES('" + t.getImage() + "','" + t.getVideo() + "','" + t.getId_match() + "')";
         try {
             Statement st = cnx.createStatement();
@@ -35,7 +35,7 @@ public class ServiceActualite implements IService <Actualite>  {
     }
 
     @Override
-    public boolean update(Actualite t) {
+    public boolean modifier(Actualite t) {
         String query = "UPDATE `actualite` SET image=? ,video=?,id_match=?  WHERE image=?";
         boolean rowUpdated = false;
         try {
@@ -49,6 +49,7 @@ public class ServiceActualite implements IService <Actualite>  {
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -58,7 +59,7 @@ public class ServiceActualite implements IService <Actualite>  {
     }
 
     @Override
-    public boolean delete(Actualite t) {
+    public boolean supprimer(Actualite t) {
        String query ="DELETE FROM `actualite` WHERE image=?";
        boolean rowDeleted= false ;
         try {
@@ -132,6 +133,11 @@ public class ServiceActualite implements IService <Actualite>  {
         }
 
         return new Actualite();
+    }
+
+    @Override
+    public Actualite getOne(Actualite t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     }
         

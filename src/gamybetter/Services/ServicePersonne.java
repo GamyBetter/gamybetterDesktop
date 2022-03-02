@@ -140,4 +140,9 @@ public class ServicePersonne implements IService<Personne> {
         return new Personne();
     }
 
+    @Override
+    public Personne getOne(Personne t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

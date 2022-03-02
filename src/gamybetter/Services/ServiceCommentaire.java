@@ -12,19 +12,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import tn.edu.esprit.modeles.Commentaire;
-import tn.edu.esprit.utils.DataSource;
+import gamybetter.Models.Commentaire;
+import gamybetter.Utils.DataSource;
 
 /**
  *
  * @author Mariem
  */
-public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commentaire> {
+public class ServiceCommentaire implements gamybetter.Services.IService<Commentaire> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void add(Commentaire c) {
+    public void ajouter(Commentaire c) {
         String query = "INSERT INTO `commentaire` (`id_commentaire`,`id_personne`,`date`,`cont_commentaire`) VALUES(?,?,STR_TO_DATE(? ,'%d-%m-%Y'),?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
@@ -39,7 +39,7 @@ public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commen
     }
 
     @Override
-    public boolean update(Commentaire c) {
+    public boolean modifier(Commentaire c) {
         String sql = "UPDATE `commentaire` SET id_commentaire=?, id_personne=?, date=STR_TO_DATE(? ,'%d-%m-%Y'), cont_commentaire=?   WHERE id_commentaire=?";
         boolean rowUpdated = false;
         try {
@@ -52,6 +52,7 @@ public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commen
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -61,7 +62,7 @@ public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commen
     }
 
     @Override
-    public boolean delete(Commentaire c) {
+    public boolean supprimer(Commentaire c) {
         String sql = "DELETE FROM commentaire WHERE id_commentaire=?";
         boolean rowDeleted = false;
         try {
@@ -71,6 +72,7 @@ public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commen
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("A user was deleted successfully!");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

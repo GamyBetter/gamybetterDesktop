@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+import gamybetter.Utils.DataSource;
 
 
 /**
@@ -135,6 +135,11 @@ public class ServiceCours implements IService<Cours> {
             System.out.println(ex.getMessage());
         }
         return false;
+    }
+
+    @Override
+    public Cours getOne(Cours t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

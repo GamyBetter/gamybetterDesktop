@@ -12,8 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import tn.edu.esprit.modeles.Equipe;
-import tn.edu.esprit.utils.DataSource;
+import gamybetter.Models.Equipe;
+import gamybetter.Utils.DataSource;
 
 /**
  *
@@ -22,7 +22,7 @@ import tn.edu.esprit.utils.DataSource;
 public class ServiceEquipe implements IService<Equipe> {
     Connection cnx = DataSource.getInstance().getCnx();
     @Override
-    public void add(Equipe t) {
+    public void ajouter(Equipe t) {
        String query = "INSERT INTO `equipe`(`id_equipe`, `id_coach`, `nom_eq`, `description_equipe`, `nom_coach`, `membre_equipe1`, `membre_equipe2`, `membre_equipe3`, `membre_equipe4`, `membre_equipe5`, `match`) VALUES ('" + t.getId_equipe() + "','" + t.getId_coach() + "','" + t.getNom_eq() + "','" +t.getDescription_equipe() + "','" + t.getNom_coach() + "','" + t.getMembre_equipe1() + "','" + t.getMembre_equipe2() + "','" + t.getMembre_equipe3() + "','" + t.getMembre_equipe4() + "','" + t.getMembre_equipe5() + "','" + t.getMatch() + "')";
         try {
             Statement st = cnx.createStatement();
@@ -33,7 +33,7 @@ public class ServiceEquipe implements IService<Equipe> {
     }
 
     @Override
-    public boolean update(Equipe t) {
+    public boolean modifier(Equipe t) {
         String query = "UPDATE `equipe` SET `id_coach`=?,`nom_eq`=?,`description_equipe`=?,`nom_coach`=?,`membre_equipe1`=?,`membre_equipe2`=?,`membre_equipe3`=?,`membre_equipe4`=?,`membre_equipe5`=?,`match`=? WHERE `id_equipe`=" + t.getId_equipe();
         boolean rowUpdated = false;
         try {
@@ -50,7 +50,7 @@ public class ServiceEquipe implements IService<Equipe> {
             statement.setObject(10, t.getMatch());
            
             rowUpdated = statement.executeUpdate() > 0;
-
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -58,7 +58,7 @@ public class ServiceEquipe implements IService<Equipe> {
     }
 
     @Override
-    public boolean delete(Equipe t) {
+    public boolean supprimer(Equipe t) {
         String query = "DELETE FROM equipe where id_equipe=? ";
 
         boolean rowDeleted = false;
@@ -127,5 +127,7 @@ public class ServiceEquipe implements IService<Equipe> {
 
         return new Equipe();
     }
+
+
     
 }
