@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Desktop/GamyBetter/src/tn/edu/esprit/modeles/NewMain.java</file>
-            <file>file:/C:/Users/User/Desktop/GamyBetter/src/gamybetter/Models/Publication.java</file>
-            <file>file:/C:/Users/User/Desktop/GamyBetter/src/gamybetter/Services/IService.java</file>
-            <file>file:/C:/Users/User/Desktop/GamyBetter/src/gamybetter/Services/ServiceCommentaire.java</file>
-            <file>file:/C:/Users/User/Desktop/GamyBetter/src/gamybetter/Services/ServicePublication.java</file>
-            <file>file:/C:/Users/User/Desktop/GamyBetter/src/gamybetter/Utils/DataSource.java</file>
-            <file>file:/C:/Users/User/Desktop/GamyBetter/src/gamybetter/Models/GamyBetter.java</file>
+            <!-- <file>file:/C:/Users/User/Desktop/GamyBetter/src/tn/edu/esprit/modeles/NewMain.java</file> -->
+            <file>file:/C:/Users/USER/Desktop/STAGIAIRES/gamybetterDesktop/src/gamybetter/Models/Publication.java</file>
+            <file>file:/C:/Users/USER/Desktop/STAGIAIRES/gamybetterDesktop/src/gamybetter/Services/IService.java</file>
+            <file>file:/C:/Users/USER/Desktop/STAGIAIRES/gamybetterDesktop/src/gamybetter/Services/ServiceCommentaire.java</file>
+            <file>file:/C:/Users/USER/Desktop/STAGIAIRES/gamybetterDesktop/src/gamybetter/Services/ServicePublication.java</file>
+            <file>file:/C:/Users/USER/Desktop/STAGIAIRES/gamybetterDesktop/src/gamybetter/Utils/DataSource.java</file>
+            <file>file:/C:/Users/USER/Desktop/STAGIAIRES/gamybetterDesktop/src/gamybetter/Models/GamyBetter.java</file>
         </group>
     </open-files>
 </project-private>

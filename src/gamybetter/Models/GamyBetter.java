@@ -5,9 +5,8 @@
  */
 package gamybetter.Models;
 
-import tn.edu.esprit.service.ServiceCommentaire;
-import tn.edu.esprit.service.ServicePublication;
-import tn.edu.esprit.utils.DataSource;
+import gamybetter.Services.ServiceCommentaire;
+import gamybetter.Services.ServicePublication;
 import gamybetter.Services.ServiceActualite;
 import gamybetter.Models.Commande;
 import static java.lang.System.in;
