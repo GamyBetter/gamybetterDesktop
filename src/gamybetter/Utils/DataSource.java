@@ -36,7 +36,7 @@ public class DataSource {
 
     private DataSource() {
         try {
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamybetter","root","");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamybetterfinal","root","");
             System.out.println("Connected !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

@@ -5,62 +5,68 @@
  */
 package gamybetter.Models;
 
+import java.util.Objects;
+
 /**
  *
  * @author Sayee
  */
 public class Produit {
-    private int id;
+    private String id;
     private String nom_produit;
     private String categorie;
-    private float prix;
+    private double prix;
     private String image;
     private String description;
     private int quantite_stock;
+    private int discount;
     
     public Produit(){
 }
     
-    public Produit(Object nom_produit , Object prix , Object categorie , Object image , Object description, Object quantite  ){
+    public Produit(Object id, Object nom_produit ,  Object description , Object categorie   , Object quantite ,Object prix ){
         
+       this.id =(String) id;
         this.nom_produit =(String) nom_produit;
         this.categorie =(String) categorie;
-        this.prix = (float) prix;
-        this.image =(String) image;
-        this.quantite_stock =(int) quantite;
+        this.prix =(double) prix;
         this.description =(String) description;
+        this.quantite_stock =(int) quantite;
     }
 
-     public Produit(Object image , Object nom_produit , Object prix ){
-        
+     public Produit(Object nom_produit  , Object description , Object categorie   , Object quantite ,Object prix ){
+       
         this.nom_produit =(String) nom_produit;
-        this.prix = (float) prix;
-        this.image =(String) image;
+        this.categorie =(String) categorie;
+        this.prix =(double) prix;
+        this.description =(String) description;
+        this.quantite_stock =(int) quantite;
 
     }
      
-    public Produit(Object id , Object nom_produit , Object prix , Object categorie , Object image ,  Object description , Object quantite ){
-        this.id =(int) id;
+    public Produit(Object id , Object image, Object nom_produit ,  Object description , Object categorie   , Object quantite ,Object prix ,Object discount){
+        this.id =(String) id;
         this.nom_produit =(String) nom_produit;
         this.categorie =(String) categorie;
-        this.prix =(float) prix;
+        this.prix =(double) prix;
         this.image =(String) image;
         this.description =(String) description;
         this.quantite_stock =(int) quantite;
+        this.discount =(int) discount;
     }
 
   
     /**
      * @return the id
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -95,14 +101,22 @@ public class Produit {
     /**
      * @return the prix
      */
-    public float getPrix() {
+    public double getPrix() {
         return prix;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
     /**
      * @param prix the prix to set
      */
-    public void setPrix(float prix) {
+    public void setPrix(double prix) {
         this.prix = prix;
     }
 
@@ -150,8 +164,32 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" + "id=" + id + ", nom_produit=" + nom_produit + ", categorie=" + categorie + ", prix=" + prix + ", image=" + image + ", description=" + description + ", quantite=" + quantite_stock + '}';
+        return "\t"+  nom_produit + "\t \t \t\t \t \t" + categorie + "\t \t \t\t \t \t" + description + "\t \t \t \t \t \t\t \t \t" + prix + " DT\t \t \t " +discount +"\t \t \t"+quantite_stock;
     }
+
+
+ 
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Produit other = (Produit) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+  
     
     
     

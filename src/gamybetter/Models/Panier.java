@@ -17,19 +17,38 @@ public class Panier {
     private double prix_produit_totale;
     private String image;
     private String nom_produit;
+    private int id_personne;
+    private int discount;
   
     
     public Panier() {
     }
+    
+ 
 
-    public Panier(Object id_commande, Object id_produit, Object quantite_order, Object prix_unitaire, Object prix_produit_totale, Object image, Object nom_produit) {
-          this.id_commande =(String) id_commande;
+    public Panier(Object id_produit,Object quantite_order, Object prix_unitaire, Object discount, Object image, Object nom_produit ,Object prix_produit_totale) {
+        this.id_produit =(String) id_produit; 
+        this.quantite_order = (int)quantite_order; 
+        this.prix_unitaire = (double)prix_unitaire;
+        this.discount = (int)discount;
+        this.image = (String)image;
+        this.nom_produit =(String) nom_produit;
+        this.prix_produit_totale =(double) prix_produit_totale;
+        
+        
+        
+    }
+    
+    public Panier(Object id_commande,Object id_produit,Object quantite_order, Object prix_unitaire, Object discount, Object image, Object nom_produit ,Object prix_produit_totale) {
+        this.id_produit =(String) this.id_produit;  
+        this.id_commande =(String) id_commande;
         this.id_produit = (String)id_produit;
         this.quantite_order = (int)quantite_order;
         this.prix_unitaire = (double)prix_unitaire;
         this.prix_produit_totale =(double) prix_produit_totale;
         this.image = (String)image;
         this.nom_produit =(String) nom_produit;
+        this.discount = (int)discount;
     }
 
       public Panier(Object id_commande,Object  id_produit,Object  quantite_order) {
@@ -78,10 +97,45 @@ public class Panier {
         this.prix_unitaire = prix_unitaire;
     }
 
+    public double getPrix_produit_totale() {
+        return prix_produit_totale;
+    }
+
+    public void setPrix_produit_totale(double prix_produit_totale) {
+        this.prix_produit_totale = prix_produit_totale;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getNom_produit() {
+        return nom_produit;
+    }
+
+    public void setNom_produit(String nom_produit) {
+        this.nom_produit = nom_produit;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
     @Override
     public String toString() {
-        return "Panier{" + "id_commande=" + id_commande + ", id_produit=" + id_produit + ", quantite_order=" + quantite_order + ", prix_unitaire=" + prix_unitaire + ", prix_produit_totale=" + prix_produit_totale + ", image=" + image + ", nom_produit=" + nom_produit + '}';
+        return "\t\t"+nom_produit+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + prix_unitaire+" DT \t\t\t\t\t\t\t\t" + quantite_order+"\t\t\t\t\t\t" +discount+"\t\t\t\t\t\t\t"+ prix_produit_totale ;
     }
+
+    
+    
 
   
     

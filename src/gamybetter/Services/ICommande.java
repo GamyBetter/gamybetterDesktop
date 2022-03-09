@@ -9,11 +9,10 @@ import java.util.List;
 
 /**
  *
- * @author skon1
+ * @author Sayee
  * @param <T>
  */
-public interface IService<T> {
-
+public interface ICommande<T> {
     public boolean add(T t);
 
     public void update(T t);
@@ -26,6 +25,5 @@ public interface IService<T> {
     
     public T getById(String id);
     
-    
-
+  public void SetCommandPrice(T c,double prix);  
 }
