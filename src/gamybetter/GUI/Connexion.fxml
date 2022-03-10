@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" onDragDetected="#verifyConnexion" prefHeight="335.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ConnexionController">
+   <children>
+      <Label layoutX="94.0" layoutY="126.0" text="    Email :" />
+      <Label layoutX="94.0" layoutY="200.0" text="  Password:" />
+      <JFXTextField fx:id="mail" layoutX="169.0" layoutY="109.0" prefHeight="25.0" prefWidth="231.0" />
+      <JFXPasswordField fx:id="password" layoutX="169.0" layoutY="184.0" prefHeight="25.0" prefWidth="231.0" />
+      <JFXButton layoutX="238.0" layoutY="262.0" onAction="#verifyConnexion" text="Connexion" />
+      <Hyperlink layoutX="341.0" layoutY="224.0" onMouseClicked="#resetPassword" text="Reset password ?" />
+   </children>
+</AnchorPane>

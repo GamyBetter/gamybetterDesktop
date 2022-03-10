@@ -22,6 +22,16 @@ public class Reclamation {
         this.reclamation = (String) reclamation;
         this.email_sender = (String) email_sender;
     }
+    public Reclamation (Object titre,Object reclamation){
+        this.titre= (String) titre ;
+        this.reclamation = (String) reclamation ;
+    }
+
+    public Reclamation(String titre, String description, String email_sender) {
+        this.titre = (String) titre;
+        this.reclamation = (String) description;
+        this.email_sender = (String) email_sender;
+    }
 
     public int getId_reclamation() {
         return id_reclamation;

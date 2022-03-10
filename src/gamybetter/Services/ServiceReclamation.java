@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -26,12 +28,12 @@ public class ServiceReclamation implements IService<Reclamation> {
     @Override
     public void ajouter(Reclamation r) {
         try {
-            String req = "INSERT INTO `reclamation` (`id_reclamation`,`titre`,`reclamation`,`email_sender`) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `reclamation` (`titre`,`reclamation`,`email_sender`) VALUES (?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, r.getId_reclamation());
-            ps.setString(2, r.getTitre());
-            ps.setString(3, r.getReclamation());
-            ps.setString(4, r.getEmail_sender());
+           
+            ps.setString(1, r.getTitre());
+            ps.setString(2, r.getReclamation());
+            ps.setString(3, r.getEmail_sender());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -100,14 +102,14 @@ public class ServiceReclamation implements IService<Reclamation> {
     }
 
     @Override
-    public List<Reclamation> getAll() {
-        List<Reclamation> list = new ArrayList<>();
+    public ObservableList<Reclamation> getAll() {
+        ObservableList<Reclamation> list = FXCollections.observableArrayList();
         try {
             String req = "Select * from `reclamation`";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Reclamation r = new Reclamation(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4));
+                Reclamation r = new Reclamation(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
                 System.out.println(r + "-------------------");
                 list.add(r);
             }

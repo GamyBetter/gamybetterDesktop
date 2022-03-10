@@ -5,6 +5,9 @@
  */
 package gamybetter.Models;
 
+import java.util.Objects;
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author Admin
@@ -34,6 +37,20 @@ public class Personne {
     }
 
     public Personne() {
+    }
+    public Personne (Object nom_personne, Object contact,Object description, Object email,Object mot_de_passe){
+        this.nom_personne = (String) nom_personne;
+        this.contact = (int) contact;
+        this.description = (String) description;
+        this.email = (String) email;
+        this.mot_de_passe = (String) mot_de_passe;
+        
+        
+    }
+
+    public Personne(String email, String password) {
+        this.email = email;
+        this.mot_de_passe = password;
     }
 
     public int getId_personne() {
@@ -158,7 +175,35 @@ public class Personne {
 
     @Override
     public String toString() {
-        return "Personne{" + "id_personne=" + id_personne + ", contact=" + contact + ", rating=" + rating + ", ig_rank=" + ig_rank + ", nom_personne=" + nom_personne + ", mot_de_passe=" + mot_de_passe + ", role=" + role + ", email=" + email + ", description=" + description + ", competence=" + competence + ", jeux=" + jeux + ", heros=" + heros + ", ig_name=" + ig_name + ", ig_role=" + ig_role + ", prix=" + prix + '}';
+        return "Personne{" +  " nom_personne=" + nom_personne + ", role=" + role + ", email=" + email + ", contact=" + contact + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Personne other = (Personne) obj;
+        if (!Objects.equals(this.mot_de_passe, other.mot_de_passe)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        return true;
+    }
+    
 
 }

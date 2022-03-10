@@ -18,7 +18,7 @@ public class DataSource {
     
     private String user = "root";
     private String password = "";
-    private String url = "jdbc:mysql://localhost:3306/connexion3a21";
+    private String url = "jdbc:mysql://localhost:3306/gamybetter";
 
     private static DataSource instance;
     
