@@ -160,7 +160,7 @@ public class ProductFormController implements Initializable {
                             price,
                             disc
                              );
-        sp.add(p);
+        sp.ajouter(p);
         ListView.getItems().add(p);
             ObservableList<Produit> UpdatedListView = ListView.getItems();
             ListView.setItems(UpdatedListView);
@@ -204,7 +204,7 @@ public class ProductFormController implements Initializable {
         p.setQuantiteStock(stock);
          p.setDiscount(disc);
          
-        sp.update(p);
+        sp.modifier(p);
         
         // update the item in the model
         ListView.getItems().set( ListView.getSelectionModel().getSelectedIndex(), p );
@@ -226,7 +226,7 @@ public class ProductFormController implements Initializable {
         p.setPrix(price);
         p.setQuantiteStock(stock);
         
-        sp.delete(p);
+        sp.supprimer(p);
        
         ListView.getItems().remove(ListView.getSelectionModel().getSelectedItem());
             ObservableList<Produit> UpdatedListView = ListView.getItems();

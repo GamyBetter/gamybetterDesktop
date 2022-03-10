@@ -18,24 +18,7 @@ public class Personne {
     private String nom_personne, mot_de_passe, role, email, description, competence, jeux, heros, ig_name, ig_role;
     private float prix;
 
-    public Personne(Object nom_personne, Object contact, Object rating,Object role,Object mot_de_passe,  Object email, Object description, Object competence, Object jeux,Object prix,  Object heros, Object ig_name, Object ig_role, Object ig_rank,Object id_equipe) {
-    
-        this.nom_personne = (String) nom_personne;
-        this.contact = (int) contact;
-        this.rating = (int) rating;
-        this.ig_rank = (int) ig_rank;
-        this.mot_de_passe = (String) mot_de_passe;
-        this.role = (String) role;
-        this.email = (String) email;
-        this.description = (String) description;
-        this.competence = (String) competence;
-        this.jeux = (String) jeux;
-        this.heros = (String) heros;
-        this.ig_name = (String) ig_name;
-        this.ig_role = (String) ig_role;
-        this.prix = (float) prix;
-        this.id_equipe=(int) id_equipe;
-    }
+  
     
     public Personne(Object id_personne,Object nom_personne, Object contact, Object rating,Object role,Object mot_de_passe,  Object email, Object description, Object competence, Object jeux,Object prix,  Object heros, Object ig_name, Object ig_role, Object ig_rank) {
         this.id_personne=(int) id_personne;
@@ -59,8 +42,7 @@ public class Personne {
     public Personne() {
     }
 
-    public Personne() {
-    }
+
     public Personne (Object nom_personne, Object contact,Object description, Object email,Object mot_de_passe){
         this.nom_personne = (String) nom_personne;
         this.contact = (int) contact;

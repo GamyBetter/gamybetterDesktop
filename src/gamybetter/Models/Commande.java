@@ -72,7 +72,10 @@ public class Commande {
         this.date = (Date)date;
 
     }
-    
+    public Commande(Object id_commande, Object id_personne){
+        this.id_commande =(String) id_commande;
+        this.id_personne =(String) id_personne;
+    }
     
 
 

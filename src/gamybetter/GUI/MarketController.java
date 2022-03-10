@@ -229,7 +229,8 @@ private void GenerateCommandeId() {
             if (id >= 99) {
                 this.id_com.setText("C" + (id + 1));
             }
-            Commande c = new Commande(id_com.getText(),"1");
+            //Commande c = new Commande(Commands, desc, id_product, itemNameLable, id_product, id_product, id_product, products);
+           Commande c=new Commande(id_com.getText(),"1");
             sc.add(c);
         //customer Count Code
     }

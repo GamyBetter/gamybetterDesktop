@@ -46,8 +46,6 @@ import javafx.stage.Stage;
 import gamybetter.Models.Commande;
 import gamybetter.Models.Produit;
 import gamybetter.Services.ServiceCommande;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.view.JasperViewer;
 import gamybetter.Utils.DataSource;
 import com.twilio.type.PhoneNumber;
 import java.util.Properties;    

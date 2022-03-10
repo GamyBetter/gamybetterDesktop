@@ -18,12 +18,12 @@ import gamybetter.Utils.DataSource;
  *
  * @author Sayee
  */
-public class ServiceProduit implements IService<Produit> {
+public class ServiceProduit implements IServiceC<Produit> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public boolean ajouter(Produit t) {
+    public void ajouter(Produit t) {
         String query = "INSERT INTO `produit` (`itemCode`, `nom_produit`, `description`,`categorie`,`quantite_stock`,`prix_unitair`,`image`,`discount`) VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
@@ -40,14 +40,14 @@ public class ServiceProduit implements IService<Produit> {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return true;
+      
     }
 
     public void ajouter2(Produit t) {
     }
 
     @Override
-    public void modifier(Produit t) {
+    public boolean modifier(Produit t) {
         String sql = "UPDATE `produit` SET nom_produit=?, prix_unitair=?, categorie=? , description=? ,quantite_stock=?,image=?,discount=? WHERE itemCode =?";
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
@@ -63,15 +63,16 @@ public class ServiceProduit implements IService<Produit> {
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+       return false;
     }
 
     @Override
-    public void supprimer(Produit t) {
+    public boolean supprimer(Produit t) {
         String sql = "DELETE FROM produit WHERE itemCode=?";
 
         try {
@@ -81,10 +82,12 @@ public class ServiceProduit implements IService<Produit> {
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("A user was deleted successfully!");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        return false;
     }
 
     @Override
@@ -144,4 +147,6 @@ public class ServiceProduit implements IService<Produit> {
 
         return new Produit();
     }
+
+   
 }

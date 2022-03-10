@@ -30,7 +30,7 @@ public class ServiceCommande implements ICommande<Commande> {
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
     Date date = new Date();  
     @Override
-    public boolean ajouter(Commande c) {
+    public boolean add(Commande c) {
         
         String query = "INSERT INTO `commande` (`id`,`date_commande`,`nom_personne`, `prenom_personne` ,`address_personne`,`email_personne`,`IDpersonne`,`prix_totale`) VALUES(?,?,?,?,?,?,?,?)";
         
@@ -79,7 +79,7 @@ public class ServiceCommande implements ICommande<Commande> {
     }
 
     @Override
-    public void modifier(Commande c) {
+    public void update(Commande c) {
         String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?, prenom_personne=? ,address_personne=?,email_personne=?,prix_totale=? WHERE id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
@@ -103,7 +103,7 @@ public class ServiceCommande implements ICommande<Commande> {
     }
 
     @Override
-    public void supprimer(Commande c) {
+    public void delete(Commande c) {
         String sql = "DELETE FROM commande WHERE id=?";
         
         try {
@@ -215,5 +215,7 @@ public class ServiceCommande implements ICommande<Commande> {
         }
         
     }
+
+ 
 }
 
