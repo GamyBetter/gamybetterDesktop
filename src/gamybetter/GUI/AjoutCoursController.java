@@ -18,9 +18,16 @@ import gamybetter.Models.Cours;
 import gamybetter.Models.Personne;
 import gamybetter.Services.ServiceCours;
 import gamybetter.Services.ServicePersonne;
+import gamybetter.Utils.DataSource;
 import gamybetter.Utils.HostAPI;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -36,6 +43,8 @@ import java.util.regex.Pattern;
  * @author skon1
  */
 public class AjoutCoursController implements Initializable {
+
+    Connection cnx = DataSource.getInstance().getCnx();
 
     private Matcher matcher;
     private final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -196,8 +205,27 @@ public class AjoutCoursController implements Initializable {
 
                     }
                     if (ajout == true) {
-                        coursService.ajouter(c);
-                        AlertBox.display("Ajout du cours", "Cours ajouté avec succès");
+
+                        String query_nocheck = "set foreign_key_checks=0";
+                        Statement st;
+                        try {
+                            st = cnx.createStatement();
+                            int rs = st.executeUpdate(query_nocheck);
+                            coursService.ajouter(c);
+                            AlertBox.display("Ajout du cours", "Cours ajouté avec succès");
+                        } catch (SQLException ex) {
+                            System.out.println(ex.getMessage());                        }
+
+                        String query_check = "set foreign_key_checks=1";
+                        Statement st1;
+                        try {
+                            st1 = cnx.createStatement();
+                            int rs1 = st1.executeUpdate(query_check);
+
+                        } catch (SQLException ex) {
+                            System.out.println(ex.getMessage());
+                        }
+
                     }
 
                 }
