@@ -144,6 +144,7 @@ public class AjoutCoursController implements Initializable {
 
     public void Creer() {
         Cours c = new Cours();
+        Boolean ajout = false;
 
         //Personne p = listCoaches.stream().filter(t -> t.getNom_personne().equals(choosen_coach1)).findFirst().get()
         if (choicebox1.getSelectionModel().getSelectedIndex() == -1) {
@@ -160,40 +161,45 @@ public class AjoutCoursController implements Initializable {
                     AlertBox.display("Ajout du cours", "Veillez remplir le champ prix");
                 } else if (isNumeric(prix1.getText()) == false) {
                     AlertBox.display("Ajout du cours", "Le prix doit etre un entier");
-                }
+                } else {
+                    int index = choicebox1.getSelectionModel().getSelectedIndex();
+                    Personne p = listCoaches.get(index);
+                    c.setId_coach(choosen_coach1 == null ? null : p.getId_personne());
+                    c.setEmail_coach(email_coach1 == null ? null : email_coach1.getText());
+                    c.setCategorie(categorie1 == null ? null : categorie1.getText());
+                    c.setJeu(jeu1 == null ? null : jeu1.getText());
+                    c.setPrix(prix1 == null ? null : validPrix(prix1.getText()) ? Integer.parseInt(prix1.getText()) : 0);
+                    c.setLien_session(lien_session1 == null ? null : lien_session1.getText());
+                    c.setId_session(0);
+                    c.setListe_personnes("skander,amir");
 
-                int index = choicebox1.getSelectionModel().getSelectedIndex();
-                Personne p = listCoaches.get(index);
-                c.setId_coach(choosen_coach1 == null ? null : p.getId_personne());
-                c.setEmail_coach(email_coach1 == null ? null : email_coach1.getText());
-                c.setCategorie(categorie1 == null ? null : categorie1.getText());
-                c.setJeu(jeu1 == null ? null : jeu1.getText());
-                c.setPrix(prix1 == null ? null : validPrix(prix1.getText()) ? Integer.parseInt(prix1.getText()) : 0);
-                c.setLien_session(lien_session1 == null ? null : lien_session1.getText());
-                c.setId_session(0);
-                c.setListe_personnes("skander,amir");
+                    String myIp = "";
+                    Boolean listbol = false;
+                    try {
+                        myIp = HostAPI.sendGETURLINFO("https://www.javatpoint.com/java-string-to-boolean", "skanderg", "8hiwbmwOn1zJ5ryMzhnieTZx2TbsyA6zbUFWPQwKkacm0NKJ");
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    try {
+                        if (myIp.length() > 0) {
+                            listbol = HostAPI.sendGET(myIp, "skanderg", "8hiwbmwOn1zJ5ryMzhnieTZx2TbsyA6zbUFWPQwKkacm0NKJ");
+                        }
 
-                String myIp = "";
-                Boolean listbol = false;
-                try {
-                    myIp = HostAPI.sendGETURLINFO("https://www.javatpoint.com/java-string-to-boolean", "skanderg", "8hiwbmwOn1zJ5ryMzhnieTZx2TbsyA6zbUFWPQwKkacm0NKJ");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
-                }
-                try {
-                    if (myIp.length() > 0) {
-                        listbol = HostAPI.sendGET(myIp, "skanderg", "8hiwbmwOn1zJ5ryMzhnieTZx2TbsyA6zbUFWPQwKkacm0NKJ");
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    if (listbol == true) {
+                        AlertBox.display("Error", "Lien de la session est susceptible");
+                    } else {
+                        System.out.println(listbol);
+                        ajout = true;
+
+                    }
+                    if (ajout == true) {
+                        coursService.ajouter(c);
+                        AlertBox.display("Ajout du cours", "Cours ajouté avec succès");
                     }
 
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
-                }
-                if (listbol == true) {
-                    AlertBox.display("Error", "Lien de la session est susceptible");
-                } else {
-                    System.out.println(listbol);
-                    coursService.ajouter(c);
-                    AlertBox.display("Ajout du cours", "Cours ajouté avec succès");
                 }
                 annuler();
             } catch (NumberFormatException ex) {
