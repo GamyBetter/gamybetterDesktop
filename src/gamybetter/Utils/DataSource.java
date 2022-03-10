@@ -14,29 +14,36 @@ import java.sql.SQLException;
  * @author skon1
  */
 public class DataSource {
+
     private Connection cnx;
-    
+    private String server = "";
+    private String url = "jdbc:mysql://localhost:3306/pidev";
     private String user = "root";
     private String password = "";
-    private String url = "jdbc:mysql://localhost:3306/pidev";
+    private String database_name = "esprit3a21";
+    
 
     private static DataSource instance;
-    
+
+    public static DataSource getInstance() {
+        if (instance == null) {
+            instance = new DataSource();
+            return instance;
+        } else {
+            return instance;
+        }
+    }
+
     private DataSource() {
         try {
-            //Class.forName("com.mysql.jdbc.cj.Driver");
-            cnx = DriverManager.getConnection(url, user, password);
-            System.out.println("Connected !");
+            cnx = DriverManager.getConnection(this.url,this.user,this.password);
+            System.out.println("Connected to Database !");
         } catch (SQLException ex) {
+            System.out.println("Error here"+ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
 
-    public static DataSource getInstance() {
-        if(instance == null)
-            instance = new DataSource();
-        return instance;
-    }
 
     public Connection getCnx() {
         return cnx;

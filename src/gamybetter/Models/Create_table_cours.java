@@ -11,5 +11,5 @@ package gamybetter.Models;
  */
 public class Create_table_cours {
 
-    String query = "CREATE TABLE `pidev`. ( `id` INT NOT NULL AUTO_INCREMENT , `id_coach` INT NOT NULL , `email_coach` VARCHAR(50) NOT NULL , `categorie` VARCHAR(50) NOT NULL , `jeu` VARCHAR(50) NOT NULL , `prix` FLOAT NOT NULL , `lien_session` VARCHAR(200) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
+    String query = "CREATE TABLE `pidev`.`session` ( `id` INT NOT NULL AUTO_INCREMENT , `id_coach` INT NOT NULL , `email_coach` VARCHAR(50) NOT NULL , `categorie` VARCHAR(50) NOT NULL , `jeu` VARCHAR(50) NOT NULL , `prix` FLOAT NOT NULL , `lien_session` VARCHAR(200) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
 }
