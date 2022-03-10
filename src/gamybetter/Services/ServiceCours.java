@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import gamybetter.Utils.DataSource;
 
-
 /**
  *
  * @author skon1
@@ -61,8 +60,8 @@ public class ServiceCours implements IService<Cours> {
                         rs.getObject("jeu"),
                         rs.getObject("prix"),
                         rs.getObject("lien_session"),
-                rs.getObject("liste_personnes"),
-                rs.getObject("id_session"));
+                        rs.getObject("liste_personnes"),
+                        rs.getObject("id_session"));
                 System.out.println("GetById successful");
                 System.out.println(c);
             } else {
@@ -90,8 +89,8 @@ public class ServiceCours implements IService<Cours> {
                         rs.getObject("jeu"),
                         rs.getObject("prix"),
                         rs.getObject("lien_session"),
-                         rs.getObject("liste_personnes"),
-                rs.getObject("id_session")
+                        rs.getObject("liste_personnes"),
+                        rs.getObject("id_session")
                 );
                 list.add(c);
             }
@@ -136,7 +135,7 @@ public class ServiceCours implements IService<Cours> {
             Statement st = cnx.createStatement();
             int rowsDeleted = st.executeUpdate(query);
             Cours c = new Cours();
-            if (getById(t.getId()).equals(c)) {
+            if (getById(t.getId()) == null) {
                 System.out.println("Delete successful");
                 return true;
             } else {

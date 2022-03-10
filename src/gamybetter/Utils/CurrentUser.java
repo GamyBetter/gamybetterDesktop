@@ -7,18 +7,23 @@ package gamybetter.Utils;
 
 /**
  *
- * @author skon1
+ * @author Admin
  */
-public final class CurrentUser {
+public class CurrentUser {
 
-    private static int current_user;
+    static int currentUser = 0;
 
-    public static int getCurrentUser() {
-        return current_user;
+    public CurrentUser() {
     }
 
-    public static void setCurrentUser(int id) {
-        current_user = id;
+    public static int getCurrentUser() {
+        if (currentUser!=0) {
+            return currentUser;
+        }
+        return 0;
+    }
+    public static void setCurrentUser(int id){
+        currentUser = id;
     }
 
 }

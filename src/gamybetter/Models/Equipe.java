@@ -20,6 +20,11 @@ public class Equipe {
 
     public Equipe() {
     }
+    public Equipe(int id_coach, String nom_eq,String description_equipe){
+        this.id_coach = id_coach;
+        this.nom_eq = nom_eq;
+        this.description_equipe = description_equipe;
+    }
 
     public Equipe(Object id_coach, Object nom_eq, Object description_equipe) {
  
@@ -104,5 +109,11 @@ public class Equipe {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "" + "                                                  "  + nom_eq + "                                                             " + description_equipe + "" ;
+    }
+    
     
 }

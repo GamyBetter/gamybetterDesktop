@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.PublicationController">
+   <children>
+      <ImageView fitHeight="76.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="118.0" layoutY="14.0" prefHeight="21.0" prefWidth="44.0" text="Id-perso" />
+      <Label layoutX="118.0" layoutY="35.0" prefHeight="21.0" prefWidth="44.0" text="titre" />
+      <Label layoutX="458.0" layoutY="14.0" text="date" />
+      <VBox layoutY="133.0" prefHeight="215.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="tfPublic" prefHeight="149.0" prefWidth="600.0" promptText="Que vous voulez dire ? " />
+            <HBox prefHeight="32.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="tfPublier" mnemonicParsing="false" onAction="#PublierPub" prefHeight="69.0" prefWidth="600.0" text="Publier" />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="600.0" text="Modif" />
+         </children>
+      </VBox>
+      <TextField fx:id="tfidPer" layoutX="186.0" layoutY="9.0" />
+      <TextField fx:id="tfTitre" layoutX="186.0" layoutY="41.0" />
+      <TextField fx:id="tfDate" layoutX="492.0" layoutY="9.0" prefHeight="31.0" prefWidth="94.0" />
+      <Label layoutX="12.0" layoutY="348.0" text="nbr_Commentaire" />
+      <TextField fx:id="tfNbrCom" layoutX="152.0" layoutY="343.0" prefHeight="21.0" prefWidth="107.0" />
+   </children>
+</AnchorPane>

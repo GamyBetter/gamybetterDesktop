@@ -26,7 +26,7 @@ public class ServiceSession implements IService<Session> {
 //Object email_coach, Object email_joueur, Object duree, Object date, Object jeu, Object categorie, Object prix
     @Override
     public void ajouter(Session t) {
-        String query = "INSERT INTO `session` (`email_coach`, `email_joueur`, `duree`, `date`, `jeu`, `categorie`, `prix` ) VALUES (?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),?,?,?)";
+        String query = "INSERT INTO `session` (`email_coach`, `email_joueur`, `duree`, `date`, `jeu`, `categorie`, `prix`,`nom_session` ) VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
             ps.setObject(1, t.getEmail_coach());
@@ -36,6 +36,7 @@ public class ServiceSession implements IService<Session> {
             ps.setObject(5, t.getJeu());
             ps.setObject(6, t.getCategorie());
             ps.setObject(7, t.getPrix());
+            ps.setObject(8, t.getNom());
             ps.executeUpdate();
             System.out.println("Add successful");
         } catch (SQLException ex) {
@@ -53,11 +54,11 @@ public class ServiceSession implements IService<Session> {
             if (rs.next()) {
                 s = new Session(
                         rs.getObject("id"),
-           
+                        rs.getObject("nom_session"),
                         rs.getObject("email_coach"),
                         rs.getObject("email_joueur"),
                         rs.getObject("duree"),
-                        rs.getObject("daate"),
+                        rs.getObject("date"),
                         rs.getObject("jeu"),
                         rs.getObject("categorie"),
                         rs.getObject("prix")
@@ -83,11 +84,11 @@ public class ServiceSession implements IService<Session> {
             while (rs.next()) {
                 Session s = new Session(
                         rs.getObject("id"),
-              
+                        rs.getObject("nom_session"),
                         rs.getObject("email_coach"),
                         rs.getObject("email_joueur"),
                         rs.getObject("duree"),
-                        rs.getObject("daate"),
+                        rs.getObject("date"),
                         rs.getObject("jeu"),
                         rs.getObject("categorie"),
                         rs.getObject("prix")
@@ -102,7 +103,7 @@ public class ServiceSession implements IService<Session> {
 
     @Override
     public boolean modifier(Session t) {
-        String query = "UPDATE `session` SET  email_coach=?, email_joueur=? , duree=?, daate=STR_TO_DATE(? ,'%d-%m-%Y'), jeu=?, categorie=?,prix=?  WHERE id=? ";
+        String query = "UPDATE `session` SET  email_coach=?, email_joueur=? , duree=?, date=?, jeu=?, categorie=?,prix=? ,nom_session=? WHERE id=? ";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
          
@@ -113,7 +114,8 @@ public class ServiceSession implements IService<Session> {
             ps.setObject(5, t.getJeu());
             ps.setObject(6, t.getCategorie());
             ps.setObject(7, t.getPrix());
-            ps.setObject(8, t.getId());
+            ps.setObject(8, t.getNom());
+            ps.setObject(9, t.getId());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("Update successful");

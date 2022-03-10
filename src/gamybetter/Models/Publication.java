@@ -7,21 +7,18 @@ package gamybetter.Models;
 import java.text.DateFormat;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 /**
  *
  * @author Mariem
  */
 public class Publication {
-      private int id_publication, nbr_commentaire,nbr_Like,nbr_Dislike,id_personne;
+      private int id_publication, nbr_commentaire,id_personne;
     private String  publication, titre;
    // Date date;
     private String date;
 
     public Publication(Object id_personne, Object publication, Object titre, Object nbr_commentaire,Object date) {
-
-      
-
-        
         this.id_personne =(int) id_personne;
         this.publication = (String)publication;
         this.titre = (String)titre;
@@ -31,41 +28,84 @@ public class Publication {
         
 
     }
+
+    public Publication(String publication, String titre,LocalDate date) {
+        this.publication = publication;
+        this.titre = titre;
+       // this.date = date;
+    }
+    
  
       public Publication(Object id_publication,Object id_personne, Object publication, Object titre, Object nbr_commentaire,Object date) {
 
       
 
         this.id_publication=(int) id_publication;
-       this.id_personne =(int) id_personne;
+       this.id_personne =id_personne!=null ? (int)id_personne : 0 ;
         this.publication = (String)publication;
         this.titre = (String)titre;
         this.nbr_commentaire =(int) nbr_commentaire;
        
 
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        this.date = (String)df.format(date);
+        this.date = (String) date;
         
 
     }  
+      
+         public Publication( Object publication, Object titre, Object nbr_commentaire,Object date) {
 
+      
+
+  
+             this.publication = (String) publication;
+             this.titre = (String) titre;
+             this.nbr_commentaire = (int) nbr_commentaire;
+             DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+             this.date = (String) date;
+        
+
+    } 
+
+    public Publication(int id_publication,String publication, String titre, int nbr_commentaire) {
+        this.id_publication = id_publication;
+        
+        this.publication = publication;
+        this.titre = titre;
+        this.nbr_commentaire = nbr_commentaire;
+    }
+         
+
+    public Publication(int id_publication, String publication, String titre, int nbr_commentaire, LocalDate date) {
+        this.id_publication = id_publication;
+        
+        this.publication = publication;
+        this.titre = titre;
+        this.nbr_commentaire = nbr_commentaire;
+        //this.date = date;
+    }
+         
+
+    public Publication( String publication,String titre,int nbr_commentaire, LocalDate date) {
+          this.publication = publication;
+             this.titre = titre;
+        this.nbr_commentaire = nbr_commentaire;
+     
+     
+       /// this.date = date;
+    }
+
+    public Publication(String publication, String titre) {
+        this.publication = publication;
+        this.titre = titre;
+    }
+
+  
+
+         
         public Publication() {
     }
-    public int getNbr_Like() {
-        return nbr_Like;
-    }
 
-    public void setNbr_Like(int nbr_Like) {
-        this.nbr_Like = nbr_Like;
-    }
-
-    public int getNbr_Dislike() {
-        return nbr_Dislike;
-    }
-
-    public void setNbr_Dislike(int nbr_Dislike) {
-        this.nbr_Dislike = nbr_Dislike;
-    }
     
 
   
@@ -123,7 +163,9 @@ public class Publication {
    
     @Override
     public String toString() {
-        return "Publication{" + "idPublication=" + id_publication + ", nbr_commentaire=" + nbr_commentaire + ", nbr_Like=" + nbr_Like + ", nbr_Dislike=" + nbr_Dislike + ", id_personne=" + id_personne + ", publication=" + publication + ", titre=" + titre + ", date=" + date + '}';
+        return       publication+"\t \t" +titre+ "\t \t" + date ;
+                
+       /*"Publication{" + "idPublication=" + id_publication + ", nbr_commentaire=" + nbr_commentaire + ", id_personne=" + id_personne + ", publication=" + publication + ", titre=" + titre + ", date=" + date + '}';*/
     }
   
     
