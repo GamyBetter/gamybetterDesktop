@@ -109,5 +109,11 @@ public class Equipe {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "" + "                                                  "  + nom_eq + "                                                             " + description_equipe + "" ;
+    }
+    
     
 }

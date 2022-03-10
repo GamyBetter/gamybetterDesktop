@@ -7,6 +7,7 @@ package gamybetter.Models;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 /**
@@ -195,5 +196,4 @@ public class Session {
         }
         return true;
     }
-
 }

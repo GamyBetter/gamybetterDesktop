@@ -61,6 +61,7 @@ public class ServicePersonne implements IService<Personne> {
             while (rs.next()) {
                 Personne p = new Personne(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8), rs.getObject(9), rs.getObject(10), rs.getObject(11), rs.getObject(12), rs.getObject(13), rs.getObject(14), rs.getObject(15), rs.getObject(16));
                 //Personne p = new Personne(); 
+                System.out.println(p + "-------------------");
                 list.add(p);
             }
         } catch (SQLException ex) {

@@ -23,7 +23,6 @@ public class ServiceCours implements IService<Cours> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 //int id_coach, String email_coach, String categorie, String jeu, float prix, String lien_session,String liste_personnes, int id_session
-
     @Override
     public void ajouter(Cours t) {
         String query = "INSERT INTO `cours` (`id_coach`, `email_coach`, `categorie`, `jeu`, `prix`, `lien_session`, `liste_personnes`,`id_session`) VALUES (?,?,?,?,?,?,?,?)";
