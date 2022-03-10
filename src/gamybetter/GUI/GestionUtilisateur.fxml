@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.GestionUtilisateurController">
+   <children>
+      <Pane layoutX="4.0" layoutY="3.0" prefHeight="392.0" prefWidth="593.0">
+         <children>
+            <JFXListView fx:id="listUsers" layoutX="14.0" layoutY="160.0" onMouseClicked="#onSelect" prefHeight="187.0" prefWidth="541.0" />
+            <JFXButton layoutX="461.0" layoutY="47.0" onAction="#upDate" text="Modifier" />
+            <JFXButton layoutX="461.0" layoutY="99.0" onAction="#delete" text="Supprimer" />
+            <GridPane layoutX="39.0" layoutY="37.0" prefHeight="123.0" prefWidth="339.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="51.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="175.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <JFXTextField fx:id="champRole" promptText="role " GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="champContact" promptText="contact" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="champNom" promptText="nom " />
+                  <JFXTextField fx:id="champMail" prefHeight="25.0" prefWidth="149.0" promptText="email" GridPane.columnIndex="2" />
+               </children>
+            </GridPane>
+            <JFXButton layoutX="24.0" layoutY="353.0" onAction="#boutonRetour" text="Retour" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

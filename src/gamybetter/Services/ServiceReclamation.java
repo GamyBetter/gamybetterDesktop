@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -102,8 +104,8 @@ public class ServiceReclamation implements IService<Reclamation> {
     }
 
     @Override
-    public List<Reclamation> getAll() {
-        List<Reclamation> list = new ArrayList<>();
+    public ObservableList<Reclamation> getAll() {
+        ObservableList<Reclamation> list = FXCollections.observableArrayList();
         try {
             String req = "Select * from `reclamation`";
             Statement st = cnx.createStatement();
