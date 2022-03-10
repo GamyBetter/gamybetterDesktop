@@ -20,7 +20,7 @@ public class DataSource {
     private String url = "jdbc:mysql://www.phpmyadmin.co:3306/db_structure.php?server=1&db=sql11472700";
     private String user = "root";
     private String password = "";
-    private String database_name = "esprit3a21";
+    private String database_name = "gamybetter";
     
 
     private static DataSource instance;
@@ -36,7 +36,7 @@ public class DataSource {
 
     private DataSource() {
         try {
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/esprit3a21","root","");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamybetter","root","");
             System.out.println("Connected !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

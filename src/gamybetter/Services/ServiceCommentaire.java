@@ -12,26 +12,38 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import tn.edu.esprit.modeles.Commentaire;
-import tn.edu.esprit.utils.DataSource;
+import gamybetter.Models.Commentaire;
+import gamybetter.Models.Publication;
+import gamybetter.Utils.DataSource;
+import java.sql.ResultSetMetaData;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author Mariem
  */
-public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commentaire> {
+public class ServiceCommentaire implements gamybetter.Services.ICommentaire<Commentaire> {
 
+    
+      SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+    Date date=new Date() ;
+    
     Connection cnx = DataSource.getInstance().getCnx();
+//Object id_personne, Object date, Object cont_commentaire, Object id_publication
 
     @Override
-    public void add(Commentaire c) {
-        String query = "INSERT INTO `commentaire` (`id_commentaire`,`id_personne`,`date`,`cont_commentaire`) VALUES(?,?,STR_TO_DATE(? ,'%d-%m-%Y'),?)";
+    public void ajouter(Commentaire c) {
+        System.out.println(c+"...............");
+        String query = "INSERT INTO `commentaire` (`id_personne`,`date`,`cont_commentaire`) VALUES(?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
-            ps.setInt(1, c.getIdCommentaire());
-            ps.setInt(2, c.getId_personne());
-            ps.setString(3, c.getDate());
-            ps.setString(4, c.getCont_commentaire());
+
+            ps.setInt(1, c.getId_personne());
+            ps.setObject(2, formatter.format(date));
+           //System.out.println(c.getDate());
+            ps.setObject(3, c.getCont_commentaire());
+            //  ps.setInt(4, c.getId_publication());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -39,19 +51,21 @@ public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commen
     }
 
     @Override
-    public boolean update(Commentaire c) {
-        String sql = "UPDATE `commentaire` SET id_commentaire=?, id_personne=?, date=STR_TO_DATE(? ,'%d-%m-%Y'), cont_commentaire=?   WHERE id_commentaire=?";
+    public boolean modifier(Commentaire c) {
+        String sql = "UPDATE `commentaire` SET id_commentaire=?, id_personne=?, cont_commentaire=?, id_publication=?   WHERE id_commentaire=?";
         boolean rowUpdated = false;
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
             statement.setObject(1, c.getIdCommentaire());
             statement.setObject(2, c.getId_personne());
-            statement.setObject(3, c.getDate());
-            statement.setObject(4, c.getCont_commentaire());
-              statement.setObject(5, c.getIdCommentaire());
+            //statement.setObject(3,c.getDate());
+            statement.setObject(3, c.getCont_commentaire());
+            statement.setObject(4, c.getId_publication());
+            statement.setObject(5, c.getIdCommentaire());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -61,14 +75,15 @@ public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commen
     }
 
     @Override
-    public boolean delete(Commentaire c) {
+    public boolean supprimer(Commentaire c) {
         String sql = "DELETE FROM commentaire WHERE id_commentaire=?";
         boolean rowDeleted = false;
         try {
-            PreparedStatement statement = cnx.prepareStatement(sql);
+              PreparedStatement statement = cnx.prepareStatement(sql);
             statement.setObject(1, c.getIdCommentaire());
 
             int rowsDeleted = statement.executeUpdate();
+            
             if (rowsDeleted > 0) {
                 System.out.println("A user was deleted successfully!");
             }
@@ -77,17 +92,17 @@ public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commen
         }
         return rowDeleted;
     }
-
+ 
     @Override
     public List<Commentaire> getAll() {
 
         List<Commentaire> list = new ArrayList<>();
         try {
-            String req = "Select * from commentaire";
+            String req = "SELECT * FROM commentaire";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Commentaire c = new Commentaire(rs.getInt(1),rs.getInt(2), rs.getString(3),rs.getString(4));
+                Commentaire c = new Commentaire(rs.getInt(1), rs.getInt(2), rs.getDate(3), rs.getString(4), rs.getInt(5));
                 System.out.println(c + "-------------------");
                 list.add(c);
             }
@@ -97,49 +112,74 @@ public class ServiceCommentaire implements tn.edu.esprit.service.IService<Commen
         return list;
     }
 
-
-
-    
     @Override
- public Commentaire getById(int id) {
-     
-        String query = "select * from commentaire where id_commentaire=" +id;
+    public Commentaire getById(int id) {
+
+        String query = "select * from commentaire where id_publication=" + id;
         try {
-          
+
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                Commentaire c = new Commentaire(rs.getInt(1), rs.getInt(2), rs.getString(3),rs.getString(4));
-                System.out.println(c + "-------------------");
-           
+                Commentaire c = new Commentaire(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5));
+               
+                return c;
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
         return new Commentaire();
     }
- 
- 
+
     @Override
- public Commentaire getOne(Commentaire c) {
-     System.out.println(c.getIdCommentaire());
-     String query = "select * from commentaire where id_commentaire=" + c.getIdCommentaire();
-     try {
-     Statement st = cnx.createStatement();
-     ResultSet rs = st.executeQuery(query);
-     if (rs.next()) {
-Commentaire c1 = new Commentaire(rs.getInt(1), rs.getInt(2), rs.getDate(3),rs.getString(4));
-return c1;
-     }
+    public Commentaire getOne(Commentaire c) {
+        System.out.println(c.getIdCommentaire());
+        String query = "select * from `commentaire` where id_commentaire=" + c.getIdCommentaire();
+        System.out.println(c.getIdCommentaire() + "ID commentaire");
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next()) {
+                Commentaire c1 = new Commentaire(rs.getInt(1), rs.getInt(2),rs.getObject(3), rs.getString(4), rs.getInt(5));
+                return c1;
+            }
 
-     } catch (SQLException ex) {
-     System.out.println(ex.getMessage());
-     }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
 
-     return new Commentaire();
-     } 
-   
+        return new Commentaire();
+    }
 
- }
+    public void deleteById(int id) {
+        String query = "DELETE FROM commentaire WHERE id_commentaire=?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setInt(1, id);
 
+            ps.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
+    }
+
+    @Override
+    public List<Commentaire> getAllByID(int id) {
+        List<Commentaire> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `commentaire` WHERE `id_publication` = " +id;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Commentaire c = new Commentaire(rs.getInt(1), rs.getInt(2), rs.getObject(3), rs.getString(4), rs.getInt(5));
+                System.out.println(c + "-------------------");
+                list.add(c);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
+    }
+
+}

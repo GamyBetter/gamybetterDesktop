@@ -9,19 +9,15 @@ import java.util.List;
 
 /**
  *
- * @author Mariem
+ * @author skon1
  */
-public interface IService <C>{
-     public void add(C c);
-
-    public boolean update(C c);
-
-    public boolean delete(C c);
-
-    public List<C> getAll();
-    
-   public C getOne(C c); 
-    public C getById(int id);
-
+public interface IService<T> {
+    public void ajouter(T t);
+    public T getById(int id);
+    public List<T> getAll();
+    public boolean modifier(T t);
+    public boolean supprimer(T t);
+ 
+    public T getOne(T t);
     
 }
