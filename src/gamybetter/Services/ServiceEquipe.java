@@ -12,18 +12,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import tn.edu.esprit.modeles.Equipe;
-import tn.edu.esprit.utils.DataSource;
+import gamybetter.Models.Equipe;
+import gamybetter.Utils.DataSource;
 
 /**
  *
  * @author snoussi amine
  */
 public class ServiceEquipe implements IService<Equipe> {
+
     Connection cnx = DataSource.getInstance().getCnx();
+
+    //Object id_coach, Object nom_eq, Object description_equipe
     @Override
-    public void add(Equipe t) {
-       String query = "INSERT INTO `equipe`(`id_equipe`, `id_coach`, `nom_eq`, `description_equipe`, `nom_coach`, `membre_equipe1`, `membre_equipe2`, `membre_equipe3`, `membre_equipe4`, `membre_equipe5`, `match`) VALUES ('" + t.getId_equipe() + "','" + t.getId_coach() + "','" + t.getNom_eq() + "','" +t.getDescription_equipe() + "','" + t.getNom_coach() + "','" + t.getMembre_equipe1() + "','" + t.getMembre_equipe2() + "','" + t.getMembre_equipe3() + "','" + t.getMembre_equipe4() + "','" + t.getMembre_equipe5() + "','" + t.getMatch() + "')";
+    public void ajouter(Equipe t) {
+        String query = "INSERT INTO `equipe`(`id_coach`, `nom_eq`, `description_equipe`) VALUES ('" + t.getId_coach() + "','" + t.getNom_eq() + "','" + t.getDescription_equipe() + "')";
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(query);
@@ -33,22 +36,15 @@ public class ServiceEquipe implements IService<Equipe> {
     }
 
     @Override
-    public boolean update(Equipe t) {
-        String query = "UPDATE `equipe` SET `id_coach`=?,`nom_eq`=?,`description_equipe`=?,`nom_coach`=?,`membre_equipe1`=?,`membre_equipe2`=?,`membre_equipe3`=?,`membre_equipe4`=?,`membre_equipe5`=?,`match`=? WHERE `id_equipe`=" + t.getId_equipe();
+    public boolean modifier(Equipe t) {
+        String query = "UPDATE `equipe` SET `id_coach`=?,`nom_eq`=?,`description_equipe`=? WHERE `id_equipe`=" + t.getId_equipe();
         boolean rowUpdated = false;
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.setObject(1, t.getId_coach());
             statement.setObject(2, t.getNom_eq());
             statement.setObject(3, t.getDescription_equipe());
-            statement.setObject(4, t.getNom_coach());
-            statement.setObject(5, t.getMembre_equipe1());
-            statement.setObject(6, t.getMembre_equipe2());
-            statement.setObject(7, t.getMembre_equipe3());
-            statement.setObject(8, t.getMembre_equipe4());
-            statement.setObject(9, t.getMembre_equipe5());
-            statement.setObject(10, t.getMatch());
-           
+
             rowUpdated = statement.executeUpdate() > 0;
 
         } catch (SQLException ex) {
@@ -58,7 +54,7 @@ public class ServiceEquipe implements IService<Equipe> {
     }
 
     @Override
-    public boolean delete(Equipe t) {
+    public boolean supprimer(Equipe t) {
         String query = "DELETE FROM equipe where id_equipe=? ";
 
         boolean rowDeleted = false;
@@ -80,7 +76,7 @@ public class ServiceEquipe implements IService<Equipe> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9),rs.getObject(10),rs.getObject(11));
+                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4));
                 list.add(e);
 
             }
@@ -93,13 +89,13 @@ public class ServiceEquipe implements IService<Equipe> {
 
     @Override
     public Equipe getOne(Equipe t) {
-       System.out.println(t.getId_equipe()+ "---80");
+        System.out.println(t.getId_equipe() + "---80");
         String query = "select * from `equipe` where id_equipe=" + t.getId_equipe();
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9),rs.getObject(10),rs.getObject(11));
+                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4));
                 return e;
             }
 
@@ -117,7 +113,7 @@ public class ServiceEquipe implements IService<Equipe> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9),rs.getObject(10),rs.getObject(11));
+                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4));
 
                 return e;
             }
@@ -127,5 +123,5 @@ public class ServiceEquipe implements IService<Equipe> {
 
         return new Equipe();
     }
-    
+
 }
