@@ -9,15 +9,15 @@ import java.util.List;
 
 /**
  *
- * @author skon1
+ * @author Mariem
  */
-public interface IService<T> {
+public interface ICommentaire<T> {
     public void ajouter(T t);
     public T getById(int id);
     public List<T> getAll();
     public boolean modifier(T t);
     public boolean supprimer(T t);
- 
+    public List<T> getAllByID(int id);
     public T getOne(T t);
     
 }

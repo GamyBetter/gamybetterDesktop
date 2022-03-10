@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="993.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ViewPublicationController">
+   <children>
+      <ImageView fx:id="idImage" fitHeight="633.0" fitWidth="1020.0" layoutX="-22.0" opacity="0.74" pickOnBounds="true">
+         <image>
+            <Image url="@../Ressources/valorant.jpg" />
+         </image>
+      </ImageView>
+      <JFXListView fx:id="tfListView" layoutX="10.0" layoutY="78.0" onMouseClicked="#onSelect" opacity="0.8" prefHeight="224.0" prefWidth="682.0" />
+      <JFXTextField fx:id="tfidpub" layoutY="262.0" onMousePressed="#onSelect" prefHeight="31.0" prefWidth="121.0" promptText="id_publication" visible="false" />
+      <JFXTextField fx:id="tfidpersonne" layoutX="121.0" layoutY="262.0" prefHeight="31.0" prefWidth="110.0" promptText="id_personne" visible="false" />
+      <JFXTextField fx:id="tfPublication" layoutX="6.0" layoutY="379.0" prefHeight="69.0" prefWidth="231.0" promptText="Publication" />
+      <JFXTextField fx:id="tftitre" layoutX="10.0" layoutY="317.0" prefHeight="41.0" prefWidth="101.0" promptText="titre" unFocusColor="#280202" />
+      <JFXTextField fx:id="tfnbr_comm" layoutX="482.0" layoutY="262.0" prefHeight="31.0" prefWidth="101.0" promptText="nbr_comm" visible="false" />
+      <JFXTextField fx:id="tfdate" layoutX="6.0" layoutY="462.0" promptText="date" />
+      <JFXButton fx:id="tfDelete" layoutX="721.0" layoutY="14.0" onAction="#delete" prefHeight="31.0" prefWidth="186.0" text="DELETE" />
+      <JFXButton fx:id="tfModifier" layoutX="753.0" layoutY="93.0" onAction="#Modifier" prefHeight="31.0" prefWidth="136.0" text="MODIFIER" />
+      <JFXButton fx:id="viewComents" layoutX="734.0" layoutY="163.0" onAction="#goToComments" prefHeight="53.0" prefWidth="186.0" text="VIEW COMMENTS" />
+      <ImageView fx:id="btback" fitHeight="53.0" fitWidth="55.0" layoutX="6.0" layoutY="559.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/returnButn.jpg" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="tfRecherche" layoutX="175.0" layoutY="30.0" />
+      <JFXButton layoutX="351.0" layoutY="30.0" onAction="#Recherche" prefHeight="31.0" prefWidth="90.0" text="Recherche" />
+   </children>
+</AnchorPane>
