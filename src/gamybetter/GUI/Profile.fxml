@@ -19,7 +19,8 @@
       <Pane layoutX="264.0" layoutY="158.0" prefHeight="205.0" prefWidth="276.0" style="-fx-border-color: black;" />
       <Label layoutX="158.0" layoutY="107.0" prefHeight="17.0" prefWidth="41.0" text=" Role :" />
       <JFXTextField fx:id="role" layoutX="221.0" layoutY="103.0" prefHeight="25.0" prefWidth="185.0" />
-      <JFXButton layoutX="447.0" layoutY="25.0" onAction="#changeView" text="Ajouter Reclamation" />
-      <JFXButton layoutX="264.0" layoutY="25.0" onAction="#reinitilasiserMotDePasse" text="Réinitialiser votre mot de passe" />
+      <JFXButton layoutX="344.0" layoutY="13.0" onAction="#changeView" text="Ajouter Reclamation" />
+      <JFXButton layoutX="158.0" layoutY="13.0" onAction="#reinitilasiserMotDePasse" text="Changer votre mot de passe" />
+      <JFXButton layoutX="486.0" layoutY="13.0" onAction="#deconnexion" text="Déconnexion" />
    </children>
 </AnchorPane>

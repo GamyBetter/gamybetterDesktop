@@ -73,7 +73,7 @@ public class InscriptionController implements Initializable {
             alert.setTitle("echec");
             alert.setHeaderText("mot de passe");
             alert.setContentText("mot de passe erroné");
-          //System.out.println("mot de passe erroné");
+          
         }
         else if (password.equals(confirmer) && ControleSaisie.validemail(mail)) {
 

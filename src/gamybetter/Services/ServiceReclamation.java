@@ -110,7 +110,6 @@ public class ServiceReclamation implements IService<Reclamation> {
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 Reclamation r = new Reclamation(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
-                System.out.println(r + "-------------------");
                 list.add(r);
             }
         } catch (SQLException ex) {

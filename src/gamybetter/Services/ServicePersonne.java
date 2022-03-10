@@ -75,12 +75,14 @@ public class ServicePersonne implements IService<Personne> {
         String sql = "UPDATE `personne` SET id_personne=?,nom_personne=?,contact=?,rating=?,ig_rank=?,mot_de_passe=?,role=?,email=?,description=?,competence=?,jeux=?,heros=?,ig_name=?,ig_role=?, prix=?  WHERE id_personne=?";
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
+            String passwordCryption = Encryption.crypt(t.getMot_de_passe());
+            
             statement.setInt(1, t.getId_personne());
             statement.setString(2, t.getNom_personne());
             statement.setInt(3, t.getContact());
             statement.setInt(4, t.getRating());
             statement.setInt(5, t.getIg_rank());
-            statement.setString(6, t.getMot_de_passe());
+            statement.setString(6, passwordCryption);
             statement.setString(7, t.getRole());
             statement.setString(8, t.getEmail());
             statement.setString(9, t.getDescription());

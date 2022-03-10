@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -29,11 +30,11 @@ public class Main_test extends Application {
     public void start(Stage primaryStage) {
         try {
 
-            Parent root = FXMLLoader.load(getClass().getResource("Connexion.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Inscription.fxml"));
 
             Scene scene = new Scene(root);
-            //primaryStage.setMaximized(true);
-            primaryStage.setTitle("Inscription");
+            
+            primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

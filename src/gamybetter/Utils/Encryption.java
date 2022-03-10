@@ -36,7 +36,7 @@ public class Encryption {
             }
             else {
                 hexString.append(Integer.toHexString(0xFF & hash[i]));
-            }
+            } 
         }
         return hexString.toString();  
         }
