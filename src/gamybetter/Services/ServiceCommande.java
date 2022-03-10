@@ -21,37 +21,37 @@ import gamybetter.Utils.DataSource;
  *
  * @author Sayee
  */
-public class ServiceCommande implements IService<Commande> {
+public class ServiceCommande implements ICommande<Commande> {
 
     Connection cnx = DataSource.getInstance().getCnx();
-
+    
     //java.util.Date date=new java.util.Date();
     //java.sql.Date sqlDate=new java.sql.Date(date.getTime());
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Date date = new Date();
-//Object date,Object  nom_personne,Object  prenom_personne,Object addresse_personne, Object  email_personne, Object IDpersonne, Object prix_totale,Object liste_produits
+      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+    Date date = new Date();  
     @Override
-    public void ajouter(Commande c) {
-
-        String query = "INSERT INTO `commande` (`date_commande`,`nom_personne`, `prenom_personne` ,`address_personne`,`email_personne`,`IDpersonne`,`prix_totale`,`liste_produits`) VALUES(?,?,?,?,?,?,?,?)";
-        String sql = "Select nom_personne from `personne` Where id_personne=" + c.getIDpersonne();
+    public boolean ajouter(Commande c) {
+        
+        String query = "INSERT INTO `commande` (`id`,`date_commande`,`nom_personne`, `prenom_personne` ,`address_personne`,`email_personne`,`IDpersonne`,`prix_totale`) VALUES(?,?,?,?,?,?,?,?)";
+        
+        String sql ="Select nom,prenom,adresse,email from `personne` Where id='"+c.getId_personne()+"'";
         try {
             //String[] Produits = null ;
             PreparedStatement ps = cnx.prepareStatement(query);
-
+            
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
             rs.next();
-            
-            ps.setObject(1, formatter.format(date));
-            ps.setObject(2, rs.getObject(1));
+            ps.setObject(1, c.getId_commande());
+            ps.setObject(2, formatter.format(date));
             ps.setObject(3, rs.getObject(1));
-            ps.setObject(4, c.getAddresse_personne());
-            ps.setObject(5, c.getEmail_personne());
-            ps.setObject(6, c.getIDpersonne());
-            ps.setObject(7, c.getPrix_totale());
-            ps.setObject(8, c.getListe_produits());
-
+            ps.setObject(4, rs.getObject(2));
+            ps.setObject(5, rs.getObject(3));
+            ps.setObject(6, rs.getObject(4));
+            ps.setObject(7, c.getId_personne());
+            ps.setObject(8, c.getPrix_totale());
+            
+            
             //ps.setObject(7, c.getId_produit());
             /* for (int i = 0; i < c.getList_Produit().size(); i++) {
                 System.out.println(c.get(i));
@@ -72,55 +72,51 @@ public class ServiceCommande implements IService<Commande> {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+        return true;
     }
 
     public void ajouter2(Commande t) {
     }
 
     @Override
-    public boolean modifier(Commande c) {
-        String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?, prenom_personne=? ,address_personne=?,email_personne=?,IDpersonne=?,prix_totale=?,liste_produits WHERE id=?";
+    public void modifier(Commande c) {
+        String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?, prenom_personne=? ,address_personne=?,email_personne=?,prix_totale=? WHERE id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
 
-            ps.setObject(1, formatter.format(date));
+            ps.setObject(1, formatter.format(date)); 
+            ps.setObject(2, c.getNom_personne());
+            ps.setObject(3, c.getPrenom_personne());
             ps.setObject(4, c.getAddresse_personne());
             ps.setObject(5, c.getEmail_personne());
-            ps.setObject(6, c.getIDpersonne());
-            ps.setObject(7, c.getPrix_totale());
-            ps.setObject(8, c.getListe_produits());
-            ps.setObject(9, c.getId_commande());
-
+            ps.setObject(6, c.getPrix_totale());
+            ps.setObject(7, c.getId_commande());
+            
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing commande was updated successfully");
-                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return false;
 
     }
 
     @Override
-    public boolean supprimer(Commande c) {
-        String query = "DELETE FROM `commande` WHERE id_commande=?";
-        boolean rowDeleted = false;
+    public void supprimer(Commande c) {
+        String sql = "DELETE FROM commande WHERE id=?";
+        
         try {
-            PreparedStatement statement = cnx.prepareStatement(query);
+            PreparedStatement statement = cnx.prepareStatement(sql);
             statement.setObject(1, c.getId_commande());
+
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                rowDeleted = true;
-                System.out.println("Une commande was deleted successfully");
+                System.out.println("A commande was deleted successfully!");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return rowDeleted;
-
     }
 
     @Override
@@ -132,9 +128,10 @@ public class ServiceCommande implements IService<Commande> {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8),rs.getObject(9));
-                list.add(com);
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
+                 list.add(com);
             }
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -145,14 +142,15 @@ public class ServiceCommande implements IService<Commande> {
     @Override
     public Commande getOne(Commande c) {
 
-        String query = "select * from `commande` where id_commande=" + c.getId_commande();
+        String query = "select * from `commande` where id='" + c.getId_commande()+"'";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8), rs.getObject(9));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
                 return com;
-            }
+            } 
+            
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -162,14 +160,14 @@ public class ServiceCommande implements IService<Commande> {
     }
 
     @Override
-    public Commande getById(int id) {
+    public Commande getById(String id) {
 
-        String query = "select * from `commande` where id_commande=" + id;
+        String query = "select * from `commande` where id='" + id+"'";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8),rs.getObject(9));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8));
                 return com;
             }
 
@@ -179,4 +177,43 @@ public class ServiceCommande implements IService<Commande> {
 
         return new Commande();
     }
+
+    /**
+     *
+     * @param c
+     * @param prix
+     */
+    @Override
+    public void SetCommandPrice(Commande c,double prix) {
+        String query = "UPDATE `commande` SET `date_commande`=?,`nom_personne`=?, `prenom_personne`=? ,`address_personne`=?,`email_personne`=?,`IDpersonne`=?,`prix_totale`=? WHERE id='"+c.getId_commande()+"'";
+        
+        String sql ="Select nom,prenom,adresse,email from `personne` Where id='"+c.getId_personne()+"'";
+        try {
+            //String[] Produits = null ;
+            PreparedStatement ps = cnx.prepareStatement(query);
+            
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            
+            ps.setObject(1, formatter.format(date));
+            ps.setObject(2, rs.getObject(1));
+            ps.setObject(3, rs.getObject(2));
+            ps.setObject(4, rs.getObject(3));
+            ps.setObject(5, rs.getObject(4));
+            ps.setObject(6, c.getId_personne());
+            ps.setObject(7, prix);
+            
+            
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("An existing commande was updated successfully");
+            }
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+    }
 }
+
