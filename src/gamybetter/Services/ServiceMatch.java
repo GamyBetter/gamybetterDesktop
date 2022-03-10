@@ -15,6 +15,9 @@ import java.util.List;
 
 import gamybetter.Models.Match;
 import gamybetter.Utils.DataSource;
+import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -24,9 +27,9 @@ public class ServiceMatch implements IService<Match> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 //Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe
-    @Override
+   @Override
     public void ajouter(Match t) {
-        String query = "INSERT INTO `match` (`score`,`lien_streaming`,`status`,`gold`,`duree`,`date`,`heros`,`id_equipe`,`id_equipe1`) VALUES(?,?,?,?,?,STR_TO_DATE(? ,'%d-%m-%Y'),?,?,?)";
+        String query = "INSERT INTO `match` (`score`,`lien_streaming`,`status`,`gold`,`duree`,`date`,`heros`,`id_equipe`,`id_equipe1`) VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
             
@@ -35,7 +38,7 @@ public class ServiceMatch implements IService<Match> {
             ps.setString(3, t.getStatus());
             ps.setString(4, t.getGold());
             ps.setString(5, t.getDuree());
-            ps.setString(6, t.getDate());
+            ps.setObject(6, t.getDate());
             ps.setString(7, t.getHeros());
             ps.setInt(8, t.getId_equipe());
              ps.setInt(9, t.getId_equipe1());
@@ -59,7 +62,7 @@ public class ServiceMatch implements IService<Match> {
             ps.setString(4, t.getStatus());
             ps.setString(5, t.getGold());
             ps.setString(6, t.getDuree());
-            ps.setString(7, t.getDate());
+            ps.setObject(7, t.getDate());
             ps.setString(8, t.getHeros());
             ps.setInt(9, t.getId_equipe());
             ps.setInt(10, t.getId_equipe1());
@@ -105,7 +108,7 @@ public class ServiceMatch implements IService<Match> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                Match m = new Match(rs.getObject(1),rs.getObject(2),rs.getObject(3),rs.getObject(4),rs.getObject(5),rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9),rs.getObject(10));
+                Match m = new Match(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDate(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
                 System.out.println(m);
                 list.add(m);
 
@@ -144,7 +147,7 @@ public class ServiceMatch implements IService<Match> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                m1 = new Match(rs.getObject(1),rs.getObject(2),rs.getObject(3),rs.getObject(4),rs.getObject(5),rs.getObject(6),rs.getObject(7),rs.getObject(8),rs.getObject(9),rs.getObject(10));
+                m1 = new Match(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDate(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
 
                 System.out.println(m1);
             }
@@ -159,4 +162,27 @@ public class ServiceMatch implements IService<Match> {
     public Match getOne(Match t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public void deleteById(int id_match) {
+        String query = "DELETE FROM `match` WHERE id_match=?";
+        try {
+           PreparedStatement statement = cnx.prepareStatement(query);
+           statement.setObject(1,id_match);
+            statement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+    /*
+    public ObservableList<Match> getByStartDate(LocalDate startDate) {
+            
+        ObservableList <Match> x= FXCollections.observableArrayList();
+        List <Match> ol= ServiceMatch.getAll();
+       ol.stream().filter(e->e.getDate().isEqual(startDate)).forEach(e->x.add(e));
+      return x;
+    }
+    */
 }
+
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="329.0" prefWidth="566.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ShowallController">
+   <children>
+      <ImageView fitHeight="329.0" fitWidth="606.0" layoutX="-14.0" opacity="0.96" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/valo.png" />
+         </image>
+      </ImageView>
+      <JFXListView fx:id="listactualite" layoutX="18.0" layoutY="60.0" onMouseClicked="#OnSelect" prefHeight="209.0" prefWidth="372.0" />
+      <JFXButton layoutX="20.0" layoutY="268.0" onAction="#modifact" text="Modifier actualité " textFill="#fffefe">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="204.0" layoutY="268.0" onAction="#suppactu" text="Supprimer actualité" textFill="#fffdfd">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="tfid" layoutX="422.0" layoutY="21.0" />
+      <JFXTextField fx:id="tfimage" focusColor="#f2f2f2" layoutX="413.0" layoutY="75.0" unFocusColor="#4d4d4d" />
+      <JFXTextField fx:id="tfvideo" layoutX="413.0" layoutY="140.0" />
+      <JFXTextField fx:id="tfmatch" layoutX="404.0" layoutY="218.0" />
+      <JFXTextField fx:id="tfpersonne" layoutX="422.0" layoutY="255.0" />
+      <JFXButton layoutX="417.0" layoutY="113.0" onAction="#ajoutimg" text="choisir une image" textFill="#efeeee" />
+      <JFXButton layoutX="419.0" layoutY="183.0" onAction="#ajoutervid" text="choisir une video" textFill="#ffffff" />
+      <ImageView fitHeight="31.0" fitWidth="42.0" layoutX="27.0" layoutY="18.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/155-1554494_operation-last-go-back-previous-comments-go-back.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

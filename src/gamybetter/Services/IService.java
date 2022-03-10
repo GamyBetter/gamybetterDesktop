@@ -17,7 +17,6 @@ public interface IService<T> {
     public List<T> getAll();
     public boolean modifier(T t);
     public boolean supprimer(T t);
- 
     public T getOne(T t);
     
 }
