@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="353.0" prefWidth="702.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="24.0" layoutY="21.0" prefHeight="275.0" prefWidth="631.0" style="-fx-background-color: #fff;">
+         <children>
+            <Separator layoutX="41.0" layoutY="93.0" prefHeight="4.0" prefWidth="571.0" />
+            <Label layoutX="63.0" layoutY="30.0" prefHeight="37.0" prefWidth="135.0" text="Match Played " textFill="#3a1c9d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="472.0" layoutY="20.0" prefHeight="20.0" prefWidth="98.0" text="Match Date" textFill="#3a1c9d">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="463.0" layoutY="35.0" text="24" textFill="#aeacac">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="523.0" layoutY="40.0" text="DEC" textFill="#3a1c9d" />
+            <Label layoutX="521.0" layoutY="59.0" text="2018" textFill="#aeacac" />
+            <Pane layoutX="41.0" layoutY="97.0" opacity="0.8" prefHeight="177.0" prefWidth="242.0" style="-fx-background-color: #795AF3;">
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="107.0" layoutX="14.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressources/9a83b3bb8b688a52c1a18aa3b64fce6cb53b36d1.jpeg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="77.0" layoutY="14.0" />
+                  <Label layoutX="98.0" layoutY="17.0" prefHeight="27.0" prefWidth="107.0" text="WINNER" textFill="#efefef">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="152.0" layoutY="80.0" text="EQUIPE1" textFill="#fffefe">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="371.0" layoutY="97.0" opacity="0.73" prefHeight="177.0" prefWidth="242.0" style="-fx-background-color: red;">
+               <children>
+                  <ImageView fitHeight="54.0" fitWidth="98.0" layoutX="114.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressources/TSM-annonce-une-nouvelle-equipe-Valorant-entierement-feminine.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="87.0" layoutY="14.0" text="LOSER" textFill="#fbfbfb">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="38.0" layoutY="80.0" text="EQUIPE2" textFill="#fffefe">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <ImageView fitHeight="68.0" fitWidth="67.0" layoutX="293.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/index.jpg" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+         </effect>
+      </Pane>
+      <Pane layoutX="24.0" layoutY="296.0" prefHeight="37.0" prefWidth="631.0" style="-fx-background-color: #F0F0F0;">
+         <children>
+            <Label layoutX="61.0" layoutY="14.0" text="Drapo returns you $3000 and $1000 for all the deals" textFill="#504df2">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

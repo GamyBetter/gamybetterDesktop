@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gamybetter.Utils;
+  package gamybetter.Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,10 +17,10 @@ public class DataSource {
 
     private Connection cnx;
     private String server = "";
-    private String url = "jdbc:mysql://www.phpmyadmin.co:3306/db_structure.php?server=1&db=sql11472700";
+    private String url = "jdbc:mysql://www.phpmyadmin.co:3306/db_structure.php?server=1&db=gamybetter";
     private String user = "root";
     private String password = "";
-    private String database_name = "esprit3a21";
+    private String database_name = "gamybetter";
     
 
     private static DataSource instance;
@@ -36,7 +36,7 @@ public class DataSource {
 
     private DataSource() {
         try {
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/esprit3a21","root","");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamybetter","root","");
             System.out.println("Connected !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -47,4 +47,4 @@ public class DataSource {
         return cnx;
     }
 
-}
+} 

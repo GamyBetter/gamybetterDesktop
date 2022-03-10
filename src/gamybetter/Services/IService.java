@@ -12,17 +12,11 @@ import java.util.List;
  * @author skon1
  */
 public interface IService<T> {
-
-    public void add(T t);
-
-    public boolean update(T t);
-
-    public boolean delete(T t);
-
+    public void ajouter(T t);
+    public T getById(int id);
     public List<T> getAll();
-
- // public T getOne(T t);
+    public boolean modifier(T t);
+    public boolean supprimer(T t);
+    public T getOne(T t);
     
-   public T getById(int id);
-
 }
