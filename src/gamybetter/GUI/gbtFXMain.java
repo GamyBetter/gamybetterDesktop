@@ -28,8 +28,8 @@ public class gbtFXMain extends Application {
     public void start(Stage primaryStage) {
         try {
    // Parent root =FXMLLoader.load(getClass().getResource("ViewPublication.fxml"));
-  Parent root =FXMLLoader.load(getClass().getResource("Publication.fxml"));
- //Parent root =FXMLLoader.load(getClass().getResource("Commentaire.fxml"));
+  //Parent root =FXMLLoader.load(getClass().getResource("Publication.fxml"));
+ Parent root =FXMLLoader.load(getClass().getResource("Commentaire.fxml"));
        // Parent root =FXMLLoader.load(getClass().getResource("ViewCommentaire.fxml"));
        //Parent root =FXMLLoader.load(getClass().getResource("ViewAllComnts.fxml"));
 

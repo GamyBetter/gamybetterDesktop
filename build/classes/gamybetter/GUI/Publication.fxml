@@ -43,6 +43,6 @@
          </font>
       </Label>
       <Label layoutX="9.0" layoutY="60.0" prefHeight="21.0" prefWidth="77.0" text="&lt;&lt;Amis&gt;&gt;" />
-      <JFXTextField fx:id="tfTitre" layoutX="2.0" layoutY="102.0" promptText="Text" />
+      <JFXTextField fx:id="tfTitre" layoutX="2.0" layoutY="102.0" promptText="Titre" />
    </children>
 </AnchorPane>

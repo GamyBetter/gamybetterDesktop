@@ -7,6 +7,7 @@ package gamybetter.GUI;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import gamybetter.Models.Commentaire;
+import gamybetter.Outils.Outils;
 import gamybetter.Services.ServiceCommentaire;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -31,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javax.swing.JOptionPane;
 import tray.notification.TrayNotification;
 
 /**
@@ -100,12 +102,19 @@ public class CommentaireController implements Initializable {
             alerts.setContentText("Veuillez remplir les champs!");
             alerts.show();    
          }
+         
+         String publicattionTXT=tfcontCom.getText();
+         if(Outils.containsBadWords((publicattionTXT))){
+             JOptionPane.showMessageDialog(null, "Cet Avis ne respecte pas nos standards de la communauté en matière de contenus indésirables");
+            return;
+             
+         }
          else{
              Commentaire c=new Commentaire (id_personne,date,cont_commentaire);
           c.setId_personne(2);
          sc.ajouter(c);
          String title = "Ajout Réussi";
-        String message = "You've successfully created a new Commentaire";
+        String message = "You've successfully created a new Comnt ";
         TrayNotification tray = new TrayNotification();
         tray.setTitle(title);
         tray.setMessage(message);

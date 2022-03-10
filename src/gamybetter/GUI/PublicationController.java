@@ -73,7 +73,6 @@ public class PublicationController{//implements Initializable {
 
     @FXML
     private JFXTextField tfNbrCom;
-      @FXML
     private ImageView btback;
   
     
