@@ -6,6 +6,10 @@
 package gamybetter.GUI;
 
 
+<<<<<<< Updated upstream
+=======
+import gamybetter.Utils.CurrentUser;
+>>>>>>> Stashed changes
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +21,10 @@ public class NewFXMain extends Application {
     double x,y = 0;
     @Override
     public void start(Stage primaryStage) throws Exception{
+<<<<<<< Updated upstream
+=======
+        CurrentUser.setCurrentUser(1);
+>>>>>>> Stashed changes
         Parent root = FXMLLoader.load(getClass().getResource("market.fxml"));//CommandForm ------ ProductForm
         primaryStage.initStyle(StageStyle.UNDECORATED);
 

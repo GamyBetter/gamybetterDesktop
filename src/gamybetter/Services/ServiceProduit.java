@@ -19,7 +19,7 @@ import gamybetter.Utils.DataSource;
  *
  * @author Sayee
  */
-public class ServiceProduit implements IService<Produit> {
+public class ServiceProduit implements IProduit<Produit> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
@@ -29,10 +29,16 @@ public class ServiceProduit implements IService<Produit> {
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
              ps.setObject(1, t.getId());
+<<<<<<< Updated upstream
             
             ps.setObject(2, t.getNom_produit());
             ps.setObject(3, t.getCategorie());
             ps.setObject(4, t.getDescription());
+=======
+            ps.setObject(2, t.getNom_produit());
+            ps.setObject(3, t.getDescription());
+            ps.setObject(4, t.getCategorie());
+>>>>>>> Stashed changes
             ps.setObject(5, t.getQuantiteStock());
             ps.setObject(6, t.getPrix());
             ps.setObject(7, t.getImage());
@@ -48,7 +54,11 @@ public class ServiceProduit implements IService<Produit> {
     }
 
     @Override
+<<<<<<< Updated upstream
     public void update(Produit t) {
+=======
+    public boolean update(Produit t) {
+>>>>>>> Stashed changes
         String sql = "UPDATE `produit` SET nom_produit=?, prix_unitair=?, categorie=? , description=? ,quantite_stock=?,image=?,discount=? WHERE itemCode =?";
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
@@ -63,16 +73,28 @@ public class ServiceProduit implements IService<Produit> {
             statement.setObject(8, t.getId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
+<<<<<<< Updated upstream
                 System.out.println("An existing user was updated successfully");
+=======
+                return true;
+>>>>>>> Stashed changes
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+<<<<<<< Updated upstream
 
     }
 
     @Override
     public void delete(Produit t) {
+=======
+        return false;
+    }
+
+    @Override
+    public boolean delete(Produit t) {
+>>>>>>> Stashed changes
         String sql = "DELETE FROM produit WHERE itemCode=?";
 
         try {
@@ -81,7 +103,11 @@ public class ServiceProduit implements IService<Produit> {
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
+<<<<<<< Updated upstream
                 System.out.println("A user was deleted successfully!");
+=======
+                return true;
+>>>>>>> Stashed changes
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

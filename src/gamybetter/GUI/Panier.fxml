@@ -16,12 +16,16 @@
       </Label>
       <Label fx:id="user_id" layoutX="51.0" layoutY="29.0" prefHeight="33.0" prefWidth="44.0" />
       <Label fx:id="id_com" layoutX="289.0" layoutY="37.0" prefHeight="17.0" prefWidth="54.0" />
+<<<<<<< Updated upstream
       <JFXButton layoutX="738.0" layoutY="715.0" onAction="#Remove" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #f47a60;" styleClass="add-btn" stylesheets="@Style.css" text="REMOVE" AnchorPane.leftAnchor="738.0">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </JFXButton>
       <JFXButton layoutX="939.0" layoutY="715.0" onAction="#update" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffd79d;" styleClass="add-btn" stylesheets="@Style.css" text="EDIT">
+=======
+      <JFXButton layoutX="936.0" layoutY="715.0" onAction="#Remove" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #f47a60;" styleClass="add-btn" stylesheets="@Style.css" text="REMOVE" AnchorPane.leftAnchor="936.0">
+>>>>>>> Stashed changes
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
@@ -73,6 +77,13 @@
             <Font size="18.0" />
          </font>
       </Label>
+<<<<<<< Updated upstream
       <Label fx:id="totalprice" layoutX="1108.0" layoutY="630.0" prefHeight="43.0" prefWidth="109.0" />
+=======
+      <Label fx:id="totalprice" layoutX="1108.0" layoutY="630.0" prefHeight="43.0" prefWidth="109.0">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+>>>>>>> Stashed changes
    </children>
 </AnchorPane>

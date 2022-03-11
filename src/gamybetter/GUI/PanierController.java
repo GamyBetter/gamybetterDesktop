@@ -6,6 +6,10 @@
 package gamybetter.GUI;
 
 
+<<<<<<< Updated upstream
+=======
+import com.jfoenix.controls.JFXButton;
+>>>>>>> Stashed changes
 import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +35,13 @@ import gamybetter.Models.Commande;
 import gamybetter.Services.ServiceCommande;
 import gamybetter.Models.Panier;
 import gamybetter.Services.ServicePanier;
+<<<<<<< Updated upstream
+=======
+import gamybetter.Utils.CurrentUser;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+>>>>>>> Stashed changes
 
 /**
  * FXML Controller class
@@ -40,16 +51,27 @@ import gamybetter.Services.ServicePanier;
 public class PanierController implements Initializable {
 
     @FXML
+<<<<<<< Updated upstream
     private Label user_id;
     @FXML
+=======
+>>>>>>> Stashed changes
     private Label id_com;
     private Label ItemCode;
     
    
     private Label qty;
     
+<<<<<<< Updated upstream
     
     
+=======
+    Alert alertinfo = new Alert(Alert.AlertType.INFORMATION);
+Alert alert = new Alert(Alert.AlertType.WARNING);
+     Alert alertconfirm = new Alert(Alert.AlertType.CONFIRMATION);
+    
+     
+>>>>>>> Stashed changes
     ServicePanier sp=new ServicePanier();
     ServiceCommande sc=new ServiceCommande();
     List<Commande> Commands = new ArrayList<>();
@@ -66,6 +88,11 @@ public class PanierController implements Initializable {
     private Label Labelprix_unit;
     @FXML
     private Label totalprice;
+<<<<<<< Updated upstream
+=======
+    @FXML
+    private Label user_id;
+>>>>>>> Stashed changes
     
     
     private void GenerateCommandeId() {
@@ -106,14 +133,22 @@ public class PanierController implements Initializable {
     }
      
          public void setUserId(String itemCode) {
+<<<<<<< Updated upstream
              ItemCode.setVisible(true);
+=======
+             ItemCode.setVisible(false);
+>>>>>>> Stashed changes
         ItemCode.setText(itemCode);
              
     }
          
         
 	public void setPrix_Unit(String p) {
+<<<<<<< Updated upstream
              Labelprix_unit.setVisible(true);
+=======
+             Labelprix_unit.setVisible(false);
+>>>>>>> Stashed changes
         ItemCode.setText(p);
              
     }
@@ -142,9 +177,27 @@ public class PanierController implements Initializable {
   // Step 2
   Panier panier = (Panier) stage.getUserData();
   // Step 3
+<<<<<<< Updated upstream
   id_com.setVisible(true);
   id_com.setText(panier.getId_commande());
 sp.add(panier);
+=======
+  id_com.setVisible(false);
+  id_com.setText(panier.getId_commande());
+
+  if(sp.add(panier)){
+            
+            alertinfo.setTitle("ADDED SUCCESSFULY ");
+		
+		alertinfo.setContentText("Your ORDER has BEEN ADDED!");
+		alertinfo.showAndWait();
+        }else{
+            alert.setTitle("ADDED UNSUCCESSFULY ");
+		
+		alert.setContentText("YOUR ORDER CANNOT BE ADDED !");
+		alert.showAndWait();
+        }
+>>>>>>> Stashed changes
 loadTableView();
 obListPanier.forEach((i) -> {
            total_price=total_price + i.getPrix_produit_totale();
@@ -171,6 +224,7 @@ obListPanier.forEach((i) -> {
          
         
         Panier p = Chart.getSelectionModel().getSelectedItem();
+<<<<<<< Updated upstream
         sp.delete(p);
        
         Chart.getItems().remove(Chart.getSelectionModel().getSelectedItem());
@@ -187,11 +241,50 @@ obListPanier.forEach((i) -> {
     @FXML
     private void Buy(ActionEvent event) {
        Commande c=new Commande(id_com.getText(),"3");
+=======
+        
+         Optional<ButtonType> confirm = alertconfirm.showAndWait();
+        alertconfirm.setTitle("DELETE PRODUCT ");
+      alertconfirm.setHeaderText("Are you sure want to delte this Product ?");
+      alertconfirm.setContentText("Name :"+p.getNom_produit());
+      
+      if(confirm.get() == ButtonType.OK){
+            if(sp.delete(p)){
+            
+            alertinfo.setTitle("ORDER DELETED SUCCESSFULY ");
+		
+		alertinfo.setContentText("YOUR ORDER has been succesfuly deleted !");
+		alertinfo.showAndWait();
+                Chart.getItems().remove(Chart.getSelectionModel().getSelectedItem());
+            ObservableList<Panier> UpdatedListView = Chart.getItems();
+            Chart.setItems(UpdatedListView);
+        }else{
+            alert.setTitle("ORDER DELETE ERROR ");
+		
+		alert.setContentText("DELETE ORDER operation error !");
+		alert.showAndWait();
+        }
+        }
+        
+       
+        
+        //DefaultTxtFields();
+    }
+
+
+    @FXML
+    private void Buy(ActionEvent event) {
+       Commande c=new Commande(id_com.getText(),CurrentUser.getCurrentUser());
+>>>>>>> Stashed changes
        double prix=Double.parseDouble(totalprice.getText());
        sc.SetCommandPrice(c,prix );
         
     }
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }
 

@@ -8,11 +8,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< Updated upstream
 <AnchorPane fx:id="root1" prefHeight="938.0" prefWidth="1428.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.DashboardController">
    <children>
       <Pane prefHeight="81.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0);" />
       <Pane layoutY="849.0" prefHeight="89.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0);" />
       <Pane fx:id="context" layoutX="189.0" layoutY="7.0" prefHeight="926.0" prefWidth="1234.0" />
+=======
+<AnchorPane fx:id="root1" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.DashboardController">
+   <children>
+      <Pane fx:id="context" layoutX="185.0" layoutY="19.0" prefHeight="900.0" prefWidth="1300.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="19.0" />
+>>>>>>> Stashed changes
       <VBox alignment="TOP_CENTER" prefHeight="938.0" prefWidth="185.0" style="-fx-background-color: linear-gradient(to right top,#316879, #f47a60, #7fe7dc, #ced7d8) linear-gradient(to right top,#316879, #f47a60, #7fe7dc, #ced7d8); -fx-background-radius: 30;">
          <children>
             <JFXButton fx:id="dtnDashBoard" buttonType="RAISED" onAction="#DashBoardOnAction" prefHeight="87.0" prefWidth="184.0" text="USERS" textFill="WHITE">

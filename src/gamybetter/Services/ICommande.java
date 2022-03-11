@@ -15,9 +15,15 @@ import java.util.List;
 public interface ICommande<T> {
     public boolean add(T t);
 
+<<<<<<< Updated upstream
     public void update(T t);
 
     public void delete(T t);
+=======
+    public boolean update(T t);
+
+    public boolean delete(T t);
+>>>>>>> Stashed changes
 
     public List<T> getAll();
 
@@ -25,5 +31,9 @@ public interface ICommande<T> {
     
     public T getById(String id);
     
+<<<<<<< Updated upstream
   public void SetCommandPrice(T c,double prix);  
+=======
+  public boolean SetCommandPrice(T c,double prix);  
+>>>>>>> Stashed changes
 }

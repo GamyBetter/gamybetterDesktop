@@ -10,8 +10,12 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+<<<<<<< Updated upstream
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+
+>>>>>>> Stashed changes
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

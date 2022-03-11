@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMousePressed="#click" prefHeight="250.0" prefWidth="250.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ProduitController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="215.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="171.0" prefWidth="250.0" styleClass="shadow" stylesheets="@Style.css">
+               <children>
+                  <ImageView fx:id="img" fitHeight="163.0" fitWidth="200.0" layoutX="25.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressources/kisspng-2-17-league-of-legends-world-championship-2-16-lea-sgl-lol-5b6d458eef5175.9998682215338878869803.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="129.0" layoutY="3.0" prefHeight="23.0" prefWidth="77.0" text="DISCOUNT" textFill="#e41313">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="discount" alignment="CENTER" layoutX="206.0" layoutY="-5.0" prefHeight="52.0" prefWidth="46.0" style="-fx-background-color: red; -fx-background-radius: 1em;" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="38.0" prefWidth="246.0" styleClass="shopping-online-card" stylesheets="@Style.css" text="Name">
+               <font>
+                  <Font name="Cambria" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="priceLable" alignment="CENTER" prefHeight="49.0" prefWidth="101.0" styleClass="free-delivery-card" stylesheets="@Style.css" text="\$$$">
+               <font>
+                  <Font name="Cambria Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="btnHome" />
+   </styleClass>
+</AnchorPane>
