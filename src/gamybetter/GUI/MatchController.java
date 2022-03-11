@@ -81,8 +81,6 @@ public class MatchController implements Initializable {
     @FXML
     private ImageView idvalorant;
     @FXML
-    private Button btnmodifier;
-    @FXML
     private Label radiobutton;
     @FXML
     private JFXTextField tfeq;

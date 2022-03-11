@@ -15,15 +15,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.AjoutCoursController">
+<BorderPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.AjoutCoursController">
    <right>
-      <Region prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Region prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
    </right>
    <left>
-      <Region prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Region prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
    </left>
    <center>
-      <GridPane prefHeight="293.0" prefWidth="377.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="293.0" prefWidth="377.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -37,49 +37,49 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Email coach : " GridPane.rowIndex="1">
+            <Label stylesheets="@style.css" text="Email coach : " GridPane.rowIndex="1">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria" size="29.0" />
                </font>
             </Label>
-            <Label text="Categorie :" GridPane.rowIndex="2">
+            <Label stylesheets="@style.css" text="Categorie :" GridPane.rowIndex="2">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria" size="29.0" />
                </font>
             </Label>
-            <Label text="Jeu :" GridPane.rowIndex="3">
+            <Label stylesheets="@style.css" text="Jeu :" GridPane.rowIndex="3">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria" size="29.0" />
                </font>
             </Label>
-            <Label text="Prix : " GridPane.rowIndex="4">
+            <Label stylesheets="@style.css" text="Prix : " GridPane.rowIndex="4">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria" size="29.0" />
                </font>
             </Label>
-            <Label text="Lien session : " GridPane.rowIndex="5">
+            <Label stylesheets="@style.css" text="Lien session : " GridPane.rowIndex="5">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria" size="29.0" />
                </font>
             </Label>
-            <Label text="Coach :">
+            <Label stylesheets="@style.css" text="Coach :">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria" size="29.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="choicebox1" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" />
-            <JFXTextField fx:id="email_coach1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <JFXTextField fx:id="categorie1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <JFXTextField fx:id="jeu1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <JFXTextField fx:id="prix1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <JFXTextField fx:id="lien_session1" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <JFXComboBox fx:id="choicebox1" prefHeight="35.0" prefWidth="387.0" styleClass="search-box" stylesheets="@style.css" GridPane.columnIndex="1" />
+            <JFXTextField fx:id="email_coach1" prefHeight="35.0" prefWidth="200.0" styleClass="search-box" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="categorie1" prefHeight="35.0" prefWidth="200.0" styleClass="search-box" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="jeu1" prefHeight="35.0" prefWidth="188.0" styleClass="search-box" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <JFXTextField fx:id="prix1" prefHeight="35.0" prefWidth="188.0" styleClass="search-box" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXTextField fx:id="lien_session1" prefHeight="35.0" prefWidth="188.0" styleClass="search-box" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </center>
    <top>
-      <AnchorPane prefHeight="120.0" prefWidth="777.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="120.0" prefWidth="777.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0);" styleClass="shadow" stylesheets="@style.css" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="297.0" layoutY="40.0" prefHeight="146.0" prefWidth="184.0" style="-fx-text-alignment: center;" text="Ajouter un cours" textAlignment="CENTER" AnchorPane.bottomAnchor="39.0" AnchorPane.topAnchor="40.0">
+            <Label alignment="CENTER" layoutX="439.0" layoutY="22.0" prefHeight="71.0" prefWidth="388.0" style="-fx-background-color: White; -fx-background-radius: 30;" stylesheets="@style.css" text="Ajouter un cours" textAlignment="CENTER" AnchorPane.bottomAnchor="27.0" AnchorPane.topAnchor="22.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -87,7 +87,7 @@
                   <InnerShadow />
                </effect>
             </Label>
-            <JFXButton layoutX="586.0" layoutY="14.0" onAction="#switchToCoursFXML" style="-fx-border-style: solid; -fx-border-radius: 10;" text="Consulter les cours">
+            <JFXButton alignment="CENTER" layoutX="1101.0" layoutY="9.0" onAction="#switchToCoursFXML" prefHeight="51.0" prefWidth="196.0" style="-fx-border-radius: 10; -fx-background-color: White;" text="Consulter les cours">
                <font>
                   <Font size="18.0" />
                </font>
@@ -99,7 +99,7 @@
       </AnchorPane>
    </top>
    <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
             <GridPane prefHeight="100.0" prefWidth="209.0" translateX="380.0">
               <columnConstraints>
@@ -115,7 +115,7 @@
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onAction="#annuler" prefHeight="39.0" prefWidth="106.0" text="Annuler" translateY="-20.0" GridPane.columnIndex="1">
+                  <JFXButton onAction="#annuler" prefHeight="78.0" prefWidth="111.0" stylesheets="@style.css" text="Annuler" translateY="-20.0" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>

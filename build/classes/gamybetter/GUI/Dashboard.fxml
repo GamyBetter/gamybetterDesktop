@@ -12,43 +12,55 @@
    <children>
       <Pane prefHeight="81.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0);" />
       <Pane layoutY="849.0" prefHeight="89.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0);" />
-      <Pane fx:id="context" layoutX="189.0" layoutY="7.0" prefHeight="926.0" prefWidth="1234.0" />
-      <VBox alignment="TOP_CENTER" prefHeight="938.0" prefWidth="185.0" style="-fx-background-color: linear-gradient(to right top,#316879, #f47a60, #7fe7dc, #ced7d8) linear-gradient(to right top,#316879, #f47a60, #7fe7dc, #ced7d8); -fx-background-radius: 30;">
+      <Pane fx:id="context" layoutX="185.0" layoutY="6.0" prefHeight="926.0" prefWidth="1234.0" />
+      <VBox alignment="TOP_CENTER" prefHeight="938.0" prefWidth="185.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0); -fx-background-radius: 30;">
          <children>
-            <JFXButton fx:id="dtnDashBoard" buttonType="RAISED" onAction="#DashBoardOnAction" prefHeight="87.0" prefWidth="184.0" text="USERS" textFill="WHITE">
+            <JFXButton fx:id="dtnDashBoard" buttonType="RAISED" onAction="#DashBoardOnAction" prefHeight="87.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="USERS" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="Cambria Bold" size="19.0" />
                </font>
                <VBox.margin>
-                  <Insets top="180.0" />
+                  <Insets bottom="10.0" top="150.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#btnAddCashier" prefHeight="88.0" prefWidth="184.0" text="HOME PAGE" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#btnAddCashier" prefHeight="88.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="HOME PAGE" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#btnReportOnAction" prefHeight="90.0" prefWidth="185.0" text="SERVICES" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#btnAddCustomer" prefHeight="94.0" prefWidth="184.0" text="SESSIONS" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#AddItemOnAction" prefHeight="88.0" prefWidth="184.0" text="EVENTS" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#btnSuplayerOnAction" prefHeight="99.0" prefWidth="184.0" text="BLOG" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="Cambria Bold" size="19.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="60.0" />
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#btnReportOnAction" prefHeight="90.0" prefWidth="185.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="SERVICES" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#btnAddCustomer" prefHeight="94.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="SESSIONS" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#AddItemOnAction" prefHeight="88.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="EVENTS" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#btnSuplayerOnAction" prefHeight="99.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="BLOG" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="70.0" />
                </VBox.margin>
             </JFXButton>
             <Pane prefHeight="85.0" prefWidth="185.0">

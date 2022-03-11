@@ -87,9 +87,9 @@ public class EvenementFormController implements Initializable {
 
     ListView<Evenement> listView = new ListView<Evenement>(listevents);
     @FXML
-    private JFXButton BtnLoad;
-    @FXML
     private JFXButton BtnGoBack;
+    @FXML
+    private JFXButton BtnPDF;
 
     /**
      * Initializes the controller class.
@@ -195,7 +195,6 @@ public class EvenementFormController implements Initializable {
         
     }
 
-    @FXML
     public void loadListView() {
         Eventss.setItems(listevents);
         Eventss.setPadding(new Insets(10));

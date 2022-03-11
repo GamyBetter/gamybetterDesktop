@@ -11,68 +11,68 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.MatchController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.MatchController">
    <children>
-      <ImageView fx:id="idvalorant" fitHeight="402.0" fitWidth="709.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="idvalorant" fitHeight="800.0" fitWidth="1309.0" layoutX="-7.0" pickOnBounds="true">
          <image>
             <Image url="@../Ressources/valo.png" />
          </image>
       </ImageView>
-      <Label layoutX="49.0" layoutY="35.0" text="Score" textFill="#fdf6f6">
+      <Label layoutX="173.0" layoutY="61.0" text="Score" textFill="#fdf6f6">
          <font>
-            <Font size="16.0" />
+            <Font size="31.0" />
          </font></Label>
-      <Label layoutX="8.0" layoutY="87.0" text="Lien Streaming" textFill="#fffbfb">
+      <Label layoutX="122.0" layoutY="155.0" text="Lien Streaming" textFill="#fffbfb">
          <font>
-            <Font size="16.0" />
+            <Font size="31.0" />
          </font></Label>
-      <Label layoutX="36.0" layoutY="128.0" text="Status" textFill="#fffbfb">
+      <Label layoutX="183.0" layoutY="233.0" text="Status" textFill="#fffbfb">
          <font>
-            <Font size="16.0" />
+            <Font size="31.0" />
          </font></Label>
-      <Label layoutX="39.0" layoutY="169.0" text="Gold" textFill="#f2f0f0">
+      <Label layoutX="192.0" layoutY="342.0" text="Gold" textFill="#f2f0f0">
          <font>
-            <Font size="16.0" />
+            <Font size="31.0" />
          </font></Label>
-      <Label layoutX="39.0" layoutY="205.0" text="Duree" textFill="#fbfbfb">
+      <Label layoutX="184.0" layoutY="456.0" text="Duree" textFill="#fbfbfb">
          <font>
-            <Font size="16.0" />
+            <Font size="31.0" />
          </font></Label>
-      <Label layoutX="40.0" layoutY="245.0" text="Date" textFill="#fff7f7">
+      <Label layoutX="193.0" layoutY="578.0" text="Date" textFill="#fff7f7">
          <font>
-            <Font size="16.0" />
+            <Font size="31.0" />
          </font></Label>
-      <Label layoutX="39.0" layoutY="285.0" text="Heros" textFill="WHITE">
+      <Label layoutX="185.0" layoutY="677.0" text="Heros" textFill="WHITE">
          <font>
-            <Font size="16.0" />
+            <Font size="31.0" />
          </font></Label>
       <Label fx:id="radiobutton" layoutX="320.0" layoutY="131.0" />
-      <JFXTextField fx:id="tfscore" layoutX="133.0" layoutY="35.0" prefHeight="25.0" prefWidth="150.0" promptText="score" />
-      <JFXTextField fx:id="tflien" layoutX="133.0" layoutY="87.0" prefHeight="25.0" prefWidth="150.0" promptText="lien streaming" />
-      <JFXTextField fx:id="tfgold" layoutX="134.0" layoutY="169.0" prefHeight="25.0" prefWidth="167.0" promptText="gold" />
-      <JFXComboBox fx:id="cbduree" layoutX="134.0" layoutY="205.0" prefHeight="25.0" prefWidth="167.0" promptText="duree" />
-      <JFXDatePicker fx:id="datepicker" layoutX="132.0" layoutY="245.0" promptText="date" />
-      <JFXComboBox fx:id="cbheros" layoutX="122.0" layoutY="285.0" prefHeight="25.0" prefWidth="171.0" promptText="heros" />
-      <JFXButton layoutX="418.0" layoutY="119.0" onAction="#ajoutermatch" text="Ajouter un match" textFill="#fffefe">
+      <JFXTextField fx:id="tfscore" layoutX="419.0" layoutY="49.0" prefHeight="50.0" prefWidth="400.0" promptText="score" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXTextField fx:id="tflien" layoutX="419.0" layoutY="153.0" prefHeight="50.0" prefWidth="400.0" promptText="lien streaming" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXTextField fx:id="tfgold" layoutX="419.0" layoutY="329.0" prefHeight="50.0" prefWidth="400.0" promptText="gold" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXComboBox fx:id="cbduree" layoutX="419.0" layoutY="452.0" prefHeight="50.0" prefWidth="400.0" promptText="duree" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXDatePicker fx:id="datepicker" layoutX="419.0" layoutY="576.0" prefHeight="50.0" prefWidth="400.0" promptText="date" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXComboBox fx:id="cbheros" layoutX="419.0" layoutY="675.0" prefHeight="50.0" prefWidth="400.0" promptText="heros" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXButton layoutX="948.0" layoutY="241.0" onAction="#ajoutermatch" prefHeight="77.0" prefWidth="265.0" styleClass="comboBox" stylesheets="@style.css" text="Ajouter un match" textFill="#fffefe">
          <font>
-            <Font size="16.0" />
+            <Font size="25.0" />
          </font>
       </JFXButton>
-      <JFXRadioButton fx:id="radio1" layoutX="122.0" layoutY="140.0" text="Winner" textFill="#fffbfb">
+      <JFXRadioButton fx:id="radio1" layoutX="456.0" layoutY="238.0" text="Winner" textFill="#fffbfb">
          <font>
-            <Font size="14.0" />
+            <Font size="24.0" />
          </font>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="radio2" layoutX="228.0" layoutY="141.0" text="Loser" textFill="WHITE">
+      <JFXRadioButton fx:id="radio2" layoutX="696.0" layoutY="238.0" text="Loser" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font size="24.0" />
          </font>
       </JFXRadioButton>
-      <JFXTextField fx:id="tfeq" layoutX="140.0" layoutY="341.0" />
-      <JFXTextField fx:id="tfeq1" layoutX="467.0" layoutY="341.0" />
-      <JFXButton layoutX="418.0" layoutY="202.0" onAction="#affichermatch" text="Afficher la liste des matchs" textFill="#fffdfd">
+      <JFXTextField fx:id="tfeq" layoutX="14.0" layoutY="14.0" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXTextField fx:id="tfeq1" layoutX="182.0" layoutY="14.0" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXButton layoutX="940.0" layoutY="433.0" onAction="#affichermatch" prefHeight="89.0" prefWidth="280.0" styleClass="comboBox" stylesheets="@style.css" text="Afficher la liste des matchs" textFill="#fffdfd">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="19.0" />
          </font>
       </JFXButton>
    </children>

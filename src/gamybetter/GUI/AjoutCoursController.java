@@ -140,6 +140,7 @@ public class AjoutCoursController implements Initializable {
         return choicebox1;
     }
 
+    @FXML
     public void annuler() {
         choosen_coach1 = "";
         email_coach1.setText("");
@@ -151,6 +152,7 @@ public class AjoutCoursController implements Initializable {
 
     }
 
+    @FXML
     public void Creer() {
         Cours c = new Cours();
         Boolean ajout = false;
@@ -251,6 +253,7 @@ public class AjoutCoursController implements Initializable {
         return prix.matches("^[0.00-9.99]+$") && prix.length() < 999999;
     }
 
+    @FXML
     public void switchToCoursFXML(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("CoursFXML.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

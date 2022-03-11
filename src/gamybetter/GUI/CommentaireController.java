@@ -77,7 +77,6 @@ public class CommentaireController implements Initializable {
       
         @FXML
     private ImageView idImage;
-           @FXML
     private ImageView idavatr;
     
     

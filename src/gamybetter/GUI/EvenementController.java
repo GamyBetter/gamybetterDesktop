@@ -53,8 +53,6 @@ public class EvenementController implements Initializable {
 
     private Personne participant;
 
-    @FXML
-    private JFXButton BtnGoBack;
 
     @FXML
     private ImageView qrIV;
@@ -106,7 +104,6 @@ public class EvenementController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }*/
-    @FXML
     private void participer(ActionEvent event) {
 
         JFrame f = new JFrame();
@@ -128,7 +125,6 @@ public class EvenementController implements Initializable {
         }
     }
 
-    @FXML
     public void loadListView() {
 
     }
