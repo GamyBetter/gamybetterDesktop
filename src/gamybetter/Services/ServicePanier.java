@@ -12,10 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< Updated upstream
-import javafx.collections.ObservableList;
-=======
->>>>>>> Stashed changes
 import gamybetter.Models.Panier;
 import gamybetter.Utils.DataSource;
 
@@ -56,11 +52,7 @@ public class ServicePanier implements IPanier<Panier>{
     }
 
     @Override
-<<<<<<< Updated upstream
-    public void update(Panier p) {
-=======
     public boolean update(Panier p) {
->>>>>>> Stashed changes
         String sql = "UPDATE `panier` SET `quanite_order`=? WHERE id_commande=? AND itemCode=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
@@ -73,28 +65,16 @@ public class ServicePanier implements IPanier<Panier>{
             
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
-<<<<<<< Updated upstream
-                System.out.println("An existing product from cart was updated successfully");
-=======
                 return true;
->>>>>>> Stashed changes
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-<<<<<<< Updated upstream
-
-    }
-
-    @Override
-    public void delete(Panier p) {
-=======
         return false;
     }
 
     @Override
     public boolean delete(Panier p) {
->>>>>>> Stashed changes
         String sql = "DELETE FROM panier WHERE id_commande=? AND itemCode=?";
         
         try {
@@ -105,19 +85,12 @@ public class ServicePanier implements IPanier<Panier>{
             
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-<<<<<<< Updated upstream
-                System.out.println("A product  was deleted successfully from cart !");
-=======
                return true;
->>>>>>> Stashed changes
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-<<<<<<< Updated upstream
-=======
         return false;
->>>>>>> Stashed changes
     }
 
     

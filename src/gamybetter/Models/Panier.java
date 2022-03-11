@@ -140,8 +140,4 @@ public class Panier {
   
     
     
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

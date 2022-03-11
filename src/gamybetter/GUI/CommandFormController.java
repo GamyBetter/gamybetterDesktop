@@ -10,10 +10,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import com.twilio.Twilio;
 import java.io.IOException;
-<<<<<<< Updated upstream
 import java.io.InputStream;
-=======
->>>>>>> Stashed changes
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,10 +19,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-<<<<<<< Updated upstream
 import java.util.HashMap;
-=======
->>>>>>> Stashed changes
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -37,41 +31,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-<<<<<<< Updated upstream
 import javafx.geometry.Insets;
-=======
-
->>>>>>> Stashed changes
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-<<<<<<< Updated upstream
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 
-import javafx.scene.input.KeyEvent;
-=======
-
->>>>>>> Stashed changes
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import gamybetter.Models.Commande;
-<<<<<<< Updated upstream
-import gamybetter.Models.Produit;
-import gamybetter.Services.ServiceCommande;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.view.JasperViewer;
-import gamybetter.Utils.DataSource;
-import com.twilio.type.PhoneNumber;
-import java.util.Properties;    
-import javafx.stage.Modality;
-import javax.mail.*;    
-import javax.mail.internet.*;    
-import gamybetter.Utils.Mailer;
-import gamybetter.Utils.SMSsender;
-=======
 
 import gamybetter.Services.ServiceCommande;
 
@@ -85,7 +54,6 @@ import java.util.regex.Pattern;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
->>>>>>> Stashed changes
 /**
  * FXML Controller class
  *
@@ -102,11 +70,8 @@ public class CommandFormController implements Initializable {
     @FXML
     private JFXTextField Discount;
     @FXML
-<<<<<<< Updated upstream
     private JFXTextField ttLastname;
     @FXML
-=======
->>>>>>> Stashed changes
     private JFXTextField txtAdresse;
     @FXML
     private JFXTextField txtTotalPrice;
@@ -139,25 +104,19 @@ public class CommandFormController implements Initializable {
     @FXML
     private JFXButton SMS;
 double prix_discounted =0;
-<<<<<<< Updated upstream
-=======
 
 Alert alertinfo = new Alert(Alert.AlertType.INFORMATION);
 Alert alert = new Alert(Alert.AlertType.WARNING);
  Alert alertconfirm = new Alert(Alert.AlertType.CONFIRMATION);
 
->>>>>>> Stashed changes
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-<<<<<<< Updated upstream
-=======
         txtAdminName.setText(sc.getAdmin(CurrentUser.getCurrentUser()));
         System.out.println(txtAdminName.getText());
->>>>>>> Stashed changes
         txtIcomCode.setVisible(false);
         txtDate.setText(strDate);
         loadAllCommands();
@@ -168,10 +127,6 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
        
         txtIcomCode.clear();
         txtFirstName.clear();
-<<<<<<< Updated upstream
-        ttLastname.clear();
-=======
->>>>>>> Stashed changes
         txtAdresse.clear();
          txtEmail.clear();
          txtTotalPrice.clear();
@@ -185,8 +140,6 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
 
     }
 
-<<<<<<< Updated upstream
-=======
     private boolean CheckFields(){
         Boolean Okay =true;
         
@@ -259,7 +212,6 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         return Okay;
     }
     
->>>>>>> Stashed changes
     @FXML
     private void searchItemOnAction(ActionEvent event) {
         
@@ -268,10 +220,6 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         List<Commande> CollectedList = listCommands.stream()
         .filter(cmd -> txtIcomCode.getText().equals(cmd.getId_commande())||
                         txtFirstName.getText().equals(cmd.getNom_personne())||
-<<<<<<< Updated upstream
-                        ttLastname.getText().equals(cmd.getPrenom_personne())||
-=======
->>>>>>> Stashed changes
                         txtAdresse.getText().equals(cmd.getAddresse_personne())||
                         txtEmail.getText().equals(cmd.getEmail_personne())
                         //price.equals(cmd.getPrix_totale())
@@ -296,22 +244,10 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         
         c.setId_commande(txtIcomCode.getText());
         c.setNom_personne(txtFirstName.getText());
-<<<<<<< Updated upstream
-        c.setNom_personne(ttLastname.getText());
-=======
->>>>>>> Stashed changes
         c.setAddresse_personne(txtAdresse.getText()); 
         c.setPrix_totale(price);
         c.setEmail_personne(txtEmail.getText());    
         
-<<<<<<< Updated upstream
-        sc.delete(c);
-        
-        ListView.getItems().remove(ListView.getSelectionModel().getSelectedItem());
-            ObservableList<Commande> UpdatedListView = ListView.getItems();
-            ListView.setItems(UpdatedListView);
-            DefaultTxtFields();
-=======
          Optional<ButtonType> confirm = alertconfirm.showAndWait();
         alertconfirm.setTitle("DELETE COMMAND ");
       alertconfirm.setHeaderText("Are you sure want to delte this client's Command ?");
@@ -337,37 +273,19 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
             }
         }
         
->>>>>>> Stashed changes
     }
 
     @FXML
     private void UpdateCartOnAction(ActionEvent event) {
-<<<<<<< Updated upstream
-        Commande c =new Commande();
-=======
         
         if(CheckFields()){
             Commande c =new Commande();
->>>>>>> Stashed changes
         
         Double price = Double.parseDouble(txtTotalPrice.getText());
         int disc = Integer.parseInt(Discount.getText());
         
         c.setId_commande(txtIcomCode.getText());
         c.setNom_personne(txtFirstName.getText());
-<<<<<<< Updated upstream
-        c.setPrenom_personne(ttLastname.getText());
-        c.setAddresse_personne(txtAdresse.getText()); 
-        c.setPrix_totale(price);
-        c.setDiscount(disc);
-        c.setEmail_personne(txtEmail.getText());
-
-        
-        sc.update(c);
-        ListView.getItems().set( ListView.getSelectionModel().getSelectedIndex(), c);
-        
-            DefaultTxtFields();
-=======
         c.setAddresse_personne(txtAdresse.getText()); 
         c.setDate(date);
         c.setPrix_totale(price);
@@ -395,7 +313,6 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
 
         }
         
->>>>>>> Stashed changes
     }
 
     @FXML
@@ -425,19 +342,6 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
 
 	Commande c = ListView.getSelectionModel().getSelectedItem();
             
-<<<<<<< Updated upstream
-        String price = String.valueOf(c .getPrix_totale());
-        String discount = String.valueOf(c .getDiscount());
-        
-            txtIcomCode.setText(c.getId_commande());
-            txtFirstName.setText(c.getNom_personne());
-            ttLastname.setText(c.getPrenom_personne());
-            txtAdresse.setText(c.getAddresse_personne());
-            Discount.setText(discount);
-            txtTotalPrice.setText(price);
-            txtEmail.setText(c.getEmail_personne());
-            txtTotal.setText(price);
-=======
         String price = String.valueOf(c.getPrix_totale());
         String discount = String.valueOf(c.getDiscount());
         
@@ -455,7 +359,6 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
                }
             
             
->>>>>>> Stashed changes
             
             
 	}	
@@ -483,15 +386,9 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
                     + "#########################################################################################################################\n"
                     + "\t\t PURCHACE BILL   \n"
                     + "\t\t\t FIRST NAME = "+txtFirstName.getText()+"\n"
-<<<<<<< Updated upstream
-                    + "\t\t\t LAST NAME = "+ttLastname.getText()+"\n"
-                    + "------------------------------------------------------------------------------------------------------------------------------\n"
-                    + "\t PRODUCT NAME \t\t\t QUANTITY \t Discount on item \t TOTAL PRICE  \n";
-=======
                     + "------------------------------------------------------------------------------------------------------------------------------\n"
                     + "\t PRODUCT NAME \t\t\t QUANTITY \t Discount on item \t TOTAL PRICE  \n"
                     + "------------------------------------------------------------------------------------------------------------------------------\n";
->>>>>>> Stashed changes
                             String query = "select itemCode,quanite_order,prix_unitaire  from `panier` where id_commande = '"+ txtIcomCode.getText()+"'";
                             
                             try {
@@ -533,13 +430,6 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
 
     @FXML
     private void addDiscount(MouseEvent event) {
-<<<<<<< Updated upstream
-       int DISCOUNT=Integer.parseInt(Discount.getText());
-       Double price = Double.parseDouble(txtTotalPrice.getText());
-            prix_discounted =price-((price*DISCOUNT)/100);
-            String discounted_price = String.valueOf(prix_discounted);
-            DiscountTotal.setText(discounted_price);
-=======
        try{
         int DISCOUNT=Integer.parseInt(Discount.getText());
        Double price = Double.parseDouble(txtTotalPrice.getText());
@@ -550,7 +440,6 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
            ex.getMessage();
        }
             
->>>>>>> Stashed changes
     }
 
     @FXML

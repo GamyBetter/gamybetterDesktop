@@ -35,14 +35,9 @@ public class DataSource {
     }
 
     private DataSource() {
-<<<<<<< Updated upstream
-        try {
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamybetterfinal","root","");
-=======
         
         try {
             cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev","root","");
->>>>>>> Stashed changes
             System.out.println("Connected !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

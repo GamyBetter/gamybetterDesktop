@@ -46,10 +46,7 @@ import gamybetter.Models.Produit;
 import gamybetter.Services.ServiceProduit;
 import gamybetter.Services.MyListener;
 import gamybetter.Services.ServiceCommande;
-<<<<<<< Updated upstream
-=======
 import gamybetter.Utils.CurrentUser;
->>>>>>> Stashed changes
 
 /**
  * FXML Controller class
@@ -153,23 +150,10 @@ private void Loaditems(List products){
         }
         id_com.setVisible(true);
         id_product.setVisible(false);
-<<<<<<< Updated upstream
-         products=sp.getAll();
-         
-         
-       if (products.size() > 0) {
-            try {
-                // System.out.println(products);
-                setChosenItem(products.get(0));
-            } catch (FileNotFoundException ex) {
-                ex.getMessage();
-            }
-=======
         System.out.println("DATA FETCHED");
          products=sp.getAll();
          if (products.size() > 0) {
              
->>>>>>> Stashed changes
             myListener = new MyListener() {
                 @Override
                 public void onClickListener(Produit produit) {
@@ -181,39 +165,24 @@ private void Loaditems(List products){
                 }
             };
         }
-<<<<<<< Updated upstream
-=======
          if(products.isEmpty()){
              System.out.println("no data ");
          }
->>>>>>> Stashed changes
 
         try {
             for (int i = 0; i < products.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("Produit.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-<<<<<<< Updated upstream
-                
-                ProduitController itemController = fxmlLoader.getController();
-                System.out.println(products.get(i));
-                itemController.setData(products.get(i),myListener);
-                                
-=======
 
                 ProduitController itemController = fxmlLoader.getController();
                 itemController.setData( products.get(i),myListener);
->>>>>>> Stashed changes
 
                 if ( column == 3) {
                     column = 0;
                     row++;
                 }
-<<<<<<< Updated upstream
-                
-=======
 
->>>>>>> Stashed changes
                 grid.add(anchorPane, column++, row); //(child,column,row)
                 //set grid width
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
@@ -230,11 +199,8 @@ private void Loaditems(List products){
         } catch (IOException e) {
             e.getMessage();
         }
-<<<<<<< Updated upstream
-=======
          
        // Loaditems(products);
->>>>>>> Stashed changes
         
         
     } 
@@ -243,11 +209,7 @@ private void Loaditems(List products){
     
 }
 private void GenerateCommandeId() {
-<<<<<<< Updated upstream
-
-=======
 System.out.println("DATA FETCHED");
->>>>>>> Stashed changes
             Commands = sc.getAll();
             int id = Commands.size();
             if (id == 0) {
@@ -265,13 +227,9 @@ System.out.println("DATA FETCHED");
             if (id >= 99) {
                 this.id_com.setText("C" + (id + 1));
             }
-<<<<<<< Updated upstream
-            Commande c = new Commande(id_com.getText(),"1");
-=======
             int id_user=CurrentUser.getCurrentUser();
 
             Commande c = new Commande(id_com.getText(),id_user);
->>>>>>> Stashed changes
             sc.add(c);
         //customer Count Code
     }

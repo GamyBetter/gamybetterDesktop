@@ -16,15 +16,9 @@
          <children>
             <Pane prefHeight="171.0" prefWidth="250.0" styleClass="shadow" stylesheets="@Style.css">
                <children>
-<<<<<<< Updated upstream
-                  <ImageView fx:id="img" fitHeight="163.0" fitWidth="200.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Ressources/favpng_fifa-12-fifa-13-fifa-11-pro-evolution-soccer-2012-fifa-17.png" />
-=======
                   <ImageView fx:id="img" fitHeight="163.0" fitWidth="200.0" layoutX="25.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Ressources/kisspng-2-17-league-of-legends-world-championship-2-16-lea-sgl-lol-5b6d458eef5175.9998682215338878869803.png" />
->>>>>>> Stashed changes
                      </image>
                   </ImageView>
                   <Label layoutX="129.0" layoutY="3.0" prefHeight="23.0" prefWidth="77.0" text="DISCOUNT" textFill="#e41313">

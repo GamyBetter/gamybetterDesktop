@@ -6,13 +6,6 @@
 package gamybetter.GUI;
 
 import com.jfoenix.controls.JFXButton;
-<<<<<<< Updated upstream
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-=======
 import gamybetter.Models.Panier;
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
->>>>>>> Stashed changes
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -44,17 +36,12 @@ public class DashboardController implements Initializable {
 
     /**
      * Initializes the controller class.
-<<<<<<< Updated upstream
-=======
      * @param url
      * @param rb
->>>>>>> Stashed changes
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-<<<<<<< Updated upstream
-=======
         try{
             Parent root =FXMLLoader.load(getClass().getResource("ProductForm.fxml"));
             context.getChildren().removeAll();
@@ -62,13 +49,10 @@ public class DashboardController implements Initializable {
         } catch (IOException ex) {
            ex.getMessage();
         }
->>>>>>> Stashed changes
     }    
 
     @FXML
     private void DashBoardOnAction(ActionEvent event) {
-<<<<<<< Updated upstream
-=======
          try{
             Parent root =FXMLLoader.load(getClass().getResource("market.fxml"));
             context.getChildren().removeAll();
@@ -76,15 +60,11 @@ public class DashboardController implements Initializable {
         } catch (IOException ex) {
            ex.getMessage();
         }
->>>>>>> Stashed changes
     }
 
     @FXML
     private void btnAddCashier(ActionEvent event) {
-<<<<<<< Updated upstream
-=======
         
->>>>>>> Stashed changes
     }
 
     @FXML
