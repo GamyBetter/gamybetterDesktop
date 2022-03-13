@@ -36,24 +36,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import gamybetter.Models.Commande;
-import gamybetter.Models.Produit;
+
 import gamybetter.Services.ServiceCommande;
+
 import gamybetter.Utils.DataSource;
-import com.twilio.type.PhoneNumber;
-import java.util.Properties;    
-import javafx.stage.Modality;
-import javax.mail.*;    
-import javax.mail.internet.*;    
+
+import gamybetter.Utils.CurrentUser;
+ 
 import gamybetter.Utils.Mailer;
-import gamybetter.Utils.SMSsender;
+import java.util.Optional;
+import java.util.regex.Pattern;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 /**
  * FXML Controller class
  *
@@ -104,12 +104,19 @@ public class CommandFormController implements Initializable {
     @FXML
     private JFXButton SMS;
 double prix_discounted =0;
+
+Alert alertinfo = new Alert(Alert.AlertType.INFORMATION);
+Alert alert = new Alert(Alert.AlertType.WARNING);
+ Alert alertconfirm = new Alert(Alert.AlertType.CONFIRMATION);
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        txtAdminName.setText(sc.getAdmin(1));//CurrentUser.getCurrentUser()
+        System.out.println(txtAdminName.getText());
         txtIcomCode.setVisible(false);
         txtDate.setText(strDate);
         loadAllCommands();
@@ -120,7 +127,6 @@ double prix_discounted =0;
        
         txtIcomCode.clear();
         txtFirstName.clear();
-        ttLastname.clear();
         txtAdresse.clear();
          txtEmail.clear();
          txtTotalPrice.clear();
@@ -134,6 +140,78 @@ double prix_discounted =0;
 
     }
 
+    private boolean CheckFields(){
+        Boolean Okay =true;
+        
+        Pattern patternName = Pattern.compile("^[A-Za-z ]++$");
+        if(txtFirstName.getText().isEmpty() || !patternName.matcher(txtFirstName.getText()).matches()){
+            Okay=false;
+		alert.setTitle(" NAME FIELD EMPTY ");
+		//alert.setHeaderText("Results:");
+		alert.setContentText("Name is empty OR incorrect input (Numbers not allowed )!");
+		alert.showAndWait();
+        }
+        Pattern pattern = Pattern.compile("^[A-Za-z_0-9 ,]++$");
+            if(txtAdresse.getText().isEmpty() || !pattern.matcher(txtAdresse.getText()).matches()){
+                Okay=false;
+            alert.setTitle("CHECK ADDRESS FIELD ");
+		//alert.setHeaderText("Results:");
+		alert.setContentText("ADDRESS is empty or incorrect input !");
+		alert.showAndWait();
+            }
+           /* Pattern patternEmail = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+            if(txtEmail.getText().isEmpty() || !patternEmail.matcher(txtAdresse.getText()).matches()){
+                Okay=false;
+                alert.setTitle("CHECK EMAIL FIELD ");
+		//alert.setHeaderText("Results:");
+		alert.setContentText("EMAIL is empty or incorrect input !");
+		alert.showAndWait();
+            }*/
+             
+            try{
+              Pattern  patternDiscount =Pattern.compile("[0-9]++$");
+            if(Discount.getText().isEmpty() || !patternDiscount.matcher(Discount.getText()).matches()){
+                Okay=false;
+            alert.setTitle("CHECK DISCOUNT FIELD ");
+		//alert.setHeaderText("Results:");
+		alert.setContentText("Discount is empty or incorrect input !");
+		alert.showAndWait();
+            }
+            }catch(NumberFormatException ex){
+                ex.getMessage();
+            }
+            try{
+                Pattern  patternPrice =Pattern.compile("[0-9.]++$");
+            if(DiscountTotal.getText().isEmpty() || !patternPrice.matcher(DiscountTotal.getText()).matches()){ 
+                Okay=false;
+           
+		alert.setTitle("CHECK PRICE FIELD");
+		//alert.setHeaderText("Results:");
+		alert.setContentText("PRICE is  Empty or incorrect input !");
+
+		alert.showAndWait();
+        }
+            }catch(NumberFormatException ex){
+                ex.getMessage();
+            }
+            try{
+                Pattern  patternPrice =Pattern.compile("[0-9.]++$");
+            if(txtTotalPrice.getText().isEmpty() || !patternPrice.matcher(txtTotalPrice.getText()).matches()){ 
+                Okay=false;
+           
+		alert.setTitle("CHECK PRICE FIELD");
+		//alert.setHeaderText("Results:");
+		alert.setContentText("PRICE is  Empty or incorrect input !");
+
+		alert.showAndWait();
+        }
+            }catch(NumberFormatException ex){
+                ex.getMessage();
+            }
+            System.out.println(Okay);
+        return Okay;
+    }
+    
     @FXML
     private void searchItemOnAction(ActionEvent event) {
         
@@ -142,7 +220,6 @@ double prix_discounted =0;
         List<Commande> CollectedList = listCommands.stream()
         .filter(cmd -> txtIcomCode.getText().equals(cmd.getId_commande())||
                         txtFirstName.getText().equals(cmd.getNom_personne())||
-                        ttLastname.getText().equals(cmd.getPrenom_personne())||
                         txtAdresse.getText().equals(cmd.getAddresse_personne())||
                         txtEmail.getText().equals(cmd.getEmail_personne())
                         //price.equals(cmd.getPrix_totale())
@@ -167,39 +244,75 @@ double prix_discounted =0;
         
         c.setId_commande(txtIcomCode.getText());
         c.setNom_personne(txtFirstName.getText());
-        c.setNom_personne(ttLastname.getText());
         c.setAddresse_personne(txtAdresse.getText()); 
         c.setPrix_totale(price);
         c.setEmail_personne(txtEmail.getText());    
         
-        sc.delete(c);
+         
+        alertconfirm.setTitle("DELETE COMMAND ");
+      alertconfirm.setHeaderText("Are you sure want to delte this client's Command ?");
+      alertconfirm.setContentText("Name :"+txtFirstName.getText());
+      Optional<ButtonType> confirm = alertconfirm.showAndWait();
+        if(confirm.get() == ButtonType.OK){
+            if(sc.delete(c)){
+            
+                alertinfo.setTitle("DELETED SUCCESSFULY ");
+		
+		alertinfo.setContentText("An existing command has been succesfuly deleted !");
+		alertinfo.showAndWait();
+                
+                ListView.getItems().remove(ListView.getSelectionModel().getSelectedItem());
+               ObservableList<Commande> UpdatedListView = ListView.getItems();
+                ListView.setItems(UpdatedListView);
+                DefaultTxtFields();
+            }else{
+                alert.setTitle("DELETED UNSUCCESSFULY ");
+		
+		alert.setContentText("Delete operation error !");
+		alert.showAndWait();
+            }
+        }
         
-        ListView.getItems().remove(ListView.getSelectionModel().getSelectedItem());
-            ObservableList<Commande> UpdatedListView = ListView.getItems();
-            ListView.setItems(UpdatedListView);
-            DefaultTxtFields();
     }
 
     @FXML
     private void UpdateCartOnAction(ActionEvent event) {
-        Commande c =new Commande();
+        
+        if(CheckFields()){
+            Commande c =new Commande();
         
         Double price = Double.parseDouble(txtTotalPrice.getText());
         int disc = Integer.parseInt(Discount.getText());
         
         c.setId_commande(txtIcomCode.getText());
         c.setNom_personne(txtFirstName.getText());
-        c.setPrenom_personne(ttLastname.getText());
         c.setAddresse_personne(txtAdresse.getText()); 
+        c.setDate(date);
         c.setPrix_totale(price);
         c.setDiscount(disc);
         c.setEmail_personne(txtEmail.getText());
-
         
-        sc.update(c);
-        ListView.getItems().set( ListView.getSelectionModel().getSelectedIndex(), c);
+        
+            if(sc.update(c)){
+            
+            alertinfo.setTitle("UPDATE SUCCESSFULY ");
+		
+		alertinfo.setContentText("An existing command has been succesfuly UPDATED !");
+		alertinfo.showAndWait();
+                
+                ListView.getItems().set( ListView.getSelectionModel().getSelectedIndex(), c);
         
             DefaultTxtFields();
+            }else{
+            alert.setTitle("UPDATE UNSUCCESSFULY ");
+		
+		alert.setContentText("UPDATE operation error !");
+		alert.showAndWait();
+            }
+        
+
+        }
+        
     }
 
     @FXML
@@ -229,17 +342,23 @@ double prix_discounted =0;
 
 	Commande c = ListView.getSelectionModel().getSelectedItem();
             
-        String price = String.valueOf(c .getPrix_totale());
-        String discount = String.valueOf(c .getDiscount());
+        String price = String.valueOf(c.getPrix_totale());
+        String discount = String.valueOf(c.getDiscount());
         
             txtIcomCode.setText(c.getId_commande());
             txtFirstName.setText(c.getNom_personne());
-            ttLastname.setText(c.getPrenom_personne());
             txtAdresse.setText(c.getAddresse_personne());
             Discount.setText(discount);
-            txtTotalPrice.setText(price);
+            txtTotal.setText(txtTotalPrice.getText());
             txtEmail.setText(c.getEmail_personne());
-            txtTotal.setText(price);
+               try{
+                   Discount.setText(discount);
+            txtTotalPrice.setText(price);
+               }catch(NumberFormatException ex){
+                   ex.getMessage();
+               }
+            
+            
             
             
 	}	
@@ -267,9 +386,9 @@ double prix_discounted =0;
                     + "#########################################################################################################################\n"
                     + "\t\t PURCHACE BILL   \n"
                     + "\t\t\t FIRST NAME = "+txtFirstName.getText()+"\n"
-                    + "\t\t\t LAST NAME = "+ttLastname.getText()+"\n"
                     + "------------------------------------------------------------------------------------------------------------------------------\n"
-                    + "\t PRODUCT NAME \t\t\t QUANTITY \t Discount on item \t TOTAL PRICE  \n";
+                    + "\t PRODUCT NAME \t\t\t QUANTITY \t Discount on item \t TOTAL PRICE  \n"
+                    + "------------------------------------------------------------------------------------------------------------------------------\n";
                             String query = "select itemCode,quanite_order,prix_unitaire  from `panier` where id_commande = '"+ txtIcomCode.getText()+"'";
                             
                             try {
@@ -311,11 +430,16 @@ double prix_discounted =0;
 
     @FXML
     private void addDiscount(MouseEvent event) {
-       int DISCOUNT=Integer.parseInt(Discount.getText());
+       try{
+        int DISCOUNT=Integer.parseInt(Discount.getText());
        Double price = Double.parseDouble(txtTotalPrice.getText());
-            prix_discounted =price-((price*DISCOUNT)/100);
+       prix_discounted =price-((price*DISCOUNT)/100);
             String discounted_price = String.valueOf(prix_discounted);
             DiscountTotal.setText(discounted_price);
+       }catch(NumberFormatException ex){
+           ex.getMessage();
+       }
+            
     }
 
     @FXML

@@ -14,24 +14,24 @@ import java.util.ArrayList;
 import java.util.List;
 import gamybetter.Models.Produit;
 import gamybetter.Utils.DataSource;
+
 /**
  *
  * @author Sayee
  */
-public class ServiceProduit implements IServiceC<Produit> {
+public class ServiceProduit implements IProduit<Produit> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void ajouter(Produit t) {
+    public boolean add(Produit t) {
         String query = "INSERT INTO `produit` (`itemCode`, `nom_produit`, `description`,`categorie`,`quantite_stock`,`prix_unitair`,`image`,`discount`) VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
              ps.setObject(1, t.getId());
-            
             ps.setObject(2, t.getNom_produit());
-            ps.setObject(3, t.getCategorie());
-            ps.setObject(4, t.getDescription());
+            ps.setObject(3, t.getDescription());
+            ps.setObject(4, t.getCategorie());
             ps.setObject(5, t.getQuantiteStock());
             ps.setObject(6, t.getPrix());
             ps.setObject(7, t.getImage());
@@ -40,14 +40,14 @@ public class ServiceProduit implements IServiceC<Produit> {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-      
+        return true;
     }
 
     public void ajouter2(Produit t) {
     }
 
     @Override
-    public boolean modifier(Produit t) {
+    public boolean update(Produit t) {
         String sql = "UPDATE `produit` SET nom_produit=?, prix_unitair=?, categorie=? , description=? ,quantite_stock=?,image=?,discount=? WHERE itemCode =?";
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
@@ -62,17 +62,16 @@ public class ServiceProduit implements IServiceC<Produit> {
             statement.setObject(8, t.getId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
-                System.out.println("An existing user was updated successfully");
                 return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-       return false;
+        return false;
     }
 
     @Override
-    public boolean supprimer(Produit t) {
+    public boolean delete(Produit t) {
         String sql = "DELETE FROM produit WHERE itemCode=?";
 
         try {
@@ -81,7 +80,6 @@ public class ServiceProduit implements IServiceC<Produit> {
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("A user was deleted successfully!");
                 return true;
             }
         } catch (SQLException ex) {
@@ -147,6 +145,4 @@ public class ServiceProduit implements IServiceC<Produit> {
 
         return new Produit();
     }
-
-   
 }

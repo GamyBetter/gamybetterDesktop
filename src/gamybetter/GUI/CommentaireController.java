@@ -53,11 +53,11 @@ public class CommentaireController implements Initializable {
         tfidPers.setVisible(false);
         tfidPers.setText("2");
         
-        Image imabak=new Image("/gamybetter/Ressources/valorant.jpg");
-       idImage.setImage(imabak);
+        //Image imabak=new Image("/gamybetter/Ressources/valorant.jpg");
+       //idImage.setImage(imabak);
        
-       Image avatar= new Image("/gamybetter/Ressources/Avatar.jpg");
-       idavatr.setImage(avatar);
+      // Image avatar= new Image("/gamybetter/Ressources/Avatar.jpg");
+     //  idavatr.setImage(avatar);
 
      
         // TODO

@@ -14,7 +14,7 @@
       <effect>
          <DropShadow />
       </effect>
-      <Label layoutX="42.0" layoutY="11.0" prefHeight="31.0" prefWidth="82.0" text="Admin" textFill="WHITE">
+      <Label layoutX="63.0" layoutY="11.0" prefHeight="31.0" prefWidth="82.0" text="Admin" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="txtAdminName" layoutX="42.0" layoutY="42.0" prefHeight="31.0" prefWidth="82.0" text="admin" textFill="#fbff00">
+      <Label fx:id="txtAdminName" layoutX="42.0" layoutY="42.0" prefHeight="31.0" prefWidth="124.0" text="admin" textFill="#fbff00">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -44,12 +44,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtFirstName" focusColor="WHITE" labelFloat="true" layoutX="28.0" layoutY="36.0" promptText="First Name" unFocusColor="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="ttLastname" focusColor="WHITE" labelFloat="true" layoutX="254.0" layoutY="40.0" promptText="Last Name" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtFirstName" focusColor="WHITE" labelFloat="true" layoutX="28.0" layoutY="66.0" promptText="First Name" unFocusColor="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -64,22 +59,22 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="txtAdresse" focusColor="WHITE" labelFloat="true" layoutX="255.0" layoutY="119.0" promptText="Adresse" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtAdresse" focusColor="WHITE" labelFloat="true" layoutX="256.0" layoutY="66.0" promptText="Adresse" unFocusColor="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtTotalPrice" focusColor="WHITE" labelFloat="true" layoutX="28.0" layoutY="200.0" promptText="TOTALE PRICE" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtTotalPrice" focusColor="WHITE" labelFloat="true" layoutX="256.0" layoutY="158.0" promptText="TOTALE PRICE" unFocusColor="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtEmail" focusColor="WHITE" labelFloat="true" layoutX="28.0" layoutY="117.0" promptText="Email" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtEmail" focusColor="WHITE" labelFloat="true" layoutX="28.0" layoutY="158.0" promptText="Email" unFocusColor="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXButton buttonType="RAISED" layoutX="677.0" layoutY="121.0" onAction="#ReloadAll" prefHeight="52.0" prefWidth="148.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Reloard All">
+      <JFXButton buttonType="RAISED" layoutX="677.0" layoutY="110.0" onAction="#ReloadAll" prefHeight="52.0" prefWidth="148.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Reloard All">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -157,7 +152,7 @@
          <Font name="System Bold" size="18.0" />
       </font>
    </JFXButton>
-   <JFXButton layoutX="5.0" layoutY="4.0" onAction="#GoBackToServices" prefHeight="43.0" prefWidth="139.0" styleClass="search-button" stylesheets="@Style.css" text="Back To Services">
+   <JFXButton layoutX="5.0" layoutY="4.0" onAction="#GoBackToServices" prefHeight="43.0" prefWidth="139.0" styleClass="search-button" stylesheets="@Css1.css" text="Back To Services">
       <font>
          <Font name="System Bold" size="15.0" />
       </font>
@@ -167,12 +162,7 @@
          <Font size="16.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="173.0" layoutY="418.0" prefHeight="25.0" prefWidth="103.0" text="Last Name">
-      <font>
-         <Font size="16.0" />
-      </font>
-   </Label>
-   <Label alignment="CENTER" layoutX="330.0" layoutY="418.0" prefHeight="25.0" prefWidth="103.0" text="Date">
+   <Label alignment="CENTER" layoutX="257.0" layoutY="417.0" prefHeight="25.0" prefWidth="103.0" text="Date">
       <font>
          <Font size="16.0" />
       </font>

@@ -46,6 +46,9 @@ import gamybetter.Models.Produit;
 import gamybetter.Services.ServiceProduit;
 import gamybetter.Services.MyListener;
 import gamybetter.Services.ServiceCommande;
+import gamybetter.Utils.CurrentUser;
+import java.util.regex.Pattern;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -147,18 +150,12 @@ private void Loaditems(List products){
     if (id_com.getText().trim().isEmpty() || sc.getById(id_com.getText()) == new Commande()){
             GenerateCommandeId();
         }
-        id_com.setVisible(true);
+        id_com.setVisible(false);
         id_product.setVisible(false);
+        System.out.println("DATA FETCHED");
          products=sp.getAll();
-         
-         
-       if (products.size() > 0) {
-            try {
-                // System.out.println(products);
-                setChosenItem(products.get(0));
-            } catch (FileNotFoundException ex) {
-                ex.getMessage();
-            }
+         if (products.size() > 0) {
+             
             myListener = new MyListener() {
                 @Override
                 public void onClickListener(Produit produit) {
@@ -170,23 +167,24 @@ private void Loaditems(List products){
                 }
             };
         }
+         if(products.isEmpty()){
+             System.out.println("no data ");
+         }
 
         try {
             for (int i = 0; i < products.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("Produit.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-                
+
                 ProduitController itemController = fxmlLoader.getController();
-                System.out.println(products.get(i));
-                itemController.setData(products.get(i),myListener);
-                                
+                itemController.setData( products.get(i),myListener);
 
                 if ( column == 3) {
                     column = 0;
                     row++;
                 }
-                
+
                 grid.add(anchorPane, column++, row); //(child,column,row)
                 //set grid width
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
@@ -203,6 +201,8 @@ private void Loaditems(List products){
         } catch (IOException e) {
             e.getMessage();
         }
+         
+       // Loaditems(products);
         
         
     } 
@@ -211,7 +211,7 @@ private void Loaditems(List products){
     
 }
 private void GenerateCommandeId() {
-
+System.out.println("DATA FETCHED");
             Commands = sc.getAll();
             int id = Commands.size();
             if (id == 0) {
@@ -229,8 +229,11 @@ private void GenerateCommandeId() {
             if (id >= 99) {
                 this.id_com.setText("C" + (id + 1));
             }
-            //Commande c = new Commande(Commands, desc, id_product, itemNameLable, id_product, id_product, id_product, products);
-           Commande c=new Commande(id_com.getText(),"1");
+            int id_user=CurrentUser.getCurrentUser();
+
+            Commande c = new Commande(id_com.getText(),id_user);
+            c.setDiscount(0);
+            c.setPrix_totale(0.0);
             sc.add(c);
         //customer Count Code
     }
@@ -238,8 +241,18 @@ private void GenerateCommandeId() {
 
     @FXML
     private void GoToChart(ActionEvent event) throws IOException {
-    
-    int quantite=Integer.parseInt(txtFQty.getText());
+    try{
+                Pattern  patternPrice =Pattern.compile("[0-9.]++$");
+            if(txtFQty.getText().isEmpty() || !patternPrice.matcher(txtFQty.getText()).matches()){ 
+                
+           Alert alert=new Alert(Alert.AlertType.WARNING);
+		alert.setTitle("CHECK PRICE FIELD");
+		//alert.setHeaderText("Results:");
+		alert.setContentText("PRICE is  Empty or incorrect input !");
+
+		alert.showAndWait();
+        }else{
+                int quantite=Integer.parseInt(txtFQty.getText());
     double prix=Double.parseDouble(itemPriceLabel.getText());
     
     
@@ -261,6 +274,11 @@ private void GenerateCommandeId() {
       } catch (IOException e) {
             System.err.println(String.format("Error: %s", e.getMessage()));
     }
+            }
+            }catch(NumberFormatException ex){
+                ex.getMessage();
+            }
+    
     }
     /*       FXMLLoader loader=new FXMLLoader(getClass().getResource("Panier.fxml"));
             root=loader.load();

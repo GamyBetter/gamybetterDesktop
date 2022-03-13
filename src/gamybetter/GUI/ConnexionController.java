@@ -54,6 +54,7 @@ public class ConnexionController implements Initializable {
     private boolean verifyConnexion(ActionEvent event) throws IOException {
         String email = mail.getText();
         String passwordd = Encryption.crypt(password.getText());
+        
         Personne p = new Personne(email, passwordd);
 
         for (Personne s : sp.getAll()) {
@@ -62,14 +63,14 @@ public class ConnexionController implements Initializable {
 
                 CurrentUser.setCurrentUser(s.getId_personne());
                     if (s.getRole().equalsIgnoreCase("user")){
-                        Parent root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
                         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
                     }
                     else if (s.getRole().equalsIgnoreCase("admin")){
-                        Parent root = FXMLLoader.load(getClass().getResource("AcceuilAdmin.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
                         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);

@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.ObservableList;
 import gamybetter.Models.Panier;
 import gamybetter.Utils.DataSource;
 
@@ -53,7 +52,7 @@ public class ServicePanier implements IPanier<Panier>{
     }
 
     @Override
-    public void update(Panier p) {
+    public boolean update(Panier p) {
         String sql = "UPDATE `panier` SET `quanite_order`=? WHERE id_commande=? AND itemCode=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
@@ -66,16 +65,16 @@ public class ServicePanier implements IPanier<Panier>{
             
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
-                System.out.println("An existing product from cart was updated successfully");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+        return false;
     }
 
     @Override
-    public void delete(Panier p) {
+    public boolean delete(Panier p) {
         String sql = "DELETE FROM panier WHERE id_commande=? AND itemCode=?";
         
         try {
@@ -86,11 +85,12 @@ public class ServicePanier implements IPanier<Panier>{
             
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("A product  was deleted successfully from cart !");
+               return true;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        return false;
     }
 
     

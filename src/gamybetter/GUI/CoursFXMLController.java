@@ -87,7 +87,7 @@ public class CoursFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CurrentUser.setCurrentUser(1);
+        CurrentUser.setCurrentUser(18);
         if(personneService.getById(CurrentUser.getCurrentUser()).getRole().equalsIgnoreCase("admin")==false){
             modifierbtn.setVisible(false);
             supprimerbtn.setVisible(false);

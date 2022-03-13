@@ -10,6 +10,7 @@ package gamybetter.Utils;
  * @author Sayee
  */
 import java.util.Properties;    
+import javafx.scene.control.Alert;
 import javax.mail.*;    
 import javax.mail.internet.*;    
 public class Mailer{  
@@ -37,7 +38,11 @@ public class Mailer{
            message.setText(msg);    
            //send message  
            Transport.send(message);    
-           System.out.println("message sent successfully");    
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(" NAME FIELD EMPTY ");
+		alert.setHeaderText("Email Sent");
+		alert.setContentText(" Client bill sent by GMAIL !");
+		alert.showAndWait();
           } catch (MessagingException e) {throw new RuntimeException(e);}    
              
     }  

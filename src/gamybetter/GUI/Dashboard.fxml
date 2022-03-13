@@ -15,15 +15,15 @@
       <Pane fx:id="context" layoutX="185.0" layoutY="6.0" prefHeight="926.0" prefWidth="1234.0" />
       <VBox alignment="TOP_CENTER" prefHeight="938.0" prefWidth="185.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0); -fx-background-radius: 30;">
          <children>
-            <JFXButton fx:id="dtnDashBoard" buttonType="RAISED" onAction="#DashBoardOnAction" prefHeight="87.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="USERS" textFill="WHITE">
+            <JFXButton fx:id="dtnDashBoard" buttonType="RAISED" onAction="#UsersOnAction" prefHeight="87.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="USERS" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="10.0" top="150.0" />
+                  <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#btnAddCashier" prefHeight="88.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="HOME PAGE" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#HomePage" prefHeight="88.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="HOME PAGE" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
@@ -31,7 +31,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#btnReportOnAction" prefHeight="90.0" prefWidth="185.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="SERVICES" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#Services" prefHeight="90.0" prefWidth="185.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="SERVICES" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#btnAddCustomer" prefHeight="94.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="SESSIONS" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#Sessions" prefHeight="94.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="SESSIONS" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
@@ -47,7 +47,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#AddItemOnAction" prefHeight="88.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="EVENTS" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#Events" prefHeight="88.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="EVENTS" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
@@ -55,12 +55,28 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#btnSuplayerOnAction" prefHeight="99.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="BLOG" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#Blog" prefHeight="99.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="BLOG" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="70.0" />
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#Match" prefHeight="99.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="MATCH" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#Cours" prefHeight="99.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="COURS" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
                </VBox.margin>
             </JFXButton>
             <Pane prefHeight="85.0" prefWidth="185.0">

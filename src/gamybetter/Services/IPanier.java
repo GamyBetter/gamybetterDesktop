@@ -17,9 +17,9 @@ import gamybetter.Models.Panier;
 public interface IPanier<T>{
      public boolean add(Panier t);
 
-    public void update(Panier t);
+    public boolean update(Panier t);
 
-    public void delete(Panier t);
+    public boolean delete(Panier t);
 
     //public ObservableList<Panier> getItems();
     

@@ -15,9 +15,9 @@ import java.util.List;
 public interface ICommande<T> {
     public boolean add(T t);
 
-    public void update(T t);
+    public boolean update(T t);
 
-    public void delete(T t);
+    public boolean delete(T t);
 
     public List<T> getAll();
 
@@ -25,5 +25,5 @@ public interface ICommande<T> {
     
     public T getById(String id);
     
-  public void SetCommandPrice(T c,double prix);  
+  public boolean SetCommandPrice(T c,double prix);  
 }
