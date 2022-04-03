@@ -17,7 +17,7 @@ public class NewFXMain extends Application {
     double x,y = 0;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));//CommandForm ------ ProductForm
+        Parent root = FXMLLoader.load(getClass().getResource("market.fxml"));//CommandForm ------ ProductForm
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
         root.setOnMousePressed(event -> {
