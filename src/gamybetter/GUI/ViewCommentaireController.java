@@ -87,7 +87,7 @@ public class ViewCommentaireController implements Initializable {
         System.out.println("TEST TEST TEST"+id_pub.getText());
         //id_pub.setText("18");
         //String PUBIDgetted=id_pub.getText();/////////////////////////////////////////////////////////////////////////////////20
-        int index =Integer.parseInt("20");
+        int index =Integer.parseInt("7");
         listCu = FXCollections.observableArrayList(sc.getAllByID(index));
         //System.out.println(listCu);
         /*tfidcom.setCellValueFactory(new PropertyValueFactory<>("id_commentaire"));

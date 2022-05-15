@@ -5,6 +5,9 @@
  */
 package gamybetter.Models;
 
+import java.util.Objects;
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author Admin
@@ -15,26 +18,9 @@ public class Personne {
     private String nom_personne, mot_de_passe, role, email, description, competence, jeux, heros, ig_name, ig_role;
     private float prix;
 
-    public Personne(Object nom_personne, Object contact, Object rating,Object role,Object mot_de_passe,  Object email, Object description, Object competence, Object jeux,Object prix,  Object heros, Object ig_name, Object ig_role, Object ig_rank,Object id_equipe) {
+  
     
-        this.nom_personne = (String) nom_personne;
-        this.contact = (int) contact;
-        this.rating = (int) rating;
-        this.ig_rank = (int) ig_rank;
-        this.mot_de_passe = (String) mot_de_passe;
-        this.role = (String) role;
-        this.email = (String) email;
-        this.description = (String) description;
-        this.competence = (String) competence;
-        this.jeux = (String) jeux;
-        this.heros = (String) heros;
-        this.ig_name = (String) ig_name;
-        this.ig_role = (String) ig_role;
-        this.prix = (float) prix;
-        this.id_equipe=(int) id_equipe;
-    }
-    
-    public Personne(Object id_personne,Object nom_personne, Object contact, Object rating,Object role,Object mot_de_passe,  Object email, Object description, Object competence, Object jeux,Object prix,  Object heros, Object ig_name, Object ig_role, Object ig_rank,Object id_equipe) {
+    public Personne(Object id_personne,Object nom_personne, Object contact, Object rating,Object role,Object mot_de_passe,  Object email, Object description, Object competence, Object jeux,Object prix,  Object heros, Object ig_name, Object ig_role, Object ig_rank) {
         this.id_personne=(int) id_personne;
         this.nom_personne = (String) nom_personne;
         this.contact = (int) contact;
@@ -50,10 +36,26 @@ public class Personne {
         this.ig_name = (String) ig_name;
         this.ig_role = (String) ig_role;
         this.prix = (float) prix;
-        this.id_equipe=(int) id_equipe;
+   
     }
 
     public Personne() {
+    }
+
+
+    public Personne (Object nom_personne, Object contact,Object description, Object email,Object mot_de_passe){
+        this.nom_personne = (String) nom_personne;
+        this.contact = (int) contact;
+        this.description = (String) description;
+        this.email = (String) email;
+        this.mot_de_passe = (String) mot_de_passe;
+        
+        
+    }
+
+    public Personne(String email, String password) {
+        this.email = email;
+        this.mot_de_passe = password;
     }
 
     public int getId_personne() {
@@ -184,9 +186,38 @@ public class Personne {
         this.id_equipe = id_equipe;
     }
 
+  
     @Override
     public String toString() {
-        return "Personne{" + "id_personne=" + id_personne + ", contact=" + contact + ", rating=" + rating + ", ig_rank=" + ig_rank + ", nom_personne=" + nom_personne + ", mot_de_passe=" + mot_de_passe + ", role=" + role + ", email=" + email + ", description=" + description + ", competence=" + competence + ", jeux=" + jeux + ", heros=" + heros + ", ig_name=" + ig_name + ", ig_role=" + ig_role + ", prix=" + prix + '}';
+        return "Personne{" +  " nom_personne=" + nom_personne + ", role=" + role + ", email=" + email + ", contact=" + contact + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Personne other = (Personne) obj;
+        if (!Objects.equals(this.mot_de_passe, other.mot_de_passe)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        return true;
+    }
+    
 
 }

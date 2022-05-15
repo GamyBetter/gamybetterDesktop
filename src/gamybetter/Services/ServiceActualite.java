@@ -23,7 +23,7 @@ public class ServiceActualite implements IService <Actualite>  {
     
     Connection cnx = DataSource.getInstance().getCnx();
     //Object image, Object video,Object id_match,Object id_personne
-    @Override
+     @Override
     public void ajouter(Actualite t) {
       String query = "INSERT INTO `actualite` (`image`, `video`,`id_match`,`id_personne`) VALUES('" + t.getImage() + "','" + t.getVideo() + "','" + t.getId_match() + "','" + t.getId_personne() + "')";
         try {
@@ -33,18 +33,17 @@ public class ServiceActualite implements IService <Actualite>  {
             System.out.println(ex.getMessage());
         }
     }
-
     @Override
     public boolean modifier(Actualite t) {
-        String query = "UPDATE `actualite` SET image=? ,video=?,id_match=?,id_personne=?  WHERE image=?";
+        String query = "UPDATE `actualite` SET image=? ,video=?, id_match=? ,id_personne=?  WHERE id_actualité=? ";
         boolean rowUpdated = false;
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
              ps.setString(1,t.getImage());
             ps.setString(2,t.getVideo());
             ps.setInt(3,t.getId_match());
-             ps.setInt(4,t.getId_personne());
-            ps.setString(4, t.getImage());
+            ps.setInt(4,t.getId_personne());
+            ps.setInt(5, t.getId_actualite());
           
             
             int rowsUpdated = ps.executeUpdate();
@@ -60,12 +59,12 @@ public class ServiceActualite implements IService <Actualite>  {
     }
 
     @Override
-    public boolean supprimer(Actualite t) {
-       String query ="DELETE FROM `actualite` WHERE image=?";
+   public boolean supprimer(Actualite t) {
+       String query ="DELETE FROM `actualite` WHERE id_actualité=?";
        boolean rowDeleted= false ;
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
-            statement.setObject(1, t.getImage());
+            statement.setObject(1, t.getId_actualite());
              int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("An existing user was deleted successfully");
@@ -80,14 +79,15 @@ public class ServiceActualite implements IService <Actualite>  {
 
     @Override
     public List<Actualite> getAll() {
-       List<Actualite> list = new ArrayList<>();
+        List<Actualite> list = new ArrayList<>();
         String query = "Select * from `actualite`";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                Actualite a = new Actualite(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getInt(3));
-                list.add(a);
+                Actualite m = new Actualite(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
+                System.out.println(m);
+                list.add(m);
 
             }
         } catch (SQLException ex) {
@@ -117,16 +117,16 @@ public class ServiceActualite implements IService <Actualite>  {
      }
     }*/
 
-    @Override
-    public Actualite getById(int id_match) {
+  @Override
+    public Actualite getById(int id_actualite) {
 
-        String query = "Select * from `actualite` where id_match=" +id_match;
+        String query = "Select * from `actualite` where id_actualité=" +id_actualite;
         Actualite m1=new Actualite();
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                 m1 = new Actualite(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getInt(4));
+                m1 = new Actualite(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
 
                 System.out.println(m1);
             }
@@ -140,6 +140,20 @@ public class ServiceActualite implements IService <Actualite>  {
     @Override
     public Actualite getOne(Actualite t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
+     public void deleteById(int id_actulite) {
+        String query = "DELETE FROM `actualite` WHERE id_actualité=?";
+        try {
+           PreparedStatement statement = cnx.prepareStatement(query);
+           statement.setInt(1,id_actulite);
+            statement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
     }
         

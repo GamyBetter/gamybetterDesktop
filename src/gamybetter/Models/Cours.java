@@ -143,8 +143,14 @@ public class Cours {
 
     @Override
     public String toString() {
-        return "Cours{" + "id=" + id + ", id_coach=" + id_coach + ", email_coach=" + email_coach + ", categorie=" + categorie + ", jeu=" + jeu + ", prix=" + prix + ", lien_session=" + lien_session + '}';
+        return "Cours{" + "id=" + id + ", id_coach=" + id_coach + ", email_coach=" + email_coach + ", categorie=" + categorie + ", jeu=" + jeu + ", prix=" + prix + ", lien_session=" + lien_session + ", liste_personnes=" + liste_personnes + ", id_session=" + id_session + '}';
     }
+    
+    public String toString(int id){
+        return "categorie=" + categorie + ", jeu=" + jeu + ", prix=" + prix ;
+    }
+
+
 
     @Override
     public int hashCode() {

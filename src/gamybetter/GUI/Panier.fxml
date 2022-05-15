@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.PanierController">
+   <children>
+      <Label layoutX="563.0" layoutY="7.0" prefHeight="60.0" prefWidth="187.0" text="My Chart" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="47.0" />
+         </font>
+      </Label>
+      <Label fx:id="user_id" layoutX="51.0" layoutY="29.0" prefHeight="33.0" prefWidth="44.0" />
+      <Label fx:id="id_com" layoutX="289.0" layoutY="37.0" prefHeight="17.0" prefWidth="54.0" />
+      <JFXButton layoutX="936.0" layoutY="715.0" onAction="#Remove" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #f47a60;" styleClass="add-btn" stylesheets="@Css1.css" text="REMOVE" AnchorPane.leftAnchor="936.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton layoutX="1131.0" layoutY="715.0" onAction="#Buy" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #7fe7dc;" styleClass="add-btn" stylesheets="@Css1.css" text="BUY CHART">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </JFXButton>
+      <Label alignment="CENTER" layoutX="100.0" layoutY="75.0" prefHeight="17.0" prefWidth="129.0" text="Product Name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="508.0" layoutY="75.0" prefHeight="17.0" prefWidth="129.0" text="Price">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="715.0" layoutY="75.0" prefHeight="17.0" prefWidth="129.0" text="Quantity">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1122.0" layoutY="75.0" prefHeight="25.0" prefWidth="169.0" text="Product Total Price">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="910.0" layoutY="75.0" prefHeight="25.0" prefWidth="169.0" text="Discount">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXListView fx:id="Chart" layoutX="4.0" layoutY="100.0" prefHeight="526.0" prefWidth="1291.0" />
+      <Label fx:id="Labelprix_unit" layoutX="144.0" layoutY="37.0" prefHeight="17.0" prefWidth="54.0" />
+      <JFXButton layoutX="49.0" layoutY="715.0" onAction="#receiveData" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #7fe7dc;" styleClass="add-btn" stylesheets="@Css1.css" text="ADD ORDER">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton layoutX="14.0" layoutY="9.0" onAction="#GobackToShop" prefHeight="50.0" prefWidth="150.0" styleClass="search-button" stylesheets="@Css1.css" text="&lt; TO SHOP">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </JFXButton>
+      <Label layoutX="975.0" layoutY="630.0" prefHeight="43.0" prefWidth="129.0" text="TOTAL PRICE :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalprice" layoutX="1108.0" layoutY="630.0" prefHeight="43.0" prefWidth="109.0">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

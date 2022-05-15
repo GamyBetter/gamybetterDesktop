@@ -72,7 +72,6 @@ public class ViewPublicationController implements Initializable {
 @FXML 
 private JFXTextField tfRecherche;
         
-         @FXML
     private ImageView idImage;
     
             @FXML
@@ -93,8 +92,7 @@ private JFXTextField tfRecherche;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        Image imabak=new Image("/gamybetter/Ressources/valorant.jpg");
-       idImage.setImage(imabak);
+     
          Image icon=new Image("/gamybetter/Ressources");
        btback.setImage(icon);
         loadTableView();

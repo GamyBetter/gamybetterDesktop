@@ -17,10 +17,10 @@ public class DataSource {
 
     private Connection cnx;
     private String server = "";
-    private String url = "jdbc:mysql://www.phpmyadmin.co:3306/db_structure.php?server=1&db=sql11472700";
+    private String url = "jdbc:mysql://localhost:3306/pidev";
     private String user = "root";
     private String password = "";
-    private String database_name = "gamybetter";
+    private String database_name = "pidev";
     
 
     private static DataSource instance;
@@ -36,15 +36,17 @@ public class DataSource {
 
     private DataSource() {
         try {
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamybetter","root","");
-            System.out.println("Connected !");
+            CurrentUser.setCurrentUser(1);
+            cnx = DriverManager.getConnection(this.url,this.user,this.password);
+            System.out.println("Connected to Database !");
         } catch (SQLException ex) {
+            System.out.println("Error here"+ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
 
+
     public Connection getCnx() {
         return cnx;
     }
-
 }

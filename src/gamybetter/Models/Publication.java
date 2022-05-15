@@ -17,6 +17,15 @@ public class Publication {
     private String  publication, titre;
    // Date date;
     private String date;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Publication(Object id_personne, Object publication, Object titre, Object nbr_commentaire,Object date) {
         this.id_personne =(int) id_personne;
@@ -25,15 +34,49 @@ public class Publication {
         this.nbr_commentaire =(int) nbr_commentaire;
        
         this.date =(String) date;
+      
         
 
     }
+
+    public Publication(int id_publication,int id_personne, String publication, String titre, int nbr_commentaire, String date, String image) {
+        this.id_publication = id_publication;
+            this.id_personne = id_personne;
+        this.publication = publication;
+       this.titre = titre;
+        this.nbr_commentaire = nbr_commentaire;
+    
+        this.date = date;
+        this.image = image;
+    }
+
+    public Publication(int id_personne, String publication, String titre) {
+        this.id_personne = id_personne;
+        this.publication = publication;
+        this.titre = titre;
+    }
+
+    public Publication(String publication, String titre, String image) {
+        this.publication = publication;
+        this.titre = titre;
+        this.image = image;
+    }
+    
+    
 
     public Publication(String publication, String titre,LocalDate date) {
         this.publication = publication;
         this.titre = titre;
        // this.date = date;
     }
+
+    public Publication(String publication, String titre, String image,LocalDate date) {
+        this.publication = publication;
+        this.titre = titre;
+        this.image = image;
+    }
+    
+    
     
  
       public Publication(Object id_publication,Object id_personne, Object publication, Object titre, Object nbr_commentaire,Object date) {
@@ -163,7 +206,7 @@ public class Publication {
    
     @Override
     public String toString() {
-        return       publication+"\t \t" +titre+ "\t \t" + date ;
+        return       publication+"\t \t" +titre+ "\t \t" + date+"\t\t" +image+"\t\t" ;
                 
        /*"Publication{" + "idPublication=" + id_publication + ", nbr_commentaire=" + nbr_commentaire + ", id_personne=" + id_personne + ", publication=" + publication + ", titre=" + titre + ", date=" + date + '}';*/
     }
