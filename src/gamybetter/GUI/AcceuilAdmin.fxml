@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.AcceuilAdminController">
+   <children>
+      <JFXButton layoutX="237.0" layoutY="246.0" onAction="#servicePersonne" prefHeight="217.0" prefWidth="264.0" styleClass="search-button" stylesheets="@style.css" text="Service Personne" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="760.0" layoutY="241.0" onAction="#serviceReclamation" prefHeight="226.0" prefWidth="279.0" styleClass="search-button" stylesheets="@style.css" text="ServiceReclamation" textFill="WHITE">
+         <font>
+            <Font size="27.0" />
+         </font></JFXButton>
+      <Label layoutX="110.0" layoutY="44.0" prefHeight="62.0" prefWidth="1035.0" text="                       Bienvenue à l'espace Admin" textFill="#ae1313">
+         <font>
+            <Font size="42.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="24.0" layoutY="731.0" onAction="#boutonRetour" prefHeight="32.0" prefWidth="62.0" text="Retour" />
+   </children>
+</AnchorPane>

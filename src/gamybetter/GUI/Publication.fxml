@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.PublicationController">
+   <children>
+      <ImageView fx:id="idavatr" fitHeight="59.0" fitWidth="119.0" layoutX="378.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../Ressources/Avatar.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="idImage" fitHeight="800.0" fitWidth="1300.0" layoutX="1.0" layoutY="-2.0" opacity="0.58" pickOnBounds="true">
+         <image>
+            <Image url="@../Ressources/valorant.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tfidpublication" layoutX="900.0" layoutY="501.0" opacity="0.76" prefHeight="31.0" prefWidth="86.0" promptText="id publication" visible="false" />
+      <Text fx:id="errPublication" layoutX="419.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" wrappingWidth="199.99999058246613" />
+      <JFXTextArea fx:id="tfPublic" layoutX="254.0" layoutY="194.0" prefHeight="321.0" prefWidth="731.0" promptText="Que voulez-vous dire?" styleClass="shopping-online-card" stylesheets="@Css1.css">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </JFXTextArea>
+      <JFXButton fx:id="tfPublier" layoutX="323.0" layoutY="567.0" onAction="#PublierPub" prefHeight="31.0" prefWidth="593.0" text="Publier">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="tfNbrCom" layoutX="178.0" layoutY="649.0" />
+      <JFXDatePicker fx:id="tfDate" layoutX="772.0" layoutY="169.0" visible="false" />
+      <Label alignment="CENTER" layoutX="481.0" layoutY="48.0" prefHeight="47.0" prefWidth="339.0" styleClass="container" stylesheets="@Css1.css" text="Creer une publication" textAlignment="CENTER" textFill="#a12d2d">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="9.0" layoutY="61.0" prefHeight="21.0" prefWidth="77.0" text="&lt;&lt;Amis&gt;&gt;" />
+      <JFXTextField fx:id="tfTitre" alignment="CENTER" layoutX="256.0" layoutY="127.0" prefHeight="42.0" prefWidth="260.0" promptText="Titre" styleClass="free-delivery-card" stylesheets="@Css1.css" />
+   </children>
+</AnchorPane>

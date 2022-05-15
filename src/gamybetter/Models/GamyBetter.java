@@ -15,57 +15,48 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import gamybetter.Services.ServiceCommande;
-import gamybetter.Services.ServiceMatch;
 
 import gamybetter.Services.ServiceProduit;
+import gamybetter.Outils.Outils1;
+import gamybetter.Services.ServiceEquipe;
+import gamybetter.Services.ServicePersonne;
 
 import gamybetter.Utils.DataSource;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
  * @author skon1
  */
-public class GamyBetter {
+public class GamyBetter extends Application {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        DataSource ds = DataSource.getInstance();
+    public static void main(String[] args){
+           DataSource ds = DataSource.getInstance();
         //Algorithme pour les ids (ajout des ids et récupération des ids)
-        
-        //creation equipe
-        //creation personne
-         
-        //ajout de plusieurs equipes à un evenements
-        
-        //ajout de produits
-        //ajout de commande pour une personne contenant plusieurs produits
-        
-        //ajout d'une session
-        //ajout d'un cours qui appartient à une session pour lequel plusieurs personnes sont inscrits
-        
-        
-        //ajout d'un match appartenant à une personne et une equipe
-        //ajout d'une actualité contenant un match et appartenant à une personne
-       // ServiceActualite sp = new ServiceActualite();
-       // Actualite ac1 = new Actualite ("mariem","belghith",110,4);
-         //sp.ajouter(ac1);
-          //sp.modifier(ac1);
-      // sp.deleteById(6);
-        // sp.supprimer(ac1);
-      // sp.getAll();
-        // sp.getById(6);
-         //ServiceMatch sm = new ServiceMatch();
-         //Match ac1 = new Match (100,9,"lol","ddd","jddjjd","jddjjd","24-12-1998","jddjjd",7,7);
-        // sm.ajouter(ac1);
-         //sm.modifier(ac1);
-         //sm.supprimer(ac1);
-      //  sm.getAll();
-       // sm.getById(109);
-       // sm.deleteById(79);
-        
+
+        //Instancier les services
+        ServicePersonne personneService = new ServicePersonne();
+        ServiceEquipe equipeService = new ServiceEquipe();
+              ServicePublication sp = new ServicePublication();
+        launch(args);
     }
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        System.out.println(getClass().getResource("../GUI/AjoutCours.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/AjoutCours.fxml"));
+        primaryStage.setTitle("Cours page");
+        primaryStage.setScene(new Scene(root,1200,800));
+        primaryStage.show();
+    }
+  
+    
+    
 }

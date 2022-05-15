@@ -20,11 +20,13 @@ import gamybetter.Utils.DataSource;
  * @author snoussi amine
  */
 public class ServiceEquipe implements IService<Equipe> {
+
     Connection cnx = DataSource.getInstance().getCnx();
+
     //Object id_coach, Object nom_eq, Object description_equipe
     @Override
     public void ajouter(Equipe t) {
-       String query = "INSERT INTO `equipe`(`id_coach`, `nom_eq`, `description_equipe`) VALUES ('" + t.getId_coach() + "','" + t.getNom_eq() + "','" +t.getDescription_equipe()+"')";
+        String query = "INSERT INTO `equipe`(`id_coach`, `nom_eq`, `description_equipe`) VALUES ('" + t.getId_coach() + "','" + t.getNom_eq() + "','" + t.getDescription_equipe() + "')";
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(query);
@@ -35,17 +37,16 @@ public class ServiceEquipe implements IService<Equipe> {
 
     @Override
     public boolean modifier(Equipe t) {
-        String query = "UPDATE `equipe` SET `id_coach`=?,`nom_eq`=?,`description_equipe`=?,`nom_coach`=? WHERE `id_equipe`=" + t.getId_equipe();
+        String query = "UPDATE `equipe` SET `id_coach`=?,`nom_eq`=?,`description_equipe`=? WHERE `id_equipe`=" + t.getId_equipe();
         boolean rowUpdated = false;
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.setObject(1, t.getId_coach());
             statement.setObject(2, t.getNom_eq());
             statement.setObject(3, t.getDescription_equipe());
-       
-           
+
             rowUpdated = statement.executeUpdate() > 0;
-            
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -75,7 +76,7 @@ public class ServiceEquipe implements IService<Equipe> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3),rs.getObject(4));
+                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4));
                 list.add(e);
 
             }
@@ -88,13 +89,13 @@ public class ServiceEquipe implements IService<Equipe> {
 
     @Override
     public Equipe getOne(Equipe t) {
-       System.out.println(t.getId_equipe()+ "---80");
+        System.out.println(t.getId_equipe() + "---80");
         String query = "select * from `equipe` where id_equipe=" + t.getId_equipe();
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3),rs.getObject(4));
+                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4));
                 return e;
             }
 
@@ -112,7 +113,7 @@ public class ServiceEquipe implements IService<Equipe> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3),rs.getObject(4));
+                Equipe e = new Equipe(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4));
 
                 return e;
             }
@@ -123,6 +124,4 @@ public class ServiceEquipe implements IService<Equipe> {
         return new Equipe();
     }
 
-
-    
 }
