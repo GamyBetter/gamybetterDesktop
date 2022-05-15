@@ -76,7 +76,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
     private Label user_id;
     
     
-    private void GenerateCommandeId() {
+    /*private void GenerateCommandeId() {
 
             Commands = sc.getAll();
             int id = Commands.size();
@@ -97,7 +97,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
             }
 
         //customer Count Code
-    }
+    }*/
     
     
     public void setQuantity(String q) {
@@ -107,8 +107,8 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
      public void addOnAction() {
          
                 sp.add(new Panier(
-                 id_com.getText(),       
-                 ItemCode.getText(),
+                 Integer.parseInt(id_com.getText()),       
+                 Integer.parseInt(ItemCode.getText()),
                  qty.getText()));
 
     }
@@ -127,7 +127,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
     }
                  
          public void loadTableView() {
-	obListPanier =FXCollections.observableArrayList(sp.getItems(id_com.getText()));
+	obListPanier =FXCollections.observableArrayList(sp.getItems(Integer.parseInt(id_com.getText())));
         Chart.setItems(obListPanier);
     }
     
@@ -138,7 +138,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         //addOnAction();
 
        
-        loadTableView();
+        //loadTableView();
         
     }
 
@@ -151,7 +151,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
   Panier panier = (Panier) stage.getUserData();
   // Step 3
   id_com.setVisible(false);
-  id_com.setText(panier.getId_commande());
+  id_com.setText(String.valueOf(panier.getId_commande()));
 
   if(sp.add(panier)){
             
@@ -227,6 +227,26 @@ obListPanier.forEach((i) -> {
        double prix=Double.parseDouble(totalprice.getText());
        sc.SetCommandPrice(c,prix );
         
+    }
+
+    @FXML
+    private void menu(ActionEvent event) {
+         Node node = (Node) event.getSource();
+         Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+        try {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+    
+        
+    
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    
+        stage.show();
+      } catch (IOException e) {
+            System.err.println(String.format("Error: %s", e.getMessage()));
+    }
     }
 
 

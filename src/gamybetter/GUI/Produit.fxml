@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#click" prefHeight="250.0" prefWidth="250.0" stylesheets="@Css1.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ProduitController">
+<AnchorPane onMousePressed="#click" prefHeight="269.0" prefWidth="258.0" style="-fx-background-color: #383838;" stylesheets="@Css1.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ProduitController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="215.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" prefHeight="250.0" prefWidth="262.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="171.0" prefWidth="250.0" styleClass="shadow" stylesheets="@Css1.css">
                <children>
-                  <ImageView fx:id="img" fitHeight="163.0" fitWidth="200.0" layoutX="25.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="img" fitHeight="155.0" fitWidth="237.0" layoutX="13.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Ressources/kisspng-2-17-league-of-legends-world-championship-2-16-lea-sgl-lol-5b6d458eef5175.9998682215338878869803.png" />
                      </image>
@@ -26,14 +26,14 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="discount" alignment="CENTER" layoutX="206.0" layoutY="-5.0" prefHeight="52.0" prefWidth="46.0" style="-fx-background-color: red; -fx-background-radius: 1em;" text="0" textFill="WHITE">
+                  <Label fx:id="discount" alignment="CENTER" layoutX="206.0" layoutY="-5.0" prefHeight="52.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 1em;" text="0" textFill="#ff0909">
                      <font>
-                        <Font size="21.0" />
+                        <Font name="System Bold" size="21.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="38.0" prefWidth="246.0" styleClass="shopping-online-card" stylesheets="@Css1.css" text="Name">
+            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="38.0" prefWidth="246.0" style="-fx-background-color: white;" styleClass="shopping-online-card" stylesheets="@Css1.css" text="Name">
                <font>
                   <Font name="Cambria" size="24.0" />
                </font>
@@ -41,7 +41,7 @@
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="priceLable" alignment="CENTER" prefHeight="49.0" prefWidth="101.0" styleClass="free-delivery-card" stylesheets="@Css1.css" text="\$$$">
+            <Label fx:id="priceLable" alignment="CENTER" prefHeight="49.0" prefWidth="101.0" style="-fx-border-radius: 20;" styleClass="free-delivery-card" stylesheets="@Css1.css" text="\$$$">
                <font>
                   <Font name="Cambria Bold" size="18.0" />
                </font>

@@ -70,8 +70,6 @@ public class CommandFormController implements Initializable {
     @FXML
     private JFXTextField Discount;
     @FXML
-    private JFXTextField ttLastname;
-    @FXML
     private JFXTextField txtAdresse;
     @FXML
     private JFXTextField txtTotalPrice;
@@ -103,6 +101,7 @@ public class CommandFormController implements Initializable {
     private Label DiscountTotal;
     @FXML
     private JFXButton SMS;
+    
 double prix_discounted =0;
 
 Alert alertinfo = new Alert(Alert.AlertType.INFORMATION);
@@ -117,7 +116,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         // TODO
         txtAdminName.setText(sc.getAdmin(1));//CurrentUser.getCurrentUser()
         System.out.println(txtAdminName.getText());
-        txtIcomCode.setVisible(false);
+        txtIcomCode.setVisible(true);
         txtDate.setText(strDate);
         loadAllCommands();
         
@@ -242,7 +241,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         
         Double price = Double.parseDouble(txtTotalPrice.getText());
         
-        c.setId_commande(txtIcomCode.getText());
+        c.setId_commande(Integer.parseInt(txtIcomCode.getText()));
         c.setNom_personne(txtFirstName.getText());
         c.setAddresse_personne(txtAdresse.getText()); 
         c.setPrix_totale(price);
@@ -281,10 +280,10 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         if(CheckFields()){
             Commande c =new Commande();
         
-        Double price = Double.parseDouble(txtTotalPrice.getText());
+        Double price = Double.parseDouble(DiscountTotal.getText());
         int disc = Integer.parseInt(Discount.getText());
         
-        c.setId_commande(txtIcomCode.getText());
+        c.setId_commande(Integer.parseInt(txtIcomCode.getText()));
         c.setNom_personne(txtFirstName.getText());
         c.setAddresse_personne(txtAdresse.getText()); 
         c.setDate(date);
@@ -341,11 +340,11 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
 	public void changed(ObservableValue<? extends Commande> arg0, Commande arg1, Commande arg2) {
 
 	Commande c = ListView.getSelectionModel().getSelectedItem();
-            
+         String id = String.valueOf(c.getId_commande());   
         String price = String.valueOf(c.getPrix_totale());
         String discount = String.valueOf(c.getDiscount());
         
-            txtIcomCode.setText(c.getId_commande());
+            txtIcomCode.setText(id);
             txtFirstName.setText(c.getNom_personne());
             txtAdresse.setText(c.getAddresse_personne());
             Discount.setText(discount);
@@ -389,7 +388,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
                     + "------------------------------------------------------------------------------------------------------------------------------\n"
                     + "\t PRODUCT NAME \t\t\t QUANTITY \t Discount on item \t TOTAL PRICE  \n"
                     + "------------------------------------------------------------------------------------------------------------------------------\n";
-                            String query = "select itemCode,quanite_order,prix_unitaire  from `panier` where id_commande = '"+ txtIcomCode.getText()+"'";
+                            String query = "select id_produit,quantite_ordered,prix_unitaire  from `panier` where id_commande = "+ txtIcomCode.getText();
                             
                             try {
                                     Statement st = cnx.createStatement();
@@ -397,7 +396,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
                                     
                                     if (rs.next()) {
                                         System.out.println(rs.getObject(1));
-                                        String sql ="Select nom_produit From produit  Where itemCode ='"+rs.getObject(1)+"'";
+                                        String sql ="Select nom_produit From produit  Where id_produit ="+rs.getObject(1);
                                             Statement stsql = cnx.createStatement();
                                             ResultSet rssql = stsql.executeQuery(sql);
                                             rssql.next();

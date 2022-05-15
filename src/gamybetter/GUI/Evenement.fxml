@@ -11,47 +11,47 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.EvenementController">
    <top>
-      <Pane prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: #171e22;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="16.0" layoutY="20.0" text="Nombre Equipe">
+            <Label layoutX="16.0" layoutY="20.0" text="Nombre Equipe" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font></Label>
-            <Label layoutX="231.0" layoutY="20.0" text="Nom Evenement">
+            <Label layoutX="231.0" layoutY="20.0" text="Nom Evenement" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font></Label>
-            <Label layoutX="471.0" layoutY="16.0" text="Description">
+            <Label layoutX="471.0" layoutY="16.0" text="Description" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font></Label>
-            <Label layoutX="676.0" layoutY="16.0" text="Date_Deb">
+            <Label layoutX="676.0" layoutY="16.0" text="Date_Deb" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font></Label>
-            <Label layoutX="875.0" layoutY="16.0" text="Date_Fin">
+            <Label layoutX="875.0" layoutY="16.0" text="Date_Fin" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font></Label>
-            <Label layoutX="1042.0" layoutY="16.0" text="Prix">
+            <Label layoutX="1042.0" layoutY="16.0" text="Prix" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font></Label>
-            <Label layoutX="1152.0" layoutY="16.0" text="Liste_Equipe">
+            <Label layoutX="1152.0" layoutY="16.0" text="Liste_Equipe" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font></Label>
          </children></Pane>
    </top>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #171e22;" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listevents" layoutX="14.0" layoutY="32.0" prefHeight="416.0" prefWidth="1259.0" stylesheets="@style.css">
+            <JFXListView fx:id="listevents" layoutX="14.0" layoutY="32.0" prefHeight="416.0" prefWidth="1259.0" style="-fx-background-color: #989898;" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="transparent" />
                   <String fx:value="shadow" />
                </styleClass></JFXListView>
-            <JFXButton fx:id="BtnParticiper" layoutX="557.0" layoutY="539.0" prefHeight="54.0" prefWidth="227.0" styleClass="chosen-fruit-card" stylesheets="@style.css" text="Participer">
+            <JFXButton fx:id="BtnParticiper" layoutX="557.0" layoutY="539.0" prefHeight="54.0" prefWidth="227.0" style="-fx-background-color: #dd163b;" styleClass="chosen-fruit-card" stylesheets="@style.css" text="Participer" textFill="#fcfcfc">
                <font>
                   <Font size="25.0" />
                </font></JFXButton>

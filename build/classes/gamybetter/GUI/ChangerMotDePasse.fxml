@@ -9,30 +9,30 @@
 
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ChangerMotDePasseController">
    <children>
-      <Pane layoutX="3.0" layoutY="4.0" prefHeight="793.0" prefWidth="1294.0" style="-fx-background-color: white;">
+      <Pane layoutX="-3.0" layoutY="-3.0" prefHeight="807.0" prefWidth="1307.0" style="-fx-background-color: #171e22;">
          <children>
-            <Label alignment="CENTER" layoutX="358.0" layoutY="97.0" prefHeight="63.0" prefWidth="529.0" styleClass="chosen-fruit-card" stylesheets="@style.css" text="Choisissez votre nouveau mot de passe">
+            <Label alignment="CENTER" layoutX="358.0" layoutY="97.0" prefHeight="63.0" prefWidth="529.0" styleClass="chosen-fruit-card" stylesheets="@style.css" text="Choisissez votre nouveau mot de passe" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <JFXPasswordField fx:id="newpassword" alignment="CENTER" layoutX="428.0" layoutY="367.0" prefHeight="60.0" prefWidth="400.0" promptText="Nouveau mot de passe" styleClass="right-bar" stylesheets="@style.css">
+            <JFXPasswordField fx:id="newpassword" alignment="CENTER" layoutX="428.0" layoutY="367.0" prefHeight="60.0" prefWidth="400.0" promptText="Nouveau mot de passe" style="-fx-background-color: white;" styleClass="right-bar" stylesheets="@style.css" unFocusColor="WHITE">
                <font>
                   <Font size="20.0" />
                </font></JFXPasswordField>
-            <JFXPasswordField fx:id="confirmer" alignment="CENTER" layoutX="428.0" layoutY="505.0" prefHeight="60.0" prefWidth="400.0" promptText="confirmer" styleClass="right-bar" stylesheets="@style.css">
+            <JFXPasswordField fx:id="confirmer" alignment="CENTER" layoutX="428.0" layoutY="505.0" prefHeight="60.0" prefWidth="400.0" promptText="confirmer" style="-fx-background-color: white;" styleClass="right-bar" stylesheets="@style.css" unFocusColor="WHITE">
                <font>
                   <Font name="Cambria" size="22.0" />
                </font></JFXPasswordField>
-            <JFXButton layoutX="531.0" layoutY="649.0" onAction="#safeNewPassword" prefHeight="73.0" prefWidth="194.0" style="-fx-background-color: #FC766AFF;" styleClass="btnHome" stylesheets="@style.css" text="Enregistrer">
+            <JFXButton layoutX="531.0" layoutY="649.0" onAction="#safeNewPassword" prefHeight="73.0" prefWidth="194.0" style="-fx-background-color: #dd163b;" styleClass="btnHome" stylesheets="@style.css" text="Enregistrer" textFill="WHITE">
                <font>
-                  <Font size="29.0" />
+                  <Font name="Cambria" size="29.0" />
                </font></JFXButton>
-            <JFXButton layoutX="14.0" layoutY="14.0" onAction="#boutonRetour" prefHeight="43.0" prefWidth="94.0" style="-fx-background-color: #5B84B1FF;" styleClass="fruit-item" stylesheets="@style.css" text="Retour">
+            <JFXButton layoutX="14.0" layoutY="14.0" onAction="#boutonRetour" prefHeight="43.0" prefWidth="94.0" style="-fx-background-color: #989898;" styleClass="fruit-item" stylesheets="@style.css" text="Retour">
                <font>
-                  <Font size="19.0" />
+                  <Font name="Cambria" size="19.0" />
                </font></JFXButton>
-            <JFXPasswordField fx:id="oldPassword" alignment="CENTER" layoutX="428.0" layoutY="240.0" prefHeight="60.0" prefWidth="400.0" promptText="Ancien mot de passe" styleClass="right-bar" stylesheets="@style.css">
+            <JFXPasswordField fx:id="oldPassword" alignment="CENTER" layoutX="428.0" layoutY="240.0" prefHeight="60.0" prefWidth="400.0" promptText="Ancien mot de passe" style="-fx-background-color: white;" styleClass="right-bar" stylesheets="@style.css" unFocusColor="WHITE">
                <font>
                   <Font size="19.0" />
                </font></JFXPasswordField>

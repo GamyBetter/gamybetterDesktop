@@ -3,27 +3,37 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root1" prefHeight="938.0" prefWidth="1428.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.DashboardController">
+<AnchorPane fx:id="root1" prefHeight="938.0" prefWidth="1461.0" style="-fx-background-color: #303e47;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.DashboardController">
    <children>
       <Pane prefHeight="81.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0);" />
       <Pane layoutY="849.0" prefHeight="89.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0);" />
-      <Pane fx:id="context" layoutX="185.0" layoutY="6.0" prefHeight="926.0" prefWidth="1234.0" />
-      <VBox alignment="TOP_CENTER" prefHeight="938.0" prefWidth="185.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0); -fx-background-radius: 30;">
+      <Pane fx:id="context" layoutX="214.0" layoutY="17.0" prefHeight="908.0" prefWidth="1226.0" />
+      <VBox alignment="TOP_CENTER" prefHeight="938.0" prefWidth="202.0" style="-fx-background-color: #171e22; -fx-background-radius: 0;">
          <children>
-            <JFXButton fx:id="dtnDashBoard" buttonType="RAISED" onAction="#UsersOnAction" prefHeight="87.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="USERS" textFill="WHITE">
+            <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../gamybetterSymfony/public/front/assets/images/gamybetterlogo.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </ImageView>
+            <JFXButton buttonType="RAISED" onAction="#HomePage" prefHeight="50.0" prefWidth="184.0" style="-fx-background-color: #dd163b;" styleClass="right-bar" stylesheets="@style.css" text="Home" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
+                  <Insets bottom="10.0" top="50.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#HomePage" prefHeight="88.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="HOME PAGE" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#Services" prefHeight="50.0" prefWidth="185.0" style="-fx-background-color: #dd163b;" styleClass="right-bar" stylesheets="@style.css" text="Products" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
@@ -31,7 +41,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#Services" prefHeight="90.0" prefWidth="185.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="SERVICES" textFill="WHITE">
+            <JFXButton fx:id="commandeonACtion" buttonType="RAISED" onAction="#Commande" prefHeight="50.0" prefWidth="185.0" style="-fx-background-color: #dd163b;" styleClass="right-bar" stylesheets="@style.css" text="Commands" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
@@ -39,7 +49,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#Sessions" prefHeight="94.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="SESSIONS" textFill="WHITE">
+            <JFXButton fx:id="EventonAction" buttonType="RAISED" onAction="#Events" prefHeight="50.0" prefWidth="184.0" style="-fx-background-color: #dd163b;" styleClass="right-bar" stylesheets="@style.css" text="Events" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
@@ -47,7 +57,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#Events" prefHeight="88.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="EVENTS" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#Blog" prefHeight="50.0" prefWidth="184.0" style="-fx-background-color: #dd163b;" styleClass="right-bar" stylesheets="@style.css" text="Blog" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
@@ -55,7 +65,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#Blog" prefHeight="99.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="BLOG" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#Match" prefHeight="50.0" prefWidth="184.0" style="-fx-background-color: #dd163b;" styleClass="right-bar" stylesheets="@style.css" text="Matchs" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
@@ -63,25 +73,33 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#Match" prefHeight="99.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="MATCH" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#Actuali" prefHeight="50.0" prefWidth="184.0" style="-fx-background-color: #dd163b;" styleClass="right-bar" stylesheets="@style.css" text="Actualities" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#Cours" prefHeight="99.0" prefWidth="184.0" style="-fx-background-color: #5F4B8BFF;" styleClass="right-bar" stylesheets="@style.css" text="COURS" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#Sessions" prefHeight="50.0" prefWidth="184.0" style="-fx-background-color: #dd163b;" styleClass="right-bar" stylesheets="@style.css" text="Sessions" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="19.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#Cours" prefHeight="50.0" prefWidth="184.0" style="-fx-background-color: #dd163b;" styleClass="right-bar" stylesheets="@style.css" text="Courses" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="100.0" />
                </VBox.margin>
             </JFXButton>
             <Pane prefHeight="85.0" prefWidth="185.0">
                <children>
-                  <JFXButton buttonType="RAISED" layoutY="8.0" onAction="#btnLogOut" prefHeight="5.0" prefWidth="185.0" style="-fx-background-color: #aed6dc;" text="LOGOUT" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" layoutX="9.0" layoutY="8.0" onAction="#btnLogOut" prefHeight="5.0" prefWidth="185.0" style="-fx-background-color: white;" text="LOGOUT">
                      <font>
                         <Font name="System Bold" size="32.0" />
                      </font>

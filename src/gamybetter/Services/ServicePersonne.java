@@ -13,39 +13,40 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
  *
  * @author Admin
  */
+  
 public class ServicePersonne implements IService<Personne> {
-
+SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+    Date date = new Date(); 
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
 
     public void ajouter(Personne t) {
         try {
-            String req = "INSERT INTO `personne` (`nom_personne`,`contact`,`rating`,`ig_rank`,`mot_de_passe`,`role`,`email`,`description`,`competence`,`jeux`,`heros`,`ig_name`,`ig_role`,`prix`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String req = "INSERT INTO `personne` (`nom`,`prenom`,`contact`,`username`,`age`,`mot_de_passe`,`role`,`email`,`description`,`DateofBirth`,`image`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = cnx.prepareStatement(req);
             String passwordCryption = Encryption.crypt(t.getMot_de_passe());
             
-            ps.setString(1, t.getNom_personne());
-            ps.setInt(2, t.getContact());
-            ps.setInt(3, t.getRating());
-            ps.setInt(4, t.getIg_rank());
-            ps.setString(5, passwordCryption);
-            ps.setString(6, t.getRole());
-            ps.setString(7, t.getEmail());
-            ps.setString(8, t.getDescription());
-            ps.setString(9, t.getCompetence());
-            ps.setString(10, t.getJeux());
-            ps.setString(11, t.getHeros());
-            ps.setString(12, t.getIg_name());
-            ps.setString(13, t.getIg_role());
-            ps.setFloat(14, t.getPrix());
+            ps.setObject(1, t.getNom_personne());
+            ps.setObject(2, t.getPrenom());
+            ps.setInt(3, t.getContact());
+            ps.setObject(4, t.getUsername());
+            ps.setInt(5, t.getAge());
+            ps.setObject(6, passwordCryption);
+            ps.setObject(7, t.getRole());
+            ps.setObject(8, t.getEmail());
+            ps.setObject(9, t.getDescription());
+            ps.setObject(10, formatter.format(date));
+            ps.setObject(11, t.getImage());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -56,11 +57,11 @@ public class ServicePersonne implements IService<Personne> {
     public List<Personne> getAll() {
         List<Personne> list = new ArrayList<>();
         try {
-            String req = "Select * from `personne`";
+            String req = "Select id_personne,`contact`,`age`,`nom`,`prenom`,`mot_de_passe`,`role`,`email`,`description`,`username`,`image`,`DateofBirth` from `personne`";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Personne p = new Personne(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8), rs.getObject(9), rs.getObject(10), rs.getObject(11), rs.getObject(12), rs.getObject(13), rs.getObject(14), rs.getObject(15));
+                Personne p = new Personne(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8), rs.getObject(9), rs.getObject(10), rs.getObject(11), rs.getObject(12));
                 //Personne p = new Personne(); 
                 list.add(p);
             }
@@ -72,27 +73,23 @@ public class ServicePersonne implements IService<Personne> {
 
     @Override
     public boolean modifier(Personne t) {
-        String sql = "UPDATE `personne` SET id_personne=?,nom_personne=?,contact=?,rating=?,ig_rank=?,mot_de_passe=?,role=?,email=?,description=?,competence=?,jeux=?,heros=?,ig_name=?,ig_role=?, prix=?  WHERE id_personne=?";
+        String sql = "UPDATE `personne` SET `nom`=?,`prenom`=?,`contact`=?,`username`=?,`age`=?,`mot_de_passe`=?,`role`=?,`email`=?,`description`=?,`DateofBirth`=?,`image`=? WHERE id_personne=?";
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
             String passwordCryption = Encryption.crypt(t.getMot_de_passe());
             
-            statement.setInt(1, t.getId_personne());
-            statement.setString(2, t.getNom_personne());
+             statement.setObject(1, t.getNom_personne());
+            statement.setObject(2, t.getPrenom());
             statement.setInt(3, t.getContact());
-            statement.setInt(4, t.getRating());
-            statement.setInt(5, t.getIg_rank());
-            statement.setString(6, passwordCryption);
-            statement.setString(7, t.getRole());
-            statement.setString(8, t.getEmail());
-            statement.setString(9, t.getDescription());
-            statement.setString(10, t.getCompetence());
-            statement.setString(11, t.getJeux());
-            statement.setString(12, t.getHeros());
-            statement.setString(13, t.getIg_name());
-            statement.setString(14, t.getIg_role());
-            statement.setFloat(15, t.getPrix());
-            statement.setInt(16, t.getId_personne());
+            statement.setObject(4, t.getUsername());
+            statement.setInt(5, t.getAge());
+            statement.setObject(6, passwordCryption);
+            statement.setObject(7, t.getRole());
+            statement.setObject(8, t.getEmail());
+            statement.setObject(9, t.getDescription());
+            statement.setObject(10, formatter.format(date));
+            statement.setObject(11, t.getImage());
+            statement.setInt(12, t.getId_personne());
 
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -127,14 +124,14 @@ public class ServicePersonne implements IService<Personne> {
 
     @Override
     public Personne getById(int id) {
-        String query = "select * from personne where id_personne=" + id;
+        String query = "select id_personne,`contact`,`age`,`nom`,`prenom`,`mot_de_passe`,`role`,`email`,`description`,`username`,`image`,`DateofBirth` from personne where id_personne=" + id;
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Personne p1 = new Personne(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8), rs.getObject(9), rs.getObject(10), rs.getObject(11), rs.getObject(12), rs.getObject(13), rs.getObject(14), rs.getObject(15));
+                Personne p = new Personne(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8), rs.getObject(9), rs.getObject(10), rs.getObject(11), rs.getObject(12));
 
-                return p1;
+                return p;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -152,12 +149,12 @@ public class ServicePersonne implements IService<Personne> {
         String query = "select * from personne where email=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
-            ps.setString(1, email);
+            ps.setObject(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Personne p1 = new Personne(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8), rs.getObject(9), rs.getObject(10), rs.getObject(11), rs.getObject(12), rs.getObject(13), rs.getObject(14), rs.getObject(15));
-                System.out.println(p1);
-                return p1;
+                Personne p = new Personne(rs.getObject(1), rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7), rs.getObject(8), rs.getObject(9), rs.getObject(10), rs.getObject(11), rs.getObject(12));
+                System.out.println(p);
+                return p;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

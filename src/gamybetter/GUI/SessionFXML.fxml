@@ -19,47 +19,55 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <VBox layoutY="-1.0" prefHeight="619.0" prefWidth="291.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox layoutY="-1.0" prefHeight="619.0" prefWidth="291.0" style="-fx-background-color: #989898;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label text="Sessions">
+                        <Label text="Sessions" textFill="WHITE">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Cambria" size="24.0" />
                            </font>
                         </Label>
-                        <JFXListView fx:id="list_sessions" prefHeight="661.0" prefWidth="291.0" />
+                        <JFXListView fx:id="list_sessions" prefHeight="661.0" prefWidth="291.0" style="-fx-background-color: #989898;" />
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="124.0" prefWidth="136.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="124.0" prefWidth="136.0" style="-fx-background-color: #989898;">
                <children>
-                  <Label text="Liste des cours">
+                  <Label layoutX="5.0" text="Liste des cours" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Cambria" size="24.0" />
                      </font>
                   </Label>
-                  <JFXListView fx:id="liste_cours" layoutY="29.0" prefHeight="590.0" prefWidth="690.0" />
+                  <JFXListView fx:id="liste_cours" layoutY="29.0" prefHeight="590.0" prefWidth="690.0" style="-fx-background-color: #989898;" />
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
    </center>
    <top>
-      <Pane prefHeight="65.0" prefWidth="1118.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="65.0" prefWidth="1118.0" style="-fx-background-color: #171e22;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton layoutX="959.0" layoutY="14.0" onAction="#switchToCreerSession" prefHeight="25.0" prefWidth="145.0" text="Créer une session" />
+            <JFXButton layoutX="928.0" layoutY="14.0" onAction="#switchToCreerSession" prefHeight="37.0" prefWidth="176.0" style="-fx-background-color: #dd163b;" text="Créer une session" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></JFXButton>
+            <Label layoutX="59.0" layoutY="14.0" onMouseClicked="#Menu" prefHeight="33.0" prefWidth="84.0" text="Menu" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
          </children></Pane>
    </top>
    <left>
-      <Pane prefHeight="615.0" prefWidth="65.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="615.0" prefWidth="65.0" style="-fx-background-color: #171e22;" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Pane prefHeight="621.0" prefWidth="65.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="621.0" prefWidth="65.0" style="-fx-background-color: #171e22;" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Pane prefHeight="159.0" prefWidth="1118.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="159.0" prefWidth="1118.0" style="-fx-background-color: #171e22;" BorderPane.alignment="CENTER">
          <children>
-            <GridPane layoutX="853.0" layoutY="14.0">
+            <GridPane layoutX="730.0" layoutY="14.0" prefHeight="90.0" prefWidth="323.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -70,8 +78,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton onAction="#suppCours" prefHeight="25.0" prefWidth="140.0" text="Supprimer" GridPane.columnIndex="1" />
-                  <JFXButton onAction="#selectCours" prefHeight="25.0" prefWidth="111.0" text="Ajouter" />
+                  <JFXButton onAction="#suppCours" prefHeight="75.0" prefWidth="161.0" style="-fx-background-color: #dd163b;" text="Supprimer" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowSpan="2">
+                     <font>
+                        <Font name="Cambria" size="23.0" />
+                     </font></JFXButton>
+                  <JFXButton onAction="#selectCours" prefHeight="67.0" prefWidth="158.0" style="-fx-background-color: #dd163b;" text="Ajouter" textFill="WHITE" GridPane.rowSpan="2">
+                     <font>
+                        <Font name="Cambria" size="23.0" />
+                     </font></JFXButton>
                </children>
             </GridPane>
          </children>

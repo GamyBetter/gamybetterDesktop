@@ -6,6 +6,8 @@
 package gamybetter.GUI;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.io.IOException;
@@ -57,7 +59,7 @@ public class ProductFormController implements Initializable {
     @FXML
     private JFXTextField txtItemCode;
     @FXML
-    private JFXTextField txtDesc;
+    private JFXTextArea txtDesc;
     @FXML
     private JFXTextField txtUnitPrice;
     @FXML
@@ -90,11 +92,17 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
     private JFXTextField imageURL;
     @FXML
     private JFXTextField discount;
+    @FXML
+    private JFXTextField rating;
+    @FXML
+    private JFXComboBox<String> game;
+    private String [] chgame ={"League Of Legends" ,"Valorant","FIFA", "None"};
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
        txtItemCode.setVisible(false);
+       game.getItems().addAll(chgame);
         loadAllProducts();
     }    
     
@@ -108,7 +116,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
          txtUnitPrice.clear();
         
     }
-    
+    /*
     private void GenerateItemCode() {
 
             produit = sp.getAll();
@@ -131,7 +139,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
             }
 
         //customer Count Code
-    }
+    }*/
     
 
     
@@ -140,7 +148,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
            
            ListView.setItems(listProduit);
            ListView.setPadding(new Insets(10));
-            GenerateItemCode();
+          //  GenerateItemCode();
 
     }
       
@@ -210,23 +218,26 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
     
     private void addOnAction(ActionEvent event) {
 
-            GenerateItemCode();
+//            GenerateItemCode();
         //}
         
             if(CheckFields()){
                 int disc = Integer.parseInt(discount.getText());
         int stock = Integer.parseInt(txtStock.getText());
             double price = Double.parseDouble(txtUnitPrice.getText());
-        Produit p=new Produit(txtItemCode.getText(),
+//             int id_prod = Integer.parseInt(txtItemCode.getText());
+        Produit p=new Produit(
                             imageURL.getText(),
                             txtName.getText(),
                             txtDesc.getText(),
                             txtCategory.getText(),
                             stock,
                             price,
-                            disc
+                            disc,
+                            game.getValue(),
+                            Integer.parseInt(rating.getText())
                              );
-        if(!sp.getById(txtItemCode.getText()).equals(p)){
+        
             
             if(sp.add(p)){
                 alertinfo.setTitle("ADDED SUCCESSFULY ");
@@ -237,7 +248,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
                 ListView.getItems().add(p);
                 ObservableList<Produit> UpdatedListView = ListView.getItems();
                 ListView.setItems(UpdatedListView);
-                 GenerateItemCode();
+               //  GenerateItemCode();
   
             }else{
             alert.setTitle("ADD ERROR ");
@@ -248,13 +259,13 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
            
         
        
-            }else{
+          /*  }else{
                 alert.setTitle("THIS PRODUCT already EXISTs !");
 		//alert.setHeaderText("Results:");
 		alert.setContentText("this product exist , change inserted informations !");
 
 		alert.showAndWait();
-            }
+            }*/
     }
     }
     @FXML
@@ -290,7 +301,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         Double price = Double.parseDouble(txtUnitPrice.getText());
         int stock = Integer.parseInt(txtStock.getText());
         
-        p.setId(txtItemCode.getText());
+        p.setId(Integer.parseInt(txtItemCode.getText()));
         p.setNom_produit(txtName.getText());
         p.setDescription(txtDesc.getText());
         p.setCategorie(txtCategory.getText()); 
@@ -298,6 +309,8 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         p.setImage(imageURL.getText());
         p.setQuantiteStock(stock);
          p.setDiscount(disc);
+         p.setGame(game.getValue());
+         p.setStars(Integer.parseInt(rating.getText()));
          System.out.println("update "+sp.update(p));
        if( sp.update(p)){
             
@@ -330,7 +343,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         Double price = Double.parseDouble(txtUnitPrice.getText());
         int stock = Integer.parseInt(txtStock.getText());
         
-        p.setId(txtItemCode.getText());
+        p.setId(Integer.parseInt(txtItemCode.getText()));
         p.setNom_produit(txtName.getText());
         p.setDescription(txtDesc.getText());
         p.setCategorie(txtCategory.getText()); 
@@ -390,13 +403,16 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
                String price = String.valueOf(p.getPrix());
                String stock = String.valueOf(p.getQuantiteStock());
                String discot = String.valueOf(p.getDiscount());
-            txtItemCode.setText(p.getId());
+             
+            txtItemCode.setText(String.valueOf(p.getId()));
             txtName.setText(p.getNom_produit());
             txtDesc.setText(p.getDescription());
             txtCategory.setText(p.getCategorie());
             txtUnitPrice.setText(price);
             txtStock.setText(stock);
                discount.setText(discot);
+               game.setValue(p.getGame());
+               rating.setText(String.valueOf(p.getStars()));
 	}	
 
     });

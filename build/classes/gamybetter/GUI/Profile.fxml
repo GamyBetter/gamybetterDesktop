@@ -9,32 +9,32 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ProfileController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #171e22;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ProfileController">
    <children>
       <ImageView fx:id="avatar" fitHeight="72.0" fitWidth="91.0" layoutX="241.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Pane layoutX="36.0" layoutY="209.0" prefHeight="313.0" prefWidth="443.0" style="-fx-border-color: black;">
          <children>
-            <JFXTextArea fx:id="champDescription" layoutX="18.0" layoutY="38.0" prefHeight="235.0" prefWidth="397.0" />
-            <Label layoutX="4.0" layoutY="6.0" prefHeight="34.0" prefWidth="131.0" text=" Description :">
+            <JFXTextArea fx:id="champDescription" layoutX="18.0" layoutY="38.0" prefHeight="235.0" prefWidth="397.0" style="-fx-background-color: #989898;" />
+            <Label layoutX="4.0" layoutY="6.0" prefHeight="34.0" prefWidth="131.0" text=" Description :" textFill="WHITE">
                <font>
                   <Font size="21.0" />
                </font></Label>
          </children></Pane>
-      <Pane layoutX="679.0" layoutY="209.0" prefHeight="313.0" prefWidth="356.0" style="-fx-border-color: black;" />
-      <Label layoutX="117.0" layoutY="133.0" prefHeight="34.0" prefWidth="69.0" text=" Role :">
+      <Pane layoutX="679.0" layoutY="209.0" prefHeight="313.0" prefWidth="356.0" style="-fx-background-color: #989898;" />
+      <Label layoutX="117.0" layoutY="133.0" prefHeight="34.0" prefWidth="69.0" text=" Role :" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <JFXTextField fx:id="role" layoutX="214.0" layoutY="124.0" prefHeight="34.0" prefWidth="260.0" />
-      <JFXButton layoutX="838.0" layoutY="14.0" onAction="#changeView" text="Ajouter Reclamation">
+      <JFXTextField fx:id="role" layoutX="214.0" layoutY="124.0" prefHeight="34.0" prefWidth="260.0" unFocusColor="WHITE" />
+      <JFXButton layoutX="838.0" layoutY="14.0" onAction="#changeView" style="-fx-background-color: #dd163b; -fx-background-radius: 8;" text="Ajouter Reclamation" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></JFXButton>
-      <JFXButton layoutX="474.0" layoutY="14.0" onAction="#reinitilasiserMotDePasse" text="Changer votre mot de passe">
+      <JFXButton layoutX="474.0" layoutY="14.0" onAction="#reinitilasiserMotDePasse" style="-fx-background-color: #dd163b; -fx-background-radius: 8;" text="Changer votre mot de passe" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></JFXButton>
-      <JFXButton layoutX="1124.0" layoutY="14.0" onAction="#deconnexion" text="Déconnexion">
+      <JFXButton layoutX="1124.0" layoutY="14.0" onAction="#deconnexion" style="-fx-background-color: #dd163b; -fx-background-radius: 8;" text="Déconnexion" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></JFXButton>

@@ -27,10 +27,10 @@ public interface IPanier<T>{
 
     public Panier getOne(Panier t);
     
-    List<Panier> getItems(String id_commande);//String id_commande,int id_personne
+    List<Panier> getItems(int id_commande);//String id_commande,int id_personne
     
     
     public Panier getById(int id);
     
-    public double getItemPrix(String id);
+    public double getItemPrix(int id);
 }

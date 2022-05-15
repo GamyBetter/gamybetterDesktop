@@ -17,7 +17,7 @@ public class Cours {
     String email_coach;
     String categorie;
     String jeu;
-    float prix;
+    Double prix;
     String lien_session;
     String liste_personnes;
     int id_session;
@@ -30,7 +30,7 @@ public class Cours {
         this.email_coach =(String) email_coach;
         this.categorie =(String) categorie;
         this.jeu =(String) jeu;
-        this.prix =(float) prix;
+        this.prix =(Double) prix;
         this.lien_session =(String) lien_session;
         this.liste_personnes=(String)liste_personnes;
         this.id_session=(int)id_session;
@@ -41,7 +41,7 @@ public class Cours {
         this.email_coach =(String) email_coach;
         this.categorie =(String) categorie;
         this.jeu =(String) jeu;
-        this.prix =(float) prix;
+        this.prix =(Double) prix;
         this.lien_session =(String) lien_session;
         this.liste_personnes=(String)liste_personnes;
         this.id_session=(int)id_session;
@@ -109,11 +109,11 @@ public class Cours {
         this.jeu = jeu;
     }
 
-    public float getPrix() {
+    public Double getPrix() {
         return prix;
     }
 
-    public void setPrix(float prix) {
+    public void setPrix(Double prix) {
         this.prix = prix;
     }
 
@@ -160,6 +160,9 @@ public class Cours {
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -167,7 +170,13 @@ public class Cours {
             return false;
         }
         final Cours other = (Cours) obj;
+        if (this.id != other.id) {
+            return false;
+        }
         if (this.id_coach != other.id_coach) {
+            return false;
+        }
+        if (this.id_session != other.id_session) {
             return false;
         }
         if (!Objects.equals(this.email_coach, other.email_coach)) {
@@ -179,15 +188,19 @@ public class Cours {
         if (!Objects.equals(this.jeu, other.jeu)) {
             return false;
         }
-        if (Float.floatToIntBits(this.prix) != Float.floatToIntBits(other.prix)) {
+        if (!Objects.equals(this.lien_session, other.lien_session)) {
             return false;
         }
-        if (!Objects.equals(this.lien_session, other.lien_session)) {
+        if (!Objects.equals(this.liste_personnes, other.liste_personnes)) {
+            return false;
+        }
+        if (!Objects.equals(this.prix, other.prix)) {
             return false;
         }
         return true;
     }
-    
+
+  
     
     
 }

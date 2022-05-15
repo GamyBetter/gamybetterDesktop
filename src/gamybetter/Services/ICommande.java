@@ -23,7 +23,7 @@ public interface ICommande<T> {
 
     public T getOne(T t);
     
-    public T getById(String id);
+    public T getById(int id);
     
   public boolean SetCommandPrice(T c,double prix);  
 }

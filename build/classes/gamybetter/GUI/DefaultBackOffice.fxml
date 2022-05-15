@@ -5,12 +5,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane id="AnchorPane" prefHeight="784.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.DefaultBackOfficeController">
    <children>
-      <Pane layoutX="14.0" layoutY="8.0" prefHeight="784.0" prefWidth="1277.0" style="-fx-background-color: white;">
+      <Pane layoutX="14.0" layoutY="8.0" prefHeight="784.0" prefWidth="1200.0" style="-fx-background-color: #171e22;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="52.0" layoutY="123.0" prefHeight="472.0" prefWidth="1183.0" style="-fx-background-color: white;" styleClass="btnHome" stylesheets="@Style.css" text="WELCOME TO GAMYBETTER BACK OFFICE" textFill="RED">
+            <Label alignment="CENTER" layoutX="6.0" layoutY="123.0" prefHeight="472.0" prefWidth="1183.0" style="-fx-background-color: #171e22;" styleClass="btnHome" stylesheets="@Style.css" text="WELCOME TO GAMYBETTER BACK OFFICE" textFill="#dd163b">
                <font>
                   <Font name="Cambria Bold" size="60.0" />
                </font>

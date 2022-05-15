@@ -36,7 +36,7 @@ public class DataSource {
 
     private DataSource() {
         try {
-            CurrentUser.setCurrentUser(1);
+            CurrentUser.setCurrentUser(2);
             cnx = DriverManager.getConnection(this.url,this.user,this.password);
             System.out.println("Connected to Database !");
         } catch (SQLException ex) {

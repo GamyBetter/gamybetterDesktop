@@ -20,7 +20,7 @@
    <children>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@Css1.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="435.0" style="-fx-background-color: #171e22;" styleClass="right-bar" stylesheets="@Css1.css" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                      <children>
@@ -49,7 +49,7 @@
                               <Font name="Cambria" size="18.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#SearchOnAction" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@Css1.css" text="Search" textFill="WHITE" />
+                        <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#SearchOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #dd163b;" styleClass="search-button" stylesheets="@Css1.css" text="Search" textFill="WHITE" />
                      </children>
                      <styleClass>
                         <String fx:value="search-box" />
@@ -61,7 +61,7 @@
                         <Label fx:id="id_product" layoutX="14.0" layoutY="19.0" />
                         <Label fx:id="id_com" layoutX="56.0" layoutY="19.0" prefHeight="17.0" prefWidth="48.0" />
                      </children></Pane>
-                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="530.0" prefWidth="358.0" stylesheets="@Css1.css">
+                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="530.0" prefWidth="358.0" style="-fx-background-color: #dd163b;" stylesheets="@Css1.css">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -106,10 +106,10 @@
                                     <Font name="Cambria" size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtFQty" prefHeight="45.0" prefWidth="125.0" styleClass="comboBox" stylesheets="@Css1.css" />
+                              <TextField fx:id="txtFQty" prefHeight="45.0" prefWidth="125.0" style="-fx-background-color: #fafafa;" styleClass="comboBox" stylesheets="@Css1.css" />
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#GoToChart" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@Css1.css" text="ADD TO CART" textFill="#828282">
+                        <Button mnemonicParsing="false" onAction="#GoToChart" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@Css1.css" text="ADD TO CART">
                            <VBox.margin>
                               <Insets bottom="10.0" top="30.0" />
                            </VBox.margin>
@@ -129,25 +129,25 @@
             </VBox>
          </left>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #383838;" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
                      <children>
-                        <Label prefHeight="29.0" prefWidth="88.0" text="language" textFill="#878787">
+                        <Label prefHeight="29.0" prefWidth="88.0" text="language" textFill="#a4a4a4">
                            <font>
                               <Font name="Cambria Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="langue" prefHeight="29.0" prefWidth="77.0" text="English" textFill="#878787" underline="true">
+                        <Label fx:id="langue" prefHeight="29.0" prefWidth="77.0" text="English" textFill="#a4a4a4" underline="true">
                            <font>
                               <Font name="Cambria" size="18.0" />
                            </font>
                         </Label>
                         <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                        <Label prefHeight="62.0" prefWidth="71.0" text="My Chart" textFill="#878787">
+                        <Label prefHeight="62.0" prefWidth="71.0" text="My Chart" textFill="#a4a4a4">
                            <font>
                               <Font name="Cambria" size="18.0" />
                            </font>
@@ -157,16 +157,16 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Pane prefHeight="84.0" prefWidth="96.0" />
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@Css1.css">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" style="-fx-background-color: #ced7d8;" styleClass="free-delivery-card" stylesheets="@Css1.css">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="119.0" text="Free delivery" textAlignment="CENTER" textFill="#878787">
+                                    <Label prefHeight="29.0" prefWidth="119.0" text="Free delivery" textAlignment="CENTER" textFill="#545151">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="20.0" prefWidth="106.0" text="over 2 orders" textFill="#878787">
+                                    <Label prefHeight="20.0" prefWidth="106.0" text="over 2 orders" textFill="#2c2b2b">
                                        <font>
                                           <Font name="Cambria" size="15.0" />
                                        </font>
@@ -176,11 +176,11 @@
                            </children>
                         </HBox>
                         <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@Css1.css">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" style="-fx-background-color: #ced7d8;" styleClass="shopping-online-card" stylesheets="@Css1.css">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="219.0">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="143.0" text="Shopping online" textFill="#878787">
+                                    <Label prefHeight="29.0" prefWidth="143.0" text="Shopping online">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
@@ -188,7 +188,7 @@
                                           <Insets left="15.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label prefHeight="20.0" prefWidth="197.0" text="get your shopping in same day" textFill="#878787">
+                                    <Label prefHeight="20.0" prefWidth="197.0" text="get your shopping in same day">
                                        <font>
                                           <Font name="Cambria" size="15.0" />
                                        </font>
@@ -208,9 +208,9 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="scroll" prefHeight="625.0" prefWidth="828.0" styleClass="transparent" stylesheets="@Css1.css">
+                        <ScrollPane fx:id="scroll" prefHeight="625.0" prefWidth="822.0" style="-fx-background-color: #383838;" styleClass="transparent" stylesheets="@Css1.css">
                            <content>
-                              <GridPane fx:id="grid" layoutX="5.0" prefHeight="0.0" prefWidth="0.0">
+                              <GridPane fx:id="grid" layoutX="5.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #383838;">
                                  <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                                  </rowConstraints>

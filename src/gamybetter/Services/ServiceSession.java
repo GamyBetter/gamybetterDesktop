@@ -26,7 +26,7 @@ public class ServiceSession implements IService<Session> {
 //Object email_coach, Object email_joueur, Object duree, Object date, Object jeu, Object categorie, Object prix
     @Override
     public void ajouter(Session t) {
-        String query = "INSERT INTO `session` (`email_coach`, `email_joueur`, `duree`, `date`, `jeu`, `categorie`, `prix`,`nom_session` ) VALUES (?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO `session` (`email_coach`, `email_joueur`, `duree`, `date`, `jeu`, `categorie`, `prix`,`nom` ) VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
             ps.setObject(1, t.getEmail_coach());
@@ -54,7 +54,7 @@ public class ServiceSession implements IService<Session> {
             if (rs.next()) {
                 s = new Session(
                         rs.getObject("id"),
-                        rs.getObject("nom_session"),
+                        rs.getObject("nom"),
                         rs.getObject("email_coach"),
                         rs.getObject("email_joueur"),
                         rs.getObject("duree"),
@@ -84,7 +84,7 @@ public class ServiceSession implements IService<Session> {
             while (rs.next()) {
                 Session s = new Session(
                         rs.getObject("id"),
-                        rs.getObject("nom_session"),
+                        rs.getObject("nom"),
                         rs.getObject("email_coach"),
                         rs.getObject("email_joueur"),
                         rs.getObject("duree"),

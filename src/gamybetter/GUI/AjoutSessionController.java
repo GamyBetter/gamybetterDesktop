@@ -21,6 +21,10 @@ import gamybetter.Utils.CurrentUser;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +60,6 @@ public class AjoutSessionController implements Initializable {
     List<Personne> listCoaches = null;
     List<Cours> listCours = null;
 
-    @FXML
     private JFXTextField duree;
     LocalDate localDate;
     @FXML
@@ -77,6 +80,7 @@ public class AjoutSessionController implements Initializable {
     ListView<String> listview = null;
     List<Cours> selected_cours = null;
 
+       DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
     /**
      * Initializes the controller class.
      *
@@ -143,7 +147,7 @@ public class AjoutSessionController implements Initializable {
 
     //works
     @FXML
-    private void ajouter(ActionEvent event) {
+    private void ajouter(ActionEvent event) throws ParseException {
         Session s = new Session();
 
         int index = choicebox.getSelectionModel().getSelectedIndex();
@@ -152,13 +156,13 @@ public class AjoutSessionController implements Initializable {
         System.out.println("fields length" + fields.length);
         for (Field e : fields) {
             s.setNom(nom_session.getText());
-            s.setDuree(Integer.parseInt(duree.getText()));
+//            s.setDuree((Time)dateFormat.parse(duree.getText()));
             s.setEmail_joueur(p.getEmail());
             s.setEmail_coach(email_coach.getText());
             s.setJeu(jeu.getText());
             s.setCategorie(categorie.getText());
             s.setDaate(java.sql.Date.valueOf(date.getValue()));
-            s.setPrix(Float.parseFloat(prix.getText()));
+            s.setPrix(Double.parseDouble(prix.getText()));
 
         }
         System.out.println(s);

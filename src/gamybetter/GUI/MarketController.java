@@ -49,6 +49,7 @@ import gamybetter.Services.ServiceCommande;
 import gamybetter.Utils.CurrentUser;
 import java.util.regex.Pattern;
 import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -121,7 +122,8 @@ InputStream stream;
     }
 
      private void setChosenItem(Produit produit) throws FileNotFoundException {
-         id_product.setText(produit.getId());
+         
+         id_product.setText(String.valueOf(produit.getId()));
         itemNameLable.setText(produit.getNom_produit());
         itemPriceLabel.setText(String.valueOf(produit.getPrix()) );
         stream = new FileInputStream(produit.getImage());
@@ -132,9 +134,9 @@ InputStream stream;
         
     }
      
-private void Loaditems(List products){
+private int random(){
     
-    
+    return (int)Math.floor(Math.random()*(3-1+1)+1);
 }
     /**
      * Initializes the controller class.
@@ -146,12 +148,11 @@ private void Loaditems(List products){
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         //
+        
         setChosenItemDefault();
-    if (id_com.getText().trim().isEmpty() || sc.getById(id_com.getText()) == new Commande()){
-            GenerateCommandeId();
-        }
-        id_com.setVisible(false);
-        id_product.setVisible(false);
+  
+        id_com.setVisible(true);
+        id_product.setVisible(true);
         System.out.println("DATA FETCHED");
          products=sp.getAll();
          if (products.size() > 0) {
@@ -215,19 +216,11 @@ System.out.println("DATA FETCHED");
             Commands = sc.getAll();
             int id = Commands.size();
             if (id == 0) {
-                    this.id_com.setText("C001");
+                    this.id_com.setText("1");
             }
 
             if (id > 0 && id <= 8) {
-                this.id_com.setText("C00" + (id + 1));
-            }
-
-            if (id >= 9 && id <= 98) {
-                this.id_com.setText("C0" + (id + 1));
-            }
-
-            if (id >= 99) {
-                this.id_com.setText("C" + (id + 1));
+                this.id_com.setText( String.valueOf(id + 1));
             }
             int id_user=CurrentUser.getCurrentUser();
 
@@ -238,10 +231,10 @@ System.out.println("DATA FETCHED");
         //customer Count Code
     }
 
-
-    @FXML
+  @FXML
     private void GoToChart(ActionEvent event) throws IOException {
-    try{
+
+        try{
                 Pattern  patternPrice =Pattern.compile("[0-9.]++$");
             if(txtFQty.getText().isEmpty() || !patternPrice.matcher(txtFQty.getText()).matches()){ 
                 
@@ -256,7 +249,7 @@ System.out.println("DATA FETCHED");
     double prix=Double.parseDouble(itemPriceLabel.getText());
     
     
-    Panier panier =new Panier (id_com.getText(),id_product.getText(),quantite,prix);
+        Panier panier =new Panier (1,Integer.parseInt(id_product.getText()),quantite,prix);//Integer.parseInt(id_com.getText())
         System.out.println(id_com.getText());
          Node node = (Node) event.getSource();
          Stage stage = (Stage) node.getScene().getWindow();
@@ -276,22 +269,11 @@ System.out.println("DATA FETCHED");
     }
             }
             }catch(NumberFormatException ex){
-                ex.getMessage();
+                System.err.println(String.format("Error: %s", ex.getMessage()));
             }
-    
+
     }
-    /*       FXMLLoader loader=new FXMLLoader(getClass().getResource("Panier.fxml"));
-            root=loader.load();
-            System.out.println(id_product.getText()+"     "+txtFQty.getText()+"     "+itemPriceLabel.getText());
-           PanierController paniercontroller = loader.getController();
-            paniercontroller.setUserId(itemCode);
-            paniercontroller.setQuantity(quantite);
-            paniercontroller.setPrix_Unit(prix);
-        
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();*/
+
 
     @FXML
     private void SearchOnAction(ActionEvent event) {
@@ -299,8 +281,11 @@ System.out.println("DATA FETCHED");
         List<Produit> CollectedList;
         CollectedList = Prods.stream().filter(cmd -> searchedProduct.getText().equals(cmd.getNom_produit())).collect(Collectors.toList());
         grid.getChildren().clear();
-        Loaditems(Prods);
+        //Loaditems(Prods);
     }
+
+  
+
     
 
 

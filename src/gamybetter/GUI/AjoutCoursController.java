@@ -179,7 +179,7 @@ public class AjoutCoursController implements Initializable {
                     c.setEmail_coach(email_coach1 == null ? null : email_coach1.getText());
                     c.setCategorie(categorie1 == null ? null : categorie1.getText());
                     c.setJeu(jeu1 == null ? null : jeu1.getText());
-                    c.setPrix(prix1 == null ? null : validPrix(prix1.getText()) ? Integer.parseInt(prix1.getText()) : 0);
+                    c.setPrix(prix1 == null ? null : validPrix(prix1.getText()) ? Double.parseDouble(prix1.getText()) : 0);
                     c.setLien_session(lien_session1 == null ? null : lien_session1.getText());
                     c.setId_session(0);
                     c.setListe_personnes("skander,amir");

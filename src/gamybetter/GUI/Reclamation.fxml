@@ -6,18 +6,31 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ReclamationController">
    <children>
-      <Pane prefHeight="401.0" prefWidth="600.0">
+      <Pane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #171e22;">
          <children>
-            <Label layoutX="19.0" layoutY="111.0" prefHeight="28.0" prefWidth="49.0" text=" Titre :" textAlignment="CENTER" />
-            <Label layoutX="19.0" layoutY="162.0" text="Description :" />
-            <Label layoutX="19.0" layoutY="67.0" prefHeight="17.0" prefWidth="78.0" text="Email_sender :" />
-            <JFXTextField fx:id="mail" layoutX="113.0" layoutY="55.0" prefHeight="25.0" prefWidth="382.0" />
-            <JFXTextField fx:id="titre_reclamation" layoutX="113.0" layoutY="113.0" prefHeight="25.0" prefWidth="382.0" />
-            <JFXTextArea fx:id="description_reclamation" layoutX="109.0" layoutY="151.0" prefHeight="147.0" prefWidth="390.0" />
-            <JFXButton layoutX="278.0" layoutY="320.0" onAction="#safeReclamation" text="Envoyer" />
+            <Label layoutX="34.0" layoutY="242.0" prefHeight="30.0" prefWidth="86.0" text=" Titre :" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="35.0" layoutY="332.0" prefHeight="62.0" prefWidth="113.0" text="Description :" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="38.0" layoutY="94.0" prefHeight="34.0" prefWidth="162.0" text="Email_sender :" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font></Label>
+            <JFXTextField fx:id="mail" layoutX="271.0" layoutY="86.0" prefHeight="44.0" prefWidth="491.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="titre_reclamation" layoutX="271.0" layoutY="235.0" prefHeight="44.0" prefWidth="491.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+            <JFXTextArea fx:id="description_reclamation" layoutX="267.0" layoutY="363.0" prefHeight="234.0" prefWidth="491.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+            <JFXButton layoutX="463.0" layoutY="716.0" onAction="#safeReclamation" prefHeight="44.0" prefWidth="98.0" style="-fx-background-color: #dd163b;" text="Envoyer" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></JFXButton>
          </children>
       </Pane>
    </children>
