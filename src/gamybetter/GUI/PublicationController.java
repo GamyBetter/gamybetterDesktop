@@ -33,6 +33,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javax.swing.JOptionPane;
 //import javax.swing.JOptionPane;
@@ -236,6 +237,25 @@ public class PublicationController {//implements Initializable {
             System.out.println("not valid");
         }
 
+    }
+     @FXML
+    void Goback(MouseEvent event) {
+Node node = (Node) event.getSource();
+         Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+        try {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("CommandForm.fxml"));
+    
+        
+    
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    
+        stage.show();
+      } catch (IOException e) {
+            System.err.println(String.format("Error: %s", e.getMessage()));
+    }
     }
     
    

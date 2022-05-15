@@ -240,6 +240,25 @@ private JFXTextField tfRecherche;
           
 
     } 
+    @FXML
+    void Goback(MouseEvent event) {
+Node node = (Node) event.getSource();
+         Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+        try {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("CommandForm.fxml"));
+    
+        
+    
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    
+        stage.show();
+      } catch (IOException e) {
+            System.err.println(String.format("Error: %s", e.getMessage()));
+    }
+    }
     
     
    @FXML 
