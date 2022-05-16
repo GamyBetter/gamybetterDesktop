@@ -307,6 +307,10 @@
     -fx-background-color: red;
     -fx-border-width: 0px 0px 3px 0px
 }
+.symf:hover{
+    -fx-background-color: #dd163b;
+    -fx-border-width: 0px 0px 3px 0px
+}
 
 .search-box{
     -fx-background-color:#FFFFFF;

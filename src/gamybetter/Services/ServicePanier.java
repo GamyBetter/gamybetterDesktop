@@ -25,8 +25,8 @@ public class ServicePanier implements IPanier<Panier>{
     @Override
     public boolean add(Panier p) {
         
-        String query = "INSERT INTO `panier` (`id_commande`,`itemCode`,`quanite_order`, `prix_unitaire` ) VALUES(?,?,?,?)";
-        String sql ="Select prix_unitair from `produit` Where itemCode='"+p.getId_produit()+"'";
+        String query = "INSERT INTO `panier` (`id_commande`,`id_produit`,`quantite_ordered`, `prix_unitaire` ) VALUES(?,?,?,?)";
+        String sql ="Select prix_unitair from `produit` Where id_produit="+p.getId_produit();
         try {
             //String[] Produits = null ;
             PreparedStatement ps = cnx.prepareStatement(query);
@@ -53,7 +53,7 @@ public class ServicePanier implements IPanier<Panier>{
 
     @Override
     public boolean update(Panier p) {
-        String sql = "UPDATE `panier` SET `quanite_order`=? WHERE id_commande=? AND itemCode=?";
+        String sql = "UPDATE `panier` SET `quantite_ordered`=? WHERE id_commande=? AND id_produit=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
 
@@ -75,7 +75,7 @@ public class ServicePanier implements IPanier<Panier>{
 
     @Override
     public boolean delete(Panier p) {
-        String sql = "DELETE FROM panier WHERE id_commande=? AND itemCode=?";
+        String sql = "DELETE FROM panier WHERE id_commande=? AND id_produit=?";
         
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
@@ -109,7 +109,7 @@ public class ServicePanier implements IPanier<Panier>{
              
             while (rs.next()) {
                
-                String sql = "Select image,nom_produit from `produit` where itemCode= '"+rs.getObject(2)+"'";
+                String sql = "Select image,nom_produit from `produit` where id_produit= "+rs.getObject(2);
                 ResultSet rsp = stp.executeQuery(sql);
                  rsp.next();
                 double prix_unitaire = rs.getDouble(4);
@@ -132,10 +132,10 @@ public class ServicePanier implements IPanier<Panier>{
      * @return
      */
     @Override
-    public List<Panier> getItems(String id_commande) {
+    public List<Panier> getItems(int id_commande) {
         List<Panier> list = new ArrayList<>();
         
-        String query = "Select itemCode,quanite_order,prix_unitaire from `panier` Where id_commande= '"+id_commande+"'";
+        String query = "Select id_produit,quantite_ordered,prix_unitaire from `panier` Where id_commande= '"+id_commande+"'";
         
         try {
             Statement stp = cnx.createStatement();
@@ -146,7 +146,7 @@ public class ServicePanier implements IPanier<Panier>{
              
             while (rs.next()) {
                 
-                String sql = "Select image,nom_produit,discount from `produit` where itemCode= '"+rs.getObject(1)+"'";
+                String sql = "Select image,nom_produit,discount from `produit` where id_produit= "+rs.getObject(1);
                 ResultSet rsp = stp.executeQuery(sql);
                  rsp.next();
                 double prix_unitaire = rs.getDouble(3);
@@ -203,8 +203,8 @@ public class ServicePanier implements IPanier<Panier>{
     }
 
      @Override
-    public double getItemPrix(String id){
-        String query = "select prix_unitaire from `produit` where itemCode='" + id+"'";
+    public double getItemPrix(int id){
+        String query = "select prix_unitaire from `produit` where id_produit=" + id;
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);

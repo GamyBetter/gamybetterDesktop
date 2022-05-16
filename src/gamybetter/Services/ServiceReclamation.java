@@ -28,13 +28,13 @@ public class ServiceReclamation implements IService<Reclamation> {
     @Override
     public void ajouter(Reclamation r) {
         try {
-            String req = "INSERT INTO `reclamation` (`titre`,`reclamation`,`email_sender`,`id_personne`) VALUES (?,?,?,?,?)";
+            String req = "INSERT INTO `reclamation` (`titre`,`description`,`email_sender`,`id_personne`) VALUES (?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
          
             ps.setString(1, r.getTitre());
             ps.setString(2, r.getReclamation());
             ps.setString(3, r.getEmail_sender());
-            ps.setInt(4,r.getId_personne());
+            ps.setInt(4,1);
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

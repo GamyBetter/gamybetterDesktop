@@ -25,17 +25,19 @@ public class ServiceProduit implements IProduit<Produit> {
 
     @Override
     public boolean add(Produit t) {
-        String query = "INSERT INTO `produit` (`itemCode`, `nom_produit`, `description`,`categorie`,`quantite_stock`,`prix_unitair`,`image`,`discount`) VALUES(?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO `produit` (`nom_produit`, `description`,`categorie`,`quantite_stock`,`prix_unitair`,`image`,`discount`,`game`,`stars`) VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
-             ps.setObject(1, t.getId());
-            ps.setObject(2, t.getNom_produit());
-            ps.setObject(3, t.getDescription());
-            ps.setObject(4, t.getCategorie());
-            ps.setObject(5, t.getQuantiteStock());
-            ps.setObject(6, t.getPrix());
-            ps.setObject(7, t.getImage());
-            ps.setObject(8, t.getDiscount());
+            // ps.setObject(1, t.getId());
+            ps.setObject(1, t.getNom_produit());
+            ps.setObject(2, t.getDescription());
+            ps.setObject(3, t.getCategorie());
+            ps.setObject(4, t.getQuantiteStock());
+            ps.setObject(5, t.getPrix());
+            ps.setObject(6, t.getImage());
+            ps.setObject(7, t.getDiscount());
+            ps.setObject(8, t.getGame());
+            ps.setObject(9, t.getStars());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -48,18 +50,20 @@ public class ServiceProduit implements IProduit<Produit> {
 
     @Override
     public boolean update(Produit t) {
-        String sql = "UPDATE `produit` SET nom_produit=?, prix_unitair=?, categorie=? , description=? ,quantite_stock=?,image=?,discount=? WHERE itemCode =?";
+        String sql = "UPDATE `produit` SET nom_produit=?, prix_unitair=?, categorie=? , description=? ,quantite_stock=?,image=?,discount=?,game=?,stars=? WHERE id_produit =?";
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
             statement.setObject(1, t.getNom_produit());
             statement.setObject(2, t.getPrix());
             statement.setObject(3,t.getCategorie());
+            statement.setObject(8, t.getStars());
+            statement.setObject(9, t.getGame());
 
             statement.setObject(4, t.getDescription());
             statement.setObject(5, t.getQuantiteStock());
             statement.setObject(6, t.getImage());
             statement.setObject(7, t.getDiscount());
-            statement.setObject(8, t.getId());
+            statement.setObject(10, t.getId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 return true;
@@ -72,7 +76,7 @@ public class ServiceProduit implements IProduit<Produit> {
 
     @Override
     public boolean delete(Produit t) {
-        String sql = "DELETE FROM produit WHERE itemCode=?";
+        String sql = "DELETE FROM produit WHERE id_produit=?";
 
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
@@ -97,7 +101,7 @@ public class ServiceProduit implements IProduit<Produit> {
             ResultSet rs = st.executeQuery(query);
             
             while (rs.next()) {
-                Produit p = new Produit(rs.getObject(1),rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7),rs.getObject(8));
+                Produit p = new Produit(rs.getObject(1),rs.getObject(2), rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7),rs.getObject(8), rs.getObject(9),rs.getObject(10));
                 list.add(p);
 
             }
@@ -111,7 +115,7 @@ public class ServiceProduit implements IProduit<Produit> {
     @Override
     public Produit getOne(Produit t) {
 
-        String query = "select * from `produit` where itemCode='" + t.getId()+"'";
+        String query = "select * from `produit` where id_produit=" + t.getId();
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -130,7 +134,7 @@ public class ServiceProduit implements IProduit<Produit> {
     @Override
     public Produit getById(String id) {
 
-        String query = "select nom_produit,description ,categorie ,quantite_stock ,prix_unitair from `produit` where itemCode='" + id+"'";
+        String query = "select nom_produit,description ,categorie ,quantite_stock ,prix_unitair from `produit` where id_produit=" + id;
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);

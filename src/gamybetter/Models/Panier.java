@@ -10,8 +10,8 @@ package gamybetter.Models;
  * @author Sayee
  */
 public class Panier {
-    private String id_commande;
-    private String id_produit;
+    private int id_commande;
+    private int id_produit;
     private int quantite_order;
     private double prix_unitaire;
     private double prix_produit_totale;
@@ -27,7 +27,7 @@ public class Panier {
  
 
     public Panier(Object id_produit,Object quantite_order, Object prix_unitaire, Object discount, Object image, Object nom_produit ,Object prix_produit_totale) {
-        this.id_produit =(String) id_produit; 
+        this.id_produit =(int) id_produit; 
         this.quantite_order = (int)quantite_order; 
         this.prix_unitaire = (double)prix_unitaire;
         this.discount = (int)discount;
@@ -40,9 +40,9 @@ public class Panier {
     }
     
     public Panier(Object id_commande,Object id_produit,Object quantite_order, Object prix_unitaire, Object discount, Object image, Object nom_produit ,Object prix_produit_totale) {
-        this.id_produit =(String) this.id_produit;  
-        this.id_commande =(String) id_commande;
-        this.id_produit = (String)id_produit;
+        
+        this.id_commande =(int) id_commande;
+        this.id_produit = (int)id_produit;
         this.quantite_order = (int)quantite_order;
         this.prix_unitaire = (double)prix_unitaire;
         this.prix_produit_totale =(double) prix_produit_totale;
@@ -52,32 +52,32 @@ public class Panier {
     }
 
       public Panier(Object id_commande,Object  id_produit,Object  quantite_order) {
-        this.id_commande =(String) id_commande;
-        this.id_produit = (String)id_produit;
+        this.id_commande =(int) id_commande;
+        this.id_produit = (int)id_produit;
         this.quantite_order = (int)quantite_order;
 
     }
     
     public Panier(Object id_commande,Object  id_produit,Object  quantite_order, Object prix_unitaire) {
-        this.id_commande =(String) id_commande;
-        this.id_produit = (String)id_produit;
+        this.id_commande =(int) id_commande;
+        this.id_produit = (int)id_produit;
         this.quantite_order = (int)quantite_order;
         this.prix_unitaire = (double)prix_unitaire;
     }
 
-    public String getId_commande() {
+    public int getId_commande() {
         return id_commande;
     }
 
-    public void setId_commande(String id_commande) {
+    public void setId_commande(int id_commande) {
         this.id_commande = id_commande;
     }
 
-    public String getId_produit() {
+    public int getId_produit() {
         return id_produit;
     }
 
-    public void setId_produit(String id_produit) {
+    public void setId_produit(int id_produit) {
         this.id_produit = id_produit;
     }
 

@@ -5,7 +5,10 @@
  */
 package gamybetter.GUI;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import gamybetter.Models.Actualite;
 import gamybetter.Services.ServiceActualite;
@@ -16,6 +19,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -64,7 +69,24 @@ ObservableList<Actualite> listactu =FXCollections.observableArrayList();
     private JFXTextField tfmatch;
     @FXML
     private JFXTextField tfpersonne;
-   
+    
+     @FXML
+    private JFXTextField tftitre;
+
+    @FXML
+    private JFXComboBox<String> combojeu;
+    private String [] duree ={"Valorant" ,"FIFA","LOL"};
+
+    @FXML
+    private JFXTextArea tadescription;
+
+    @FXML
+    private JFXDatePicker datepicker;
+    
+    
+     private JFXTextField tfjeu;
+    private JFXTextField tfdate;
+    
    
     //@Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -74,6 +96,7 @@ ObservableList<Actualite> listactu =FXCollections.observableArrayList();
         tfmatch.setVisible(false);
         tfpersonne.setVisible(false);
         
+        combojeu.getItems().addAll(duree);
         // TODO
     /*  ServiceActualite actu = new ServiceActualite();
         listactu = FXCollections.observableArrayList(actu.getAll());
@@ -123,17 +146,28 @@ return  true;
 
     @FXML
     private void modifact(ActionEvent event) {
+        
+        LocalDate localDateDeb = datepicker.getValue();
+        
+Date datedeb = java.sql.Date.valueOf(localDateDeb);
        // int id_actualie = Integer.parseInt(tfid.getText());
         String image = tfimage.getText();
         String video = tfvideo.getText();
+        String jeu = combojeu.getValue();
+        String titre = tftitre.getText();
+        String description = tadescription.getText();
+        
+         Date date= datedeb;
 //         int id_match = Integer.parseInt(tfid.getText());
  //       int id_personne = Integer.parseInt(tfpersonne.getText());
        
         
-        Actualite ac = new Actualite (image,video);
+        Actualite ac = new Actualite (image, video,jeu,titre,description,date);
         ServiceActualite sm = new ServiceActualite();
         actu.modifier(ac);
         listactualite.getItems().set(listactualite.getSelectionModel().getSelectedIndex(), ac);
+    ac.setId_match(1);
+        ac.setId_personne(1);
     }
 
     
@@ -164,6 +198,11 @@ return  true;
         System.out.println("!id pub "+tfidpub.getText());*/
        tfimage.setText(ctable.getImage());
        tfvideo.setText(ctable.getVideo());
+       tfjeu.setText(ctable.getJeu());
+       tftitre.setText(ctable.getTitre());
+        tadescription.setText(ctable.getDescription());
+        tfdate.setText(ctable.getDate().toString());
+        
                 
        tfmatch.setText(Integer.toString(ctable.getId_match()));
        tfpersonne.setText(Integer.toString(ctable.getId_personne()));

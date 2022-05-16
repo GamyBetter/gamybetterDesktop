@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -9,43 +11,39 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ProductFormController">
+<AnchorPane prefHeight="800.0" prefWidth="1226.0" style="-fx-background-color: #171e22;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ProductFormController">
    <children>
-      <JFXTextField fx:id="txtItemCode" labelFloat="true" layoutX="730.0" layoutY="107.0" prefHeight="40.0" prefWidth="300.0" promptText="ItemCode" styleClass="search-box" stylesheets="@Css1.css">
+      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="412.0" layoutY="319.0" prefHeight="40.0" prefWidth="300.0" promptText="Unit price" style="-fx-background-color: #989898;" styleClass="search-box" stylesheets="@Css1.css" AnchorPane.leftAnchor="412.0">
          <padding>
             <Insets left="30.0" />
          </padding></JFXTextField>
-      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="412.0" layoutY="319.0" prefHeight="40.0" prefWidth="300.0" promptText="Unit price" styleClass="search-box" stylesheets="@Css1.css" AnchorPane.leftAnchor="412.0">
+      <JFXTextField fx:id="txtName" focusColor="#5b6fae" labelFloat="true" layoutX="29.0" layoutY="116.0" prefHeight="40.0" prefWidth="300.0" promptText="Product Name" style="-fx-background-color: #989898;" styleClass="search-box" stylesheets="@Css1.css" unFocusColor="BLACK" AnchorPane.leftAnchor="29.0">
          <padding>
             <Insets left="30.0" />
          </padding></JFXTextField>
-      <JFXTextField fx:id="txtName" labelFloat="true" layoutX="29.0" layoutY="116.0" prefHeight="40.0" prefWidth="300.0" promptText="Product Name" styleClass="search-box" stylesheets="@Css1.css" AnchorPane.leftAnchor="29.0">
+      <JFXTextField fx:id="txtStock" labelFloat="true" layoutX="29.0" layoutY="318.0" prefHeight="40.0" prefWidth="300.0" promptText="Stock" style="-fx-background-color: #989898;" styleClass="search-box" stylesheets="@Css1.css">
          <padding>
             <Insets left="30.0" />
          </padding></JFXTextField>
-      <JFXTextField fx:id="txtStock" labelFloat="true" layoutX="29.0" layoutY="318.0" prefHeight="40.0" prefWidth="300.0" promptText="Stock" styleClass="search-box" stylesheets="@Css1.css">
-         <padding>
-            <Insets left="30.0" />
-         </padding></JFXTextField>
-      <JFXButton buttonType="RAISED" layoutX="297.0" layoutY="392.0" onAction="#addOnAction" prefHeight="57.0" prefWidth="209.0" style="-fx-background-color: #4b7bec;" styleClass="add-btn" stylesheets="@Css1.css" text="ADD" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="346.0" layoutY="392.0" onAction="#addOnAction" prefHeight="57.0" prefWidth="209.0" style="-fx-background-color: #dd163b;" styleClass="add-btn" stylesheets="@Css1.css" text="ADD" textFill="WHITE">
          <font>
             <Font name="System Bold" size="21.0" />
          </font></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="734.0" layoutY="104.0" onAction="#searchOnAction" prefHeight="57.0" prefWidth="193.0" style="-fx-background-color: #fa8231;" styleClass="search-button" stylesheets="@Css1.css" text="Search" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+      <JFXButton buttonType="RAISED" layoutX="734.0" layoutY="104.0" onAction="#searchOnAction" prefHeight="57.0" prefWidth="193.0" style="-fx-background-color: #dd163b;" styleClass="search-button" stylesheets="@Css1.css" text="Search" textFill="WHITE" AnchorPane.rightAnchor="50.0">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="734.0" layoutY="225.0" onAction="#UpdateOnAction" prefHeight="57.0" prefWidth="193.0" style="-fx-background-color: #0fb9b1;" styleClass="search-button" stylesheets="@Css1.css" text="Update" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+      <JFXButton buttonType="RAISED" layoutX="734.0" layoutY="225.0" onAction="#UpdateOnAction" prefHeight="57.0" prefWidth="193.0" style="-fx-background-color: #dd163b;" styleClass="search-button" stylesheets="@Css1.css" text="Update" textFill="WHITE" AnchorPane.rightAnchor="50.0">
          <font>
             <Font name="System Bold" size="21.0" />
          </font></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="734.0" layoutY="345.0" onAction="#DeleteOnAction" prefHeight="57.0" prefWidth="193.0" style="-fx-background-color: #485460;" styleClass="search-button" stylesheets="@Css1.css" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+      <JFXButton buttonType="RAISED" layoutX="734.0" layoutY="345.0" onAction="#DeleteOnAction" prefHeight="57.0" prefWidth="193.0" style="-fx-background-color: #dd163b;" styleClass="search-button" stylesheets="@Css1.css" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="50.0">
          <font>
             <Font name="System Bold" size="23.0" />
          </font></JFXButton>
-      <Pane prefHeight="78.0" prefWidth="1306.0" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0);" AnchorPane.rightAnchor="0.0">
+      <Pane prefHeight="78.0" prefWidth="1306.0" style="-fx-background-color: #dd163b;" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXButton buttonType="RAISED" layoutX="4.0" layoutY="10.0" onAction="#BackToCRUDPage" prefHeight="47.0" prefWidth="122.0" styleClass="search-button" stylesheets="@Css1.css" text="&lt; Go back">
+            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="12.0" onAction="#BackToCRUDPage" prefHeight="47.0" prefWidth="122.0" style="-fx-background-color: #232930;" styleClass="search-button" stylesheets="@Css1.css" text="&lt; Go back" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -54,11 +52,10 @@
                </padding>
             </JFXButton>
          </children></Pane>
-      <JFXTextField fx:id="txtCategory" labelFloat="true" layoutX="29.0" layoutY="216.0" prefHeight="40.0" prefWidth="300.0" promptText="Category" styleClass="search-box" stylesheets="@Css1.css">
+      <JFXTextField fx:id="txtCategory" labelFloat="true" layoutX="29.0" layoutY="216.0" prefHeight="40.0" prefWidth="300.0" promptText="Category" style="-fx-background-color: #989898;" styleClass="search-box" stylesheets="@Css1.css">
          <padding>
             <Insets left="30.0" />
          </padding></JFXTextField>
-      <JFXTextField fx:id="txtDesc" alignment="TOP_CENTER" layoutX="402.0" layoutY="105.0" prefHeight="194.0" prefWidth="300.0" promptText="Description" style="-fx-background-color: White;" styleClass="chosen-fruit-card" stylesheets="@Css1.css" />
       <Label alignment="CENTER" layoutX="562.0" layoutY="453.0" prefHeight="25.0" prefWidth="115.0" text="Description">
          <font>
             <Font name="Cambria" size="16.0" />
@@ -79,10 +76,10 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <JFXListView fx:id="ListView" fixedCellSize="50.0" layoutX="13.0" layoutY="478.0" onMousePressed="#OnSelect" prefHeight="309.0" prefWidth="1280.0" verticalGap="10.0" />
-      <Pane layoutX="28.0" layoutY="401.0" prefHeight="47.0" prefWidth="243.0" style="-fx-background-color: #273c75; -fx-background-radius: 1em;">
+      <JFXListView fx:id="ListView" fixedCellSize="50.0" layoutX="13.0" layoutY="478.0" onMousePressed="#OnSelect" prefHeight="309.0" prefWidth="1280.0" style="-fx-background-color: #989898; -fx-background-radius: 1em;" verticalGap="10.0" />
+      <Pane layoutX="28.0" layoutY="404.0" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #989898; -fx-background-radius: 1em;">
          <children>
-            <JFXButton fx:id="setOnAction" buttonType="RAISED" layoutX="4.0" layoutY="4.0" onAction="#setOnAction" prefHeight="39.0" prefWidth="78.0" style="-fx-background-color: #eb4d4b; -fx-background-radius: 1em;" text="Photo" textFill="WHITE">
+            <JFXButton fx:id="setOnAction" buttonType="RAISED" layoutX="1.0" layoutY="1.0" onAction="#setOnAction" prefHeight="39.0" prefWidth="78.0" style="-fx-background-color: #dd163b; -fx-background-radius: 1em;" text="Photo" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -90,7 +87,7 @@
             <JFXTextField fx:id="imageURL" layoutX="78.0" layoutY="14.0" prefHeight="25.0" prefWidth="165.0" />
          </children>
       </Pane>
-      <JFXTextField fx:id="discount" labelFloat="true" layoutX="813.0" layoutY="325.0" prefHeight="40.0" prefWidth="135.0" promptText="Discount" styleClass="search-box" stylesheets="@Css1.css">
+      <JFXTextField fx:id="discount" labelFloat="true" layoutX="813.0" layoutY="325.0" prefHeight="40.0" prefWidth="135.0" promptText="Discount" style="-fx-background-color: #989898;" styleClass="search-box" stylesheets="@Css1.css">
          <padding>
             <Insets left="30.0" />
          </padding>
@@ -105,5 +102,23 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
+      <JFXTextField fx:id="rating" labelFloat="true" layoutX="813.0" layoutY="243.0" prefHeight="39.0" prefWidth="135.0" promptText="Rating" style="-fx-background-color: #989898;" styleClass="search-box" stylesheets="@Css1.css">
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </JFXTextField>
+      <JFXTextArea fx:id="txtDesc" layoutX="402.0" layoutY="113.0" prefHeight="185.0" prefWidth="300.0" style="-fx-background-color: #989898;" styleClass="chosen-fruit-card" stylesheets="@Css1.css" text="Description">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+         </padding></JFXTextArea>
+      <JFXComboBox fx:id="game" layoutX="740.0" layoutY="136.0" prefHeight="40.0" prefWidth="281.0" promptText="Select Game" style="-fx-background-color: #989898;" styleClass="container" stylesheets="@Css1.css">
+         <padding>
+            <Insets left="20.0" />
+         </padding></JFXComboBox>
+      <JFXTextField fx:id="txtItemCode" labelFloat="true" layoutX="740.0" layoutY="84.0" prefHeight="40.0" prefWidth="300.0" promptText="ItemCode" style="-fx-background-color: #989898;" styleClass="search-box" stylesheets="@Css1.css">
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </JFXTextField>
    </children>
 </AnchorPane>

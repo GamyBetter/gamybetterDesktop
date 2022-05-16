@@ -12,21 +12,23 @@ import java.util.Objects;
  * @author Sayee
  */
 public class Produit {
-    private String id;
+    private int id;
     private String nom_produit;
     private String categorie;
     private double prix;
     private String image;
+     private String game;
     private String description;
     private int quantite_stock;
     private int discount;
+     private int stars;
     
     public Produit(){
 }
     
     public Produit(Object id, Object nom_produit ,  Object description , Object categorie   , Object quantite ,Object prix ){
         
-       this.id =(String) id;
+       this.id =(int) id;
         this.nom_produit =(String) nom_produit;
         this.categorie =(String) categorie;
         this.prix =(double) prix;
@@ -41,15 +43,31 @@ public class Produit {
         this.prix =(double) prix;
         this.description =(String) description;
         this.quantite_stock =(int) quantite;
+            
 
     }
      
-    public Produit(Object id , Object image, Object nom_produit ,  Object description , Object categorie   , Object quantite ,Object prix ,Object discount){
-        this.id =(String) id;
+      public Produit(Object image, Object nom_produit ,  Object description , Object categorie  , Object quantite ,Object prix ,Object discount,Object game,Object stars){
+      
         this.nom_produit =(String) nom_produit;
         this.categorie =(String) categorie;
         this.prix =(double) prix;
         this.image =(String) image;
+        this.description =(String) description;
+        this.quantite_stock =(int) quantite;
+        this.discount =(int) discount;
+        this.game =(String) game;
+                this.stars =(int) stars;
+    }
+     
+    public Produit(Object id , Object image, Object nom_produit ,  Object description , Object categorie  ,Object game , Object quantite ,Object prix ,Object discount,Object stars){
+        this.id =(int) id;
+        this.nom_produit =(String) nom_produit;
+        this.categorie =(String) categorie;
+        this.prix =(double) prix;
+        this.image =(String) image;
+            this.game =(String) game;
+                this.stars =(int) stars;
         this.description =(String) description;
         this.quantite_stock =(int) quantite;
         this.discount =(int) discount;
@@ -59,14 +77,14 @@ public class Produit {
     /**
      * @return the id
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -160,6 +178,22 @@ public class Produit {
      */
     public void setQuantiteStock(int quantite) {
         this.quantite_stock = quantite;
+    }
+
+    public String getGame() {
+        return game;
+    }
+
+    public void setGame(String game) {
+        this.game = game;
+    }
+
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
     }
 
     @Override

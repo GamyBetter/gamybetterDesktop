@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -23,6 +24,9 @@ import javafx.stage.Stage;
  * @author Sayee
  */
 public class ServicesController implements Initializable {
+
+    @FXML
+    private AnchorPane root;
 
     /**
      * Initializes the controller class.
@@ -36,15 +40,8 @@ public class ServicesController implements Initializable {
     private void GoToProductFrom(ActionEvent event) {
         
 try {
-  Parent root = FXMLLoader.load(getClass().getResource("ProductForm.fxml"));
-
-  Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-  Scene scene = new Scene(root);
-
-  stage.setScene(scene);
-
-  stage.show();
+  Stage window = (Stage) this.root.getScene().getWindow();
+                window.setScene(new Scene(FXMLLoader.load(getClass().getResource("ProductForm.fxml"))));
 
        /* Node node = (Node) event.getSource();
          Stage stage = (Stage) node.getScene().getWindow();

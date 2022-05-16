@@ -96,6 +96,10 @@ public class ConnexionController implements Initializable {
                 stage.show();
     }
 
+    @FXML
+    private void verifyConnexion(MouseEvent event) {
+    }
+
    
 
 }

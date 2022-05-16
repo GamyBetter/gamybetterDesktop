@@ -25,7 +25,7 @@ public class ServiceCours implements IService<Cours> {
 //int id_coach, String email_coach, String categorie, String jeu, float prix, String lien_session,String liste_personnes, int id_session
     @Override
     public void ajouter(Cours t) {
-        String query = "INSERT INTO `cours` (`id_coach`, `email_coach`, `categorie`, `jeu`, `prix`, `lien_session`, `liste_personnes`,`id_session`) VALUES (?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO `cours` (`id_coach`, `email_coach`, `categorie`, `jeu`, `prix`, `lien_session`, `liste_personnes`,`session_id`) VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
             ps.setObject(1, t.getId_coach());
@@ -90,7 +90,7 @@ public class ServiceCours implements IService<Cours> {
                         rs.getObject("prix"),
                         rs.getObject("lien_session"),
                         rs.getObject("liste_personnes"),
-                        rs.getObject("id_session")
+                        rs.getObject("session_id")
                 );
                 list.add(c);
             }
@@ -102,7 +102,7 @@ public class ServiceCours implements IService<Cours> {
 
     @Override
     public boolean modifier(Cours t) {
-        String query = "UPDATE `cours` SET id_coach=?, email_coach=?, categorie=? , jeu=?, prix=?, lien_session=?, liste_personnes=?, id_session=? WHERE id=? ";
+        String query = "UPDATE `cours` SET id_coach=?, email_coach=?, categorie=? , jeu=?, prix=?, lien_session=?, liste_personnes=?, session_id=? WHERE id=? ";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
             ps.setObject(1, t.getId_coach());

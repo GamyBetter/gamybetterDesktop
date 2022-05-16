@@ -12,14 +12,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.GestionUtilisateurController">
    <children>
-      <Pane layoutX="4.0" layoutY="3.0" prefHeight="794.0" prefWidth="1292.0" style="-fx-background-color: white;">
+      <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="807.0" prefWidth="1306.0" style="-fx-background-color: #171e22;">
          <children>
-            <JFXListView fx:id="listUsers" layoutX="24.0" layoutY="347.0" onMouseClicked="#onSelect" prefHeight="410.0" prefWidth="1221.0" />
-            <JFXButton layoutX="1156.0" layoutY="78.0" onAction="#upDate" prefHeight="60.0" prefWidth="122.0" styleClass="chosen-fruit-card" stylesheets="@style.css" text="Modifier">
+            <JFXListView fx:id="listUsers" layoutX="24.0" layoutY="347.0" onMouseClicked="#onSelect" prefHeight="410.0" prefWidth="1221.0" style="-fx-background-color: #989898;" />
+            <JFXButton layoutX="1156.0" layoutY="78.0" onAction="#upDate" prefHeight="60.0" prefWidth="122.0" style="-fx-background-color: #dd163b;" styleClass="chosen-fruit-card" stylesheets="@style.css" text="Modifier" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font></JFXButton>
-            <JFXButton layoutX="1161.0" layoutY="175.0" onAction="#delete" prefHeight="60.0" prefWidth="122.0" styleClass="chosen-fruit-card" stylesheets="@style.css" text="Supprimer">
+            <JFXButton layoutX="1161.0" layoutY="175.0" onAction="#delete" prefHeight="60.0" prefWidth="122.0" style="-fx-background-color: #dd163b;" styleClass="chosen-fruit-card" stylesheets="@style.css" text="Supprimer" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font></JFXButton>
@@ -35,25 +35,25 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXTextField fx:id="champRole" promptText="role " GridPane.rowIndex="1">
+                  <JFXTextField fx:id="champRole" promptText="role " style="-fx-background-color: white;" GridPane.rowIndex="1">
                      <font>
                         <Font size="22.0" />
                      </font></JFXTextField>
-                  <JFXTextField fx:id="champContact" promptText="contact" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <JFXTextField fx:id="champContact" promptText="contact" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="22.0" />
                      </font></JFXTextField>
-                  <JFXTextField fx:id="champNom" promptText="nom ">
+                  <JFXTextField fx:id="champNom" promptText="nom " style="-fx-background-color: white;">
                      <font>
                         <Font size="22.0" />
                      </font></JFXTextField>
-                  <JFXTextField fx:id="champMail" prefHeight="25.0" prefWidth="149.0" promptText="email" GridPane.columnIndex="2">
+                  <JFXTextField fx:id="champMail" prefHeight="25.0" prefWidth="149.0" promptText="email" style="-fx-background-color: white;" GridPane.columnIndex="2">
                      <font>
                         <Font size="22.0" />
                      </font></JFXTextField>
                </children>
             </GridPane>
-            <JFXButton layoutX="-2.0" layoutY="2.0" onAction="#boutonRetour" prefHeight="60.0" prefWidth="122.0" styleClass="search-button" stylesheets="@style.css" text="Retour" textFill="WHITE">
+            <JFXButton layoutX="6.0" layoutY="6.0" onAction="#boutonRetour" prefHeight="60.0" prefWidth="122.0" style="-fx-background-color: #dd163b;" styleClass="search-button" stylesheets="@style.css" text="Retour" textFill="WHITE">
                <font>
                   <Font size="21.0" />
                </font></JFXButton>

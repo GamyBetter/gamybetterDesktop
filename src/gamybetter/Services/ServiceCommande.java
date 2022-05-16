@@ -63,7 +63,7 @@ public class ServiceCommande implements ICommande<Commande> {
 
     @Override
     public boolean update(Commande c) {
-        String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?,address_personne=?,email_personne=?,prix_totale=? WHERE id_commande=?";
+        String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?,address_personne=?,email_personne=?,prix_totale=? ,discount=? WHERE id_commande=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
 
@@ -72,7 +72,8 @@ public class ServiceCommande implements ICommande<Commande> {
             ps.setObject(3, c.getAddresse_personne());
             ps.setObject(4, c.getEmail_personne());
             ps.setObject(5, c.getPrix_totale());
-            ps.setObject(6, c.getId_commande());
+             ps.setObject(6, c.getDiscount());
+            ps.setObject(7, c.getId_commande());
             
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
@@ -111,7 +112,7 @@ public class ServiceCommande implements ICommande<Commande> {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7),rs.getObject(8));
                  list.add(com);
             }
             
@@ -130,7 +131,7 @@ public class ServiceCommande implements ICommande<Commande> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7),rs.getObject(8));
                 return com;
             } 
             
@@ -143,14 +144,14 @@ public class ServiceCommande implements ICommande<Commande> {
     }
 
     @Override
-    public Commande getById(String id) {
+    public Commande getById(int id) {
 
-        String query = "select * from `commande` where id_commande='" + id+"'";
+        String query = "select * from `commande` where id_commande=" + id;
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7));
+                Commande com = new Commande(rs.getObject(1), rs.getTimestamp(2),rs.getObject(3), rs.getObject(4), rs.getObject(5), rs.getObject(6), rs.getObject(7),rs.getObject(8));
                 return com;
             }
 

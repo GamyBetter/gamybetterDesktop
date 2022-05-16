@@ -13,31 +13,31 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.EquipeFormController">
    <top>
-      <Pane prefHeight="56.0" prefWidth="600.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="56.0" prefWidth="600.0" style="-fx-background-color: #171e22;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="BtnGoBack" layoutX="4.0" layoutY="2.0" onAction="#goBack" prefHeight="55.0" prefWidth="129.0" styleClass="search-button" stylesheets="@style.css" text="&lt; Go back">
+            <JFXButton fx:id="BtnGoBack" layoutX="4.0" layoutY="2.0" onAction="#goBack" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: #989898;" stylesheets="@style.css" text="&lt; Go back">
                <font>
-                  <Font size="20.0" />
+                  <Font size="23.0" />
                </font></JFXButton>
          </children>
       </Pane>
    </top>
    <center>
-      <FlowPane hgap="20.0" prefHeight="310.0" prefWidth="1039.0" style="-fx-background-color: white;" vgap="20.0" BorderPane.alignment="CENTER">
+      <FlowPane hgap="20.0" prefHeight="310.0" prefWidth="1039.0" style="-fx-background-color: #171e22;" vgap="20.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextField fx:id="tfid_equipe" alignment="BOTTOM_LEFT" prefHeight="141.0" prefWidth="169.0" promptText="id_equipe" stylesheets="@style.css">
+            <JFXTextField fx:id="tfid_equipe" alignment="BOTTOM_LEFT" prefHeight="52.0" prefWidth="169.0" promptText="id_equipe" style="-fx-background-color: white;" stylesheets="@style.css" unFocusColor="WHITE">
                <font>
                   <Font size="20.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="tfid_coach" alignment="BOTTOM_LEFT" prefHeight="135.0" prefWidth="169.0" promptText="id_coach" stylesheets="@style.css">
+            <JFXTextField fx:id="tfid_coach" alignment="BOTTOM_LEFT" prefHeight="49.0" prefWidth="169.0" promptText="id_coach" style="-fx-background-color: white;" stylesheets="@style.css" unFocusColor="WHITE">
                <font>
                   <Font size="20.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="tfnom_equipe" alignment="BOTTOM_LEFT" prefHeight="136.0" prefWidth="169.0" promptText="nom_equipe" stylesheets="@style.css">
+            <JFXTextField fx:id="tfnom_equipe" alignment="BOTTOM_LEFT" prefHeight="49.0" prefWidth="169.0" promptText="nom_equipe" style="-fx-background-color: white;" stylesheets="@style.css" unFocusColor="WHITE">
                <font>
                   <Font size="20.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="tfdescription_equipe" alignment="TOP_LEFT" prefHeight="134.0" prefWidth="442.0" promptText="description_equipe" stylesheets="@style.css">
+            <JFXTextField fx:id="tfdescription_equipe" alignment="TOP_LEFT" prefHeight="46.0" prefWidth="442.0" promptText="description_equipe" style="-fx-background-color: white;" stylesheets="@style.css" unFocusColor="WHITE">
                <font>
                   <Font size="20.0" />
                </font></JFXTextField>
@@ -48,19 +48,19 @@
       </FlowPane>
    </center>
    <right>
-      <FlowPane hgap="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" vgap="20.0" BorderPane.alignment="CENTER">
+      <FlowPane hgap="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #171e22;" vgap="20.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="BtnAdd" alignment="CENTER" onAction="#AddEquipe" prefHeight="49.0" prefWidth="156.0" styleClass="chosen-fruit-card" stylesheets="@style.css" text="ADD">
+            <JFXButton fx:id="BtnAdd" alignment="CENTER" onAction="#AddEquipe" prefHeight="49.0" prefWidth="156.0" style="-fx-background-color: #dd163b;" stylesheets="@style.css" text="ADD" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="25.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="BtnUpdate" alignment="CENTER" onAction="#UpdateEquipe" prefHeight="49.0" prefWidth="155.0" styleClass="chosen-fruit-card" stylesheets="@style.css" text="UPDATE">
+            <JFXButton fx:id="BtnUpdate" alignment="CENTER" onAction="#UpdateEquipe" prefHeight="49.0" prefWidth="155.0" style="-fx-background-color: #dd163b;" stylesheets="@style.css" text="UPDATE" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="25.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="BtnDelete" alignment="CENTER" onAction="#DeleteEquipe" prefHeight="49.0" prefWidth="159.0" styleClass="chosen-fruit-card" stylesheets="@style.css" text="DELETE">
+            <JFXButton fx:id="BtnDelete" alignment="CENTER" onAction="#DeleteEquipe" prefHeight="49.0" prefWidth="159.0" style="-fx-background-color: #dd163b;" stylesheets="@style.css" text="DELETE" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="25.0" />
                </font>
@@ -72,21 +72,21 @@
       </FlowPane>
    </right>
    <bottom>
-      <FlowPane hgap="20.0" prefHeight="444.0" prefWidth="1300.0" style="-fx-background-color: white;" vgap="20.0" BorderPane.alignment="CENTER">
+      <FlowPane hgap="20.0" prefHeight="444.0" prefWidth="1300.0" style="-fx-background-color: #171e22;" vgap="20.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="BtnPDF" onAction="#OnClickedPrint" text="PDF">
+            <JFXButton fx:id="BtnPDF" onAction="#OnClickedPrint" text="PDF" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></JFXButton>
-            <Label fx:id="nomequipe" text="                                        nom_equipe">
+            <Label fx:id="nomequipe" text="                                        nom_equipe" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <Label fx:id="descriptionequipe" text="                                                                                               description_equipe">
+            <Label fx:id="descriptionequipe" text="                                                                                               description_equipe" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <JFXListView fx:id="equipe" onMouseClicked="#OnSelect" prefHeight="400.0" prefWidth="1259.0" stylesheets="@style.css">
+            <JFXListView fx:id="equipe" onMouseClicked="#OnSelect" prefHeight="400.0" prefWidth="1259.0" style="-fx-background-color: #989898;" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="transparent" />
                   <String fx:value="shadow" />

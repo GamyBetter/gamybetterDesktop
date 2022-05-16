@@ -35,6 +35,7 @@ import gamybetter.Services.ServicePersonne;
 import gamybetter.Utils.CurrentUser;
 
 import java.util.stream.Collectors;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -87,13 +88,13 @@ public class CoursFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CurrentUser.setCurrentUser(18);
+        CurrentUser.setCurrentUser(2);
         if(personneService.getById(CurrentUser.getCurrentUser()).getRole().equalsIgnoreCase("admin")==false){
             modifierbtn.setVisible(false);
             supprimerbtn.setVisible(false);
         }
-        nom_lien_session.setVisible(false);
-        lien_session.setVisible(false);
+        nom_lien_session.setVisible(true);
+        lien_session.setVisible(true);
         coursService.getAll().forEach((c) -> {
             this.cours.add(c);
         });
@@ -190,7 +191,7 @@ public class CoursFXMLController implements Initializable {
         email_coach.setDisable(true);
         categorie.setText(c.getCategorie());
         jeu.setText(c.getJeu());
-        prix.setText(Float.toString(c.getPrix()));
+        prix.setText(Double.toString(c.getPrix()));
         lien_session.setText(c.getLien_session());
         nom_lien_session.setVisible(false);
         lien_session.setVisible(false);
@@ -212,7 +213,7 @@ public class CoursFXMLController implements Initializable {
                 Cours c = cours.get(listViewCours.getSelectionModel().getSelectedIndex());
                 c.setCategorie(categorie.getText());
                 c.setJeu(jeu.getText());
-                c.setPrix(Float.parseFloat(prix.getText()));
+                c.setPrix(Double.parseDouble(prix.getText()));
                 c.setLien_session(lien_session.getText());
                 boolean up = coursService.modifier(c);
                 AlertBox.display("Succès de mise a jour", "Votre cours est mis a jour");
@@ -251,6 +252,23 @@ public class CoursFXMLController implements Initializable {
             AlertBox.display("Error", "no item selected !");
         }
 
+    }
+
+    @FXML
+    private void Menu(MouseEvent event) {
+        Node node = (Node) event.getSource();
+         Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+        try {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    
+        stage.show();
+      } catch (IOException e) {
+            System.err.println(String.format("Error: %s", e.getMessage()));
+    }
     }
 
 }

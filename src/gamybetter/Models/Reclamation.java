@@ -24,7 +24,7 @@ public class Reclamation {
         this.id_personne=(int) id_personne;
     }
 
-    public Reclamation(Object id_reclamation,Object titre, Object reclamation, Object email_sender,Object id_personne) {
+    public Reclamation(Object id_personne,Object id_reclamation, Object titre, Object reclamation,Object email_sender) {
         this.id_reclamation=(int) id_reclamation;
         this.titre = (String) titre;
         this.reclamation = (String) reclamation;

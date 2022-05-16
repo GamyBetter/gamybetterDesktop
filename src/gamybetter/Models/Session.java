@@ -5,6 +5,7 @@
  */
 package gamybetter.Models;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -20,11 +21,11 @@ public class Session {
     String nom;
     String email_coach;
     String email_joueur;
-    int duree;
+    Time duree;
     Date daate;
     String jeu;
     String categorie;
-    float prix;
+    Double prix;
 
     public Session() {
     }
@@ -33,11 +34,11 @@ public class Session {
         this.nom = (String) nom;
         this.email_coach = (String) email_coach;
         this.email_joueur = (String) email_joueur;
-        this.duree = (int) duree;
+        this.duree = (Time) duree;
         this.daate = (Date) date;
         this.jeu = (String) jeu;
         this.categorie = (String) categorie;
-        this.prix = (float) prix;
+        this.prix = (Double) prix;
     }
 
     public Session(Object id, Object nom, Object email_coach, Object email_joueur, Object duree, Object date, Object jeu, Object categorie, Object prix) {
@@ -45,11 +46,11 @@ public class Session {
         this.nom = (String) nom;
         this.email_coach = (String) email_coach;
         this.email_joueur = (String) email_joueur;
-        this.duree = (int) duree;
+        this.duree = (Time) duree;
         this.daate = (Date) date;
         this.jeu = (String) jeu;
         this.categorie = (String) categorie;
-        this.prix = (float) prix;
+        this.prix = (Double) prix;
     }
 
     /* public Session(int id, int id_coach, String email_coach, String email_joueur, int duree, String date, String jeu, String categorie, float prix) {
@@ -99,11 +100,11 @@ public class Session {
         this.email_joueur = email_joueur;
     }
 
-    public int getDuree() {
+    public Time getDuree() {
         return duree;
     }
 
-    public void setDuree(int duree) {
+    public void setDuree(Time duree) {
         this.duree = duree;
     }
 
@@ -131,11 +132,11 @@ public class Session {
         this.categorie = categorie;
     }
 
-    public float getPrix() {
+    public Double getPrix() {
         return prix;
     }
 
-    public void setPrix(float prix) {
+    public void setPrix(Double prix) {
         this.prix = prix;
     }
 
@@ -170,12 +171,7 @@ public class Session {
             return false;
         }
         final Session other = (Session) obj;
-        if (this.duree != other.duree) {
-            return false;
-        }
-        if (Float.floatToIntBits(this.prix) != Float.floatToIntBits(other.prix)) {
-            return false;
-        }
+        
         if (!Objects.equals(this.nom, other.nom)) {
             return false;
         }
@@ -191,9 +187,17 @@ public class Session {
         if (!Objects.equals(this.categorie, other.categorie)) {
             return false;
         }
+        if (!Objects.equals(this.duree, other.duree)) {
+            return false;
+        }
         if (!Objects.equals(this.daate, other.daate)) {
+            return false;
+        }
+        if (!Objects.equals(this.prix, other.prix)) {
             return false;
         }
         return true;
     }
+
+    
 }

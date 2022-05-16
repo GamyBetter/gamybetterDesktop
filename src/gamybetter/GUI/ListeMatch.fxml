@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,35 +13,46 @@
 
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ListeMatchController">
    <children>
-      <ImageView fx:id="idi" fitHeight="806.0" fitWidth="1300.0" layoutY="-6.0" pickOnBounds="true">
+      <ImageView fx:id="idi" fitHeight="869.0" fitWidth="1313.0" layoutX="-14.0" layoutY="-68.0" pickOnBounds="true">
          <image>
             <Image url="@../Ressources/valo.png" />
          </image>
       </ImageView>
-      <JFXListView fx:id="idlistview" layoutX="21.0" layoutY="353.0" onMouseClicked="#OnSelect" prefHeight="359.0" prefWidth="1261.0" />
-      <JFXButton fx:id="btnsupprimer" layoutX="718.0" layoutY="725.0" onAction="#supprimer" prefHeight="53.0" prefWidth="218.0" styleClass="comboBox" stylesheets="@style.css" text="Supprimer un match" textFill="WHITE">
+      <JFXListView fx:id="idlistview" layoutX="21.0" layoutY="353.0" onMouseClicked="#OnSelect" opacity="0.82" prefHeight="359.0" prefWidth="1261.0" />
+      <JFXButton fx:id="btnsupprimer" layoutX="948.0" layoutY="212.0" onAction="#supprimer" prefHeight="37.0" prefWidth="178.0" styleClass="search-button" text="Supprimer un match" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font>
+         <stylesheets>
+            <URL value="@style.css" />
+            <URL value="@Css1.css" />
+         </stylesheets>
       </JFXButton>
-      <JFXButton fx:id="btnmodifier" layoutX="325.0" layoutY="725.0" onAction="#modifier" prefHeight="53.0" prefWidth="208.0" styleClass="comboBox" stylesheets="@style.css" text="Modifier un match" textFill="WHITE">
+      <JFXButton fx:id="btnmodifier" layoutX="943.0" layoutY="143.0" onAction="#modifier" prefHeight="37.0" prefWidth="188.0" styleClass="search-button" text="Modifier un match" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="16.0" />
          </font>
+         <stylesheets>
+            <URL value="@style.css" />
+            <URL value="@Css1.css" />
+         </stylesheets>
       </JFXButton>
-      <JFXTextField fx:id="tfid" layoutX="34.0" layoutY="99.0" prefHeight="30.0" prefWidth="278.0" style="-fx-background-color: white;" stylesheets="@style.css" />
-      <JFXTextField fx:id="tfscore" layoutX="371.0" layoutY="236.0" prefHeight="30.0" prefWidth="153.0" promptText="score" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXTextField fx:id="tfid" layoutX="34.0" layoutY="8.0" prefHeight="30.0" prefWidth="278.0" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXTextField fx:id="tfscore" layoutX="362.0" layoutY="168.0" prefHeight="30.0" prefWidth="153.0" promptText="score" style="-fx-background-color: white;" stylesheets="@style.css" />
       <JFXTextField fx:id="tflien" layoutX="34.0" layoutY="287.0" prefHeight="37.0" prefWidth="278.0" promptText="lien streaming" style="-fx-background-color: white;" stylesheets="@style.css" />
-      <JFXTextField fx:id="tfstatus" layoutX="584.0" layoutY="234.0" prefHeight="30.0" prefWidth="135.0" promptText="status" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXTextField fx:id="tfstatus" layoutX="584.0" layoutY="168.0" prefHeight="30.0" prefWidth="135.0" promptText="status" style="-fx-background-color: white;" stylesheets="@style.css" />
       <JFXTextField fx:id="tfgold" layoutX="34.0" layoutY="165.0" prefHeight="30.0" prefWidth="278.0" promptText="gold" style="-fx-background-color: white;" stylesheets="@style.css" />
-      <JFXTextField fx:id="tdeq" layoutX="583.0" layoutY="168.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: white;" stylesheets="@style.css" />
-      <JFXTextField fx:id="tfeq1" layoutX="370.0" layoutY="168.0" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: white;" stylesheets="@style.css" />
-      <JFXComboBox fx:id="cbduree" layoutX="370.0" layoutY="100.0" prefHeight="30.0" prefWidth="153.0" promptText="durée" style="-fx-background-color: white;" stylesheets="@style.css" />
-      <JFXComboBox fx:id="cbheros" layoutX="577.0" layoutY="100.0" prefHeight="30.0" prefWidth="142.0" promptText="heros" style="-fx-background-color: white;" stylesheets="@style.css" />
-      <JFXButton fx:id="chercher" layoutX="708.0" layoutY="23.0" onAction="#chercher" prefHeight="47.0" prefWidth="127.0" styleClass="comboBox" stylesheets="@style.css" text="Chercher" textFill="WHITE">
+      <JFXTextField fx:id="tdeq" layoutX="790.0" layoutY="291.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXTextField fx:id="tfeq1" layoutX="772.0" layoutY="236.0" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXComboBox fx:id="cbduree" layoutX="145.0" layoutY="100.0" prefHeight="30.0" prefWidth="153.0" promptText="durée" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXButton fx:id="chercher" layoutX="714.0" layoutY="31.0" onAction="#chercher" prefHeight="30.0" prefWidth="153.0" styleClass="comboBox" text="Chercher" textFill="WHITE">
          <font>
-            <Font size="20.0" />
-         </font></JFXButton>
+            <Font size="15.0" />
+         </font>
+         <stylesheets>
+            <URL value="@style.css" />
+            <URL value="@Css1.css" />
+         </stylesheets></JFXButton>
       <JFXTextField fx:id="tfchercher" layoutX="195.0" layoutY="31.0" prefHeight="30.0" prefWidth="486.0" style="-fx-background-color: white;" stylesheets="@style.css" />
       <JFXDatePicker fx:id="datepicker" layoutX="34.0" layoutY="223.0" prefHeight="30.0" prefWidth="278.0" promptText="date" style="-fx-background-color: white;" stylesheets="@style.css" />
       <ImageView fx:id="back" fitHeight="25.0" fitWidth="30.0" layoutX="21.0" layoutY="21.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
@@ -48,5 +60,18 @@
             <Image url="@../Ressources/155-1554494_operation-last-go-back-previous-comments-go-back.jpg" />
          </image>
       </ImageView>
+      <JFXTextField fx:id="im1" layoutX="362.0" layoutY="223.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: white;" stylesheets="@style.css" text="image1" />
+      <JFXTextField fx:id="im2" layoutX="362.0" layoutY="291.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: white;" stylesheets="@style.css" text="image2" />
+      <JFXButton layoutX="587.0" layoutY="223.0" onAction="#im1" styleClass="search-button" stylesheets="@Css1.css" text="choisir une image" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="585.0" layoutY="291.0" onAction="#im2" styleClass="search-button" stylesheets="@Css1.css" text="choisir une image" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="tftemps" layoutX="430.0" layoutY="100.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: white;" stylesheets="@style.css" text="temps" />
    </children>
 </AnchorPane>

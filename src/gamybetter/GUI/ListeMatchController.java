@@ -16,6 +16,7 @@ import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 
 import gamybetter.Models.Match;
 import gamybetter.Services.ServiceMatch;
+import java.io.File;
 import java.io.IOException;
 
 import java.net.URL;
@@ -43,6 +44,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -84,10 +86,7 @@ public class ListeMatchController implements Initializable {
     @FXML
     private JFXComboBox<String> cbduree;
       private String [] duree ={"15minutes" ,"20minutes","25minutes", "30minutes","35minutes"};
-    @FXML
-    private JFXComboBox<String> cbheros;
-private String [] heros ={   " Jett" , "Sova", "Viper","Chamber" ,"Astra","Cypher" ,"Raze", "Breach","Skye",
-     };
+   
     @FXML
     private JFXButton chercher;
     @FXML
@@ -96,6 +95,12 @@ private String [] heros ={   " Jett" , "Sova", "Viper","Chamber" ,"Astra","Cyphe
     private JFXDatePicker datepicker;
     @FXML
     private ImageView back;
+    @FXML
+    private JFXTextField im1;
+    @FXML
+    private JFXTextField im2;
+    @FXML
+    private JFXTextField tftemps;
     /**
      * Initializes the controller class.
      */
@@ -108,7 +113,7 @@ private String [] heros ={   " Jett" , "Sova", "Viper","Chamber" ,"Astra","Cyphe
         tdeq.setVisible(false);
         tfeq1.setVisible(false);
         cbduree.getItems().addAll(duree);
-        cbheros.getItems().addAll(heros);
+        
         /* Image i =new Image("/gamybetter/Ressources/valo.png");
          idi.setImage(i);*/
         /*   FilteredList<Match> filtereddate = new FilteredList<>(listmatch);
@@ -174,22 +179,23 @@ LocalDate localDateDeb = datepicker.getValue();
         
 Date datedeb = java.sql.Date.valueOf(localDateDeb);
      
-       
-        int score = Integer.parseInt(tfscore.getText());
+        String image1 = im1.getText();
+        String image2 = im2.getText();
+        String score = tfscore.getText();
         String lien_streaming = tflien.getText();
         String status = tfstatus.getText();
         String gold = tfgold.getText();
         String duree = cbduree.getValue();
         Date date= datedeb;
-        String heros = cbheros.getValue();
+        String temps= tftemps.getText();
       //  int id_equipe = Integer.parseInt(tdeq.getText());
       //  int id_equipe1 = Integer.parseInt(tfeq1.getText());
 
-        Match ma = new Match(score, lien_streaming, status, gold, duree, date, heros);
+        Match ma = new Match(image1,image2,score, lien_streaming, status, gold, duree, date,temps);
         match1.modifier(ma);
         idlistview.getItems().set(idlistview.getSelectionModel().getSelectedIndex(), ma);
-        ma.setId_equipe1(7);
-        ma.setEquipe(7);
+        ma.setId_equipe1(1);
+        ma.setId_equipe2(2);
     }
 
     @FXML
@@ -202,15 +208,17 @@ Date datedeb = java.sql.Date.valueOf(localDateDeb);
             public void changed(ObservableValue<? extends Match> observable, Match oldValue, Match newValue) {
                 Match cmatch = idlistview.getSelectionModel().getSelectedItem();*/
                 //tfid.setText(Integer.toString(cmatch.getId_match()));
-                tfscore.setText(Integer.toString(cmatch.getScore()));
+               im1.setText(cmatch.getImage1());
+               im2.setText(cmatch.getImage2());
+                tfscore.setText(cmatch.getScore());
                 tflien.setText(cmatch.getLien_streaming());
                 tfstatus.setText(cmatch.getStatus());
                 tfgold.setText(cmatch.getGold());
                 tfduree.setText(cmatch.getDuree());
                 tfdate.setText(cmatch.getDate().toString());
-                tfhero.setText(cmatch.getHeros());
-                tdeq.setText(Integer.toString(cmatch.getId_equipe()));
-                tfeq1.setText(Integer.toString(cmatch.getId_equipe1()));
+                
+                tdeq.setText(Integer.toString(cmatch.getId_equipe1()));
+                tfeq1.setText(Integer.toString(cmatch.getId_equipe2()));
             }
 /*
     public void loadAndGet(Match match) {
@@ -307,6 +315,37 @@ Date datedeb = java.sql.Date.valueOf(localDateDeb);
        ol.stream().filter(e->e.getDate().isEqual(startDate)).forEach(e->x.add(e));
       return x;
     */
+
+   @FXML
+    private void im1(ActionEvent event) {
+          FileChooser fc = new FileChooser();
+           FileChooser.ExtensionFilter ext1 = new FileChooser.ExtensionFilter("JPG files(.jpg)", ".jpg");
+            FileChooser.ExtensionFilter ext2 = new FileChooser.ExtensionFilter("JPEG files(.jpeg)", ".jpeg");
+            FileChooser.ExtensionFilter ext3 = new FileChooser.ExtensionFilter("PNG files(.png)", ".png");
+          File file= fc.showOpenDialog(null);
+          if(file != null){
+              im1.appendText(file.getAbsolutePath()+ "\n");
+              
+          } else{
+              System.out.println("not valid");
+                  }
+    }
+
+    @FXML
+    private void im2(ActionEvent event) {
+          FileChooser fc = new FileChooser();
+           FileChooser.ExtensionFilter ext1 = new FileChooser.ExtensionFilter("JPG files(.jpg)", ".jpg");
+            FileChooser.ExtensionFilter ext2 = new FileChooser.ExtensionFilter("JPEG files(.jpeg)", ".jpeg");
+            FileChooser.ExtensionFilter ext3 = new FileChooser.ExtensionFilter("PNG files(.png)", ".png");
+          File file= fc.showOpenDialog(null);
+          if(file != null){
+              im2.appendText(file.getAbsolutePath()+ "\n");
+              
+          } else{
+              System.out.println("not valid");
+                  }
+    }
+   
 
     
     }
