@@ -116,7 +116,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         // TODO
         txtAdminName.setText(sc.getAdmin(1));//CurrentUser.getCurrentUser()
         System.out.println(txtAdminName.getText());
-        txtIcomCode.setVisible(true);
+        txtIcomCode.setVisible(false);
         txtDate.setText(strDate);
         loadAllCommands();
         

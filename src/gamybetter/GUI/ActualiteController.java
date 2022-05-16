@@ -5,6 +5,9 @@
  */
 package gamybetter.GUI;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import gamybetter.Models.Actualite;
 import gamybetter.Services.ServiceActualite;
@@ -12,6 +15,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +31,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -35,7 +41,7 @@ import javafx.stage.Stage;
  * @author MAG028
  */
 public class ActualiteController implements Initializable {
-      @FXML
+    @FXML
     private ImageView idimage;
 
     @FXML
@@ -47,32 +53,56 @@ public class ActualiteController implements Initializable {
     private JFXTextField tfmatch;
     @FXML
     private JFXTextField tfpersonne;
+    @FXML
+    private JFXTextField tftitre;
+    @FXML
+    
+    private JFXTextArea tadescription;
+    @FXML
+    private JFXDatePicker datepicker;
     
 
+     @FXML
+    private JFXComboBox<String> combojeu;
+    private String [] duree ={"Valorant" ,"FIFA","LOL"};
     
 
     /**
      * Initializes the controller class.
      */
       ServiceActualite ac = new ServiceActualite ();
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image ima =new Image("/gamybetter/Ressources/valo.png");
-     idimage.setImage(ima);
+        Image imageee =new Image("/gamybetter/Ressources/valo.png");
+     idimage.setImage(imageee);
         // TODO
      tfmatch.setVisible(false);
      tfpersonne.setVisible(false);
      
-    
+    combojeu.getItems().addAll(duree);
      
     }    
       @FXML
      private void ajouteractualite() {
         
+         LocalDate localDateDeb = datepicker.getValue();
+        
+        Date datedeb = java.sql.Date.valueOf(localDateDeb);
+         
+         
+         
         String image = tfimage.getText();
         String video = tfvideo.getText();
-   //   int id_match = Integer.parseInt(tfmatch.getText());
-    //  int id_personne = Integer.parseInt(tfpersonne.getText());
+         String jeu = combojeu.getValue();
+         String titre = tftitre.getText();
+        String description = tadescription.getText();
+        
+         Date date= datedeb;
+        
+        
+    // int id_match = Integer.parseInt(tfmatch.getText());
+    // int id_personne = Integer.parseInt(tfpersonne.getText());
         
        
          Alert alerts = new Alert(Alert.AlertType.WARNING);
@@ -86,10 +116,11 @@ public class ActualiteController implements Initializable {
             alerts.show();
 }else {
    
-        Actualite a =new Actualite (image, video/*,id_match,id_personne*/);
+        Actualite a =new Actualite (/*id_match,id_personne,*/image, video,jeu,titre,description,date/*,,*/);
+        
+        a.setId_match(1);
+        a.setId_personne(1);
         ac.ajouter(a);
-        a.setId_match(120);
-        a.setId_personne(4);
         
          alerts.setTitle("Ajout");
             alerts.setHeaderText(null);
@@ -108,7 +139,7 @@ public class ActualiteController implements Initializable {
     private void afficher(ActionEvent event) throws IOException {
         
           Parent dashboard ;
-                dashboard = FXMLLoader.load(getClass().getResource("Showall.fxml"));
+          dashboard = FXMLLoader.load(getClass().getResource("Showall.fxml"));
 
 
                 Scene dashboardScene = new Scene(dashboard);
@@ -146,6 +177,23 @@ public class ActualiteController implements Initializable {
           } else{
               System.out.println("not valid");
                   }
+    }
+
+    @FXML
+    private void Menu(MouseEvent event) {
+         Node node = (Node) event.getSource();
+         Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+        try {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    
+        stage.show();
+      } catch (IOException e) {
+            System.err.println(String.format("Error: %s", e.getMessage()));
+    }
     }
     
     

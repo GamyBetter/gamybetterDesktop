@@ -5,6 +5,7 @@
  */
 package gamybetter.GUI;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
@@ -13,6 +14,7 @@ import gamybetter.Models.Match;
 import gamybetter.Outils.SendMail;
 import gamybetter.Services.ServiceMatch;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -36,6 +38,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.management.Notification;
@@ -74,10 +77,7 @@ public class MatchController implements Initializable {
     @FXML
     private JFXComboBox<String> cbduree;
     private String [] duree ={"15minutes" ,"20minutes","25minutes", "30minutes","35minutes"};
-    @FXML
-    private JFXComboBox<String> cbheros;
-    private String [] heros ={   " Jett" , "Sova", "Viper","Chamber" ,"Astra","Cypher" ,"Raze", "Breach","Skye",
-     };
+    
     @FXML
     private ImageView idvalorant;
     @FXML
@@ -86,6 +86,16 @@ public class MatchController implements Initializable {
     private JFXTextField tfeq;
     @FXML
     private JFXTextField tfeq1;
+    @FXML
+    private JFXButton im1;
+    @FXML
+    private JFXButton im2;
+    @FXML
+    private JFXTextField tftemps;
+    @FXML
+    private JFXTextField tfim1;
+    @FXML
+    private JFXTextField tfim2;
     /**
      * Initializes the controller class.
      */
@@ -96,7 +106,7 @@ public class MatchController implements Initializable {
      // idimage.setImage(img);*/
     
     cbduree.getItems().addAll(duree);
-     cbheros.getItems().addAll(heros);
+     
      
        //radiobutton.setText("");
        ToggleGroup favLangToggleGroup = new ToggleGroup();
@@ -120,20 +130,20 @@ public class MatchController implements Initializable {
         
         Date datedeb = java.sql.Date.valueOf(localDateDeb);
      
-       
-       
-        int score = Integer.parseInt(tfscore.getText());
+        String image1 = tfim1.getText();
+        String image2 = tfim2.getText();
+        String score = tfscore.getText();
         String lien_streaming = tflien.getText();
         String status = radio2.getText();
         String gold = tfgold.getText();
         String duree = cbduree.getValue();
         
      Date date= datedeb;
-        String heros = cbheros.getValue();
+        String temps= tftemps.getText();
        //int id_equipe = Integer.parseInt(tfeq.getText());
        //int id_equipe1 = Integer.parseInt(tfeq1.getText());
         
-if (tflien.getText().isEmpty() || tfgold.getText().isEmpty() || cbduree.getValue().isEmpty() || cbheros.getValue().isEmpty() )
+if (tflien.getText().isEmpty() || tfgold.getText().isEmpty() || cbduree.getValue().isEmpty() )
 {
     Alert alerts = new Alert(Alert.AlertType.WARNING);
             alerts.setTitle("Warning");
@@ -142,10 +152,10 @@ if (tflien.getText().isEmpty() || tfgold.getText().isEmpty() || cbduree.getValue
             alerts.show();
 }else
 {
-        Match ma = new Match(score, lien_streaming, status, gold, duree, date, heros);
+        Match ma = new Match(image1,image2,score, lien_streaming, status, gold, duree, date, temps);
       
-        ma.setEquipe(7);
-        ma.setId_equipe1(7);
+        ma.setId_equipe1(1);
+        ma.setId_equipe2(1);
         sm.ajouter(ma);
         
  
@@ -179,6 +189,53 @@ if (tflien.getText().isEmpty() || tfgold.getText().isEmpty() || cbduree.getValue
              //   window.setTitle("Gestion Produit");
                 window.show();
 
+    }
+
+    @FXML
+    private void im1(ActionEvent event) {
+          FileChooser fc = new FileChooser();
+           FileChooser.ExtensionFilter ext1 = new FileChooser.ExtensionFilter("JPG files(.jpg)", ".jpg");
+            FileChooser.ExtensionFilter ext2 = new FileChooser.ExtensionFilter("JPEG files(.jpeg)", ".jpeg");
+            FileChooser.ExtensionFilter ext3 = new FileChooser.ExtensionFilter("PNG files(.png)", ".png");
+          File file= fc.showOpenDialog(null);
+          if(file != null){
+              tfim1.appendText(file.getAbsolutePath()+ "\n");
+              
+          } else{
+              System.out.println("not valid");
+                  }
+    }
+
+    @FXML
+    private void im2(ActionEvent event) {
+          FileChooser fc = new FileChooser();
+           FileChooser.ExtensionFilter ext1 = new FileChooser.ExtensionFilter("JPG files(.jpg)", ".jpg");
+            FileChooser.ExtensionFilter ext2 = new FileChooser.ExtensionFilter("JPEG files(.jpeg)", ".jpeg");
+            FileChooser.ExtensionFilter ext3 = new FileChooser.ExtensionFilter("PNG files(.png)", ".png");
+          File file= fc.showOpenDialog(null);
+          if(file != null){
+              tfim2.appendText(file.getAbsolutePath()+ "\n");
+              
+          } else{
+              System.out.println("not valid");
+                  }
+    }
+
+    @FXML
+    private void Menu(javafx.scene.input.MouseEvent event) {
+         Node node = (Node) event.getSource();
+         Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+        try {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    
+        stage.show();
+      } catch (IOException e) {
+            System.err.println(String.format("Error: %s", e.getMessage()));
+    }
     }
    
     

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -9,43 +12,73 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ActualiteController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" stylesheets="@Css1.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ActualiteController">
    <children>
       <ImageView fx:id="idimage" fitHeight="800.0" fitWidth="1307.0" layoutX="-1.0" opacity="0.98" pickOnBounds="true" styleClass="style.css">
          <image>
             <Image url="@../Ressources/valo.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="27.0" layoutY="88.0" prefHeight="54.0" prefWidth="134.0" styleClass="search-box" stylesheets="@style.css" text="Image" textFill="#dd6262">
+      <Label alignment="CENTER" layoutX="14.0" layoutY="90.0" prefHeight="54.0" prefWidth="134.0" stylesheets="@style.css" text="Image" textFill="#efefef">
          <font>
-            <Font size="29.0" />
+            <Font size="18.0" />
          </font></Label>
-      <Label alignment="CENTER" layoutX="26.0" layoutY="189.0" prefHeight="54.0" prefWidth="134.0" styleClass="search-box" stylesheets="@style.css" text="Video" textFill="#dd6262">
+      <Label alignment="CENTER" layoutX="14.0" layoutY="188.0" prefHeight="54.0" prefWidth="134.0" stylesheets="@style.css" text="Video" textFill="#fbfbfb">
          <font>
-            <Font size="31.0" />
+            <Font size="18.0" />
          </font></Label>
-      <JFXTextField fx:id="tfimage" layoutX="253.0" layoutY="90.0" prefHeight="50.0" prefWidth="400.0" styleClass="search-box" stylesheets="@style.css" />
-      <JFXTextField fx:id="tfvideo" layoutX="253.0" layoutY="191.0" prefHeight="50.0" prefWidth="400.0" styleClass="search-box" stylesheets="@style.css" />
-      <JFXButton layoutX="107.0" layoutY="561.0" onAction="#ajouteractualite" styleClass="free-delivery-card" stylesheets="@style.css" text="Ajouter Actualité" textFill="#e15858">
+      <JFXTextField fx:id="tfimage" layoutX="184.0" layoutY="101.0" prefHeight="32.0" prefWidth="525.0" promptText="Ajouter une image" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXTextField fx:id="tfvideo" layoutX="178.0" layoutY="199.0" prefHeight="32.0" prefWidth="525.0" promptText="Ajouter une vidéo" style="-fx-background-color: white;" stylesheets="@style.css" />
+      <JFXButton layoutX="361.0" layoutY="665.0" onAction="#ajouteractualite" prefHeight="29.0" prefWidth="267.0" styleClass="search-button" stylesheets="@style.css" text="Ajouter Actualité" textFill="WHITE">
          <font>
-            <Font size="25.0" />
+            <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="tfmatch" layoutX="253.0" layoutY="296.0" prefHeight="50.0" prefWidth="400.0" styleClass="search-box" stylesheets="@style.css" />
-      <JFXTextField fx:id="tfpersonne" layoutX="253.0" layoutY="394.0" prefHeight="50.0" prefWidth="400.0" styleClass="search-box" stylesheets="@style.css" />
-      <JFXButton layoutX="576.0" layoutY="561.0" onAction="#afficher" styleClass="free-delivery-card" stylesheets="@style.css" text="Afficher Actualité" textFill="#dd6262">
+      <JFXTextField fx:id="tfmatch" layoutX="303.0" layoutY="600.0" prefHeight="50.0" prefWidth="400.0" stylesheets="@style.css" />
+      <JFXTextField fx:id="tfpersonne" layoutX="46.0" layoutY="608.0" prefHeight="50.0" prefWidth="400.0" />
+      <JFXButton layoutX="806.0" layoutY="665.0" onAction="#afficher" prefHeight="15.0" prefWidth="292.0" styleClass="search-button" stylesheets="@style.css" text="Afficher Actualité" textFill="WHITE">
          <font>
-            <Font size="25.0" />
+            <Font size="17.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="871.0" layoutY="162.0" onAction="#ajoutimg" styleClass="search-button" stylesheets="@style.css" text="Ajouter une image" textFill="#fffcfc">
+      <JFXButton layoutX="764.0" layoutY="103.0" onAction="#ajoutimg" prefHeight="29.0" prefWidth="155.0" ripplerFill="#b53636" styleClass="search-button" stylesheets="@style.css" text="Ajouter une image" textFill="#fffcfc">
          <font>
-            <Font size="25.0" />
+            <Font size="13.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="875.0" layoutY="346.0" onAction="#ajoutervid" styleClass="search-button" stylesheets="@style.css" text="Ajouter une video" textFill="WHITE">
+      <JFXButton layoutX="765.0" layoutY="201.0" onAction="#ajoutervid" prefHeight="29.0" prefWidth="155.0" styleClass="search-button" stylesheets="@style.css" text="Ajouter une video" textFill="WHITE">
          <font>
-            <Font size="25.0" />
+            <Font size="13.0" />
          </font>
       </JFXButton>
+      <Label layoutX="68.0" layoutY="295.0" prefHeight="32.0" prefWidth="65.0" text="Jeu" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="400.0" text="Titre" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="806.0" layoutY="327.0" text="Description" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="504.0" text="Date" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="combojeu" layoutX="183.0" layoutY="298.0" prefHeight="32.0" prefWidth="515.0" promptText="Insérer le jeu" style="-fx-background-color: white;" />
+      <JFXTextField fx:id="tftitre" layoutX="183.0" layoutY="401.0" prefHeight="32.0" prefWidth="515.0" promptText="Insérer le titre de l'actualité" style="-fx-background-color: white;" />
+      <JFXTextArea fx:id="tadescription" layoutX="797.0" layoutY="385.0" prefHeight="159.0" prefWidth="477.0" promptText="Déscription" style="-fx-background-color: white;" />
+      <JFXDatePicker fx:id="datepicker" layoutX="189.0" layoutY="512.0" prefHeight="32.0" prefWidth="503.0" promptText="Date" style="-fx-background-color:white;" />
+      <Label layoutX="1214.0" layoutY="14.0" onMouseClicked="#Menu" text="Menu" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

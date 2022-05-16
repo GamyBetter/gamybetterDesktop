@@ -19,7 +19,7 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         
-        root = FXMLLoader.load(getClass().getResource("SessionFXML.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Scene scene = new Scene(root);
             primaryStage.initStyle(StageStyle.TRANSPARENT);
             primaryStage.setScene(scene);

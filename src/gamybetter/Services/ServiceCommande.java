@@ -63,7 +63,7 @@ public class ServiceCommande implements ICommande<Commande> {
 
     @Override
     public boolean update(Commande c) {
-        String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?,address_personne=?,email_personne=?,prix_totale=? discount=? WHERE id_commande=?";
+        String sql = "UPDATE `commande` SET date_commande=?,nom_personne=?,address_personne=?,email_personne=?,prix_totale=? ,discount=? WHERE id_commande=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
 

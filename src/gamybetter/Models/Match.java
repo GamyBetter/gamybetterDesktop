@@ -18,9 +18,9 @@ import java.util.Objects;
  * @author MAG028
  */
 public class Match {
-    private int id_match,score,id_equipe,id_equipe1;
-    private String lien_streaming,status,gold,duree ;
-    private String heros;
+    private int id_match,id_equipe1,id_equipe2;
+    private String lien_streaming,status,gold,duree ,score;
+    private String image1,image2,temps;
      /*private equipe [] Equipe ; ArrayList equipe = new ArrayList(); */
    /* private coach [] Coach ; ArrayList coach = new ArrayList(); */
     /*private String [] heros;*ArrayList heros = new ArrayList(); */ 
@@ -30,104 +30,71 @@ public class Match {
 public Match() {
     }
 
-public Match(Object score, Object lien_streaming, Object status, Object gold, Object duree, Date date, Object heros) {
-        this.score = (int) score;
-        this.lien_streaming = (String) lien_streaming;
-        this.status = (String) status;
-        this.gold = (String) gold;
-        this.duree = (String) duree;
+    public Match(Object id_match, Object id_equipe1,Object id_equipe2, Object image1, Object image2,Object score, Object lien_streaming, Object status, Object gold, Object duree,Object date,Object temps) {
+        this.id_match = (int)id_match;
+        this.id_equipe1 =(int) id_equipe1;
+        this.id_equipe2 =(int) id_equipe2;
+           this.image1 = (String)image1;
+        this.image2 = (String)image2;
+        this.score =(String) score;
+        this.lien_streaming =(String) lien_streaming;
+        this.status =(String) status;
+        this.gold = (String)gold;
+        this.duree = (String)duree;
+        
+        
+     
+        
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         this.date = (Date) date;
-        this.heros = (String) heros;
-        
+        this.temps = (String)temps;
     }
 
-
-    public Match(Object score, Object lien_streaming, Object status, Object gold, Object duree, Date date,Object heros,Object id_equipe,Object id_equipe1) {
-    
-        this.score = (int) score;
-        this.lien_streaming = (String) lien_streaming;
-        this.status = (String) status;
-        this.gold = (String) gold;
-        this.duree = (String) duree;
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        this.date = (Date) date;
-        this.heros = (String) heros;
-        this.id_equipe = (int) id_equipe;
-        this.id_equipe1=(int) id_equipe1;
-      
-        
-    }
-    public Match(Object id_match,Object score, Object lien_streaming, Object status, Object gold, Object duree, Object date,Object heros,Object id_equipe,Object id_equipe1) {
-    
-        this.id_match=(int) id_match;
-        this.score = (int) score;
-        this.lien_streaming = (String) lien_streaming;
-        this.status = (String) status;
-        this.gold = (String) gold;
-        this.duree = (String) duree;
-        //DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        this.date = (Date) date;
-        this.heros = (String) heros;
-        this.id_equipe = (int) id_equipe;
-        this.id_equipe1=(int) id_equipe1;
-      
-        
-    }
-
-   /* public Match(Object score, Object lien_streaming, Object status, Object gold, Object duree, Object Date,Object heros,Object id_equipe,Object id_equipe1) {
-      this.score = (int) score;
-        this.lien_streaming = (String) lien_streaming;
-        this.status = (String) status;
-        this.gold = (String) gold;
-        this.duree = (String) duree;
-        this.Date = (Date) Date;
-        this.heros = (String) heros;
-        this.id_equipe = (int) id_equipe;
-        this.id_equipe1 = (int) id_equipe1;
-        
-    }*/
-
-    
-    public Match(Object score, Object lien_streaming, Object status, Object gold, Object duree, LocalDate date, Object heros) {
-        
-        
-        this.score = (int) score;
-        this.lien_streaming = (String) lien_streaming;
-        this.status = (String) status;
-        this.gold = (String) gold;
-        this.duree = (String) duree;
-       // this.date = (Date) date;
-        this.heros = (String) heros;
-        
-    }
-
-
-   /* public Match(int id_match, int score, String lien_streaming, String status, String gold, String duree, LocalDate date, String heros) {
-        this.id_match = id_match;
-        this.score = score;
+    public Match(int id_equipe1, int id_equipe2, String lien_streaming, String status, String gold, String duree, String score, String heros, String image1, String image2, String temps, Object date) {
+        this.id_equipe1 = id_equipe1;
+        this.id_equipe2 = id_equipe2;
         this.lien_streaming = lien_streaming;
         this.status = status;
         this.gold = gold;
         this.duree = duree;
-        this.heros = heros;
+        this.score = score;
+        
+        this.image1 = image1;
+        this.image2 = image2;
+        this.temps = temps;
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        this.date = (Date) date;
     }
 
+    public Match(String image1, String image2, String score,String lien_streaming, String status, String gold, String duree, Object date, String temps) {
+        this.image1 = image1;
+        this.image2 = image2;
+         this.score = score;
+        this.lien_streaming = lien_streaming;
+        this.status = status;
+        this.gold = gold;
+        this.duree = duree;
+       this.temps = temps;
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        this.date = (Date) date;
+    }
+
+
+
+ 
+
+    
    
-*/
+
    
 
     public int getId_match() {
         return id_match;
     }
 
-    public int getScore() {
-        return score;
-    }
+    
 
-    public int getId_equipe() {
-        return id_equipe;
-    }
+    
 
     public int getId_equipe1() {
         return id_equipe1;
@@ -139,9 +106,7 @@ public Match(Object score, Object lien_streaming, Object status, Object gold, Ob
 
  
 
-    public String getHeros() {
-        return heros;
-    }
+   
 
     public String getLien_streaming() {
         return lien_streaming;
@@ -167,19 +132,11 @@ public Match(Object score, Object lien_streaming, Object status, Object gold, Ob
         this.id_match = id_match;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public void setEquipe(int id_equipe) {
-        this.id_equipe = id_equipe;
-    }
+   
 
 
 
-    public void setHeros(String heros) {
-        this.heros = heros;
-    }
+   
 
     public void setLien_streaming(String lien_streaming) {
         this.lien_streaming = lien_streaming;
@@ -201,10 +158,52 @@ public Match(Object score, Object lien_streaming, Object status, Object gold, Ob
         this.date = date;
     }
 
+    public int getId_equipe2() {
+        return id_equipe2;
+    }
+
+    public void setId_equipe2(int id_equipe2) {
+        this.id_equipe2 = id_equipe2;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public String getImage1() {
+        return image1;
+    }
+
+    public void setImage1(String image1) {
+        this.image1 = image1;
+    }
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
+    }
+
+    public String getTemps() {
+        return temps;
+    }
+
+    public void setTemps(String temps) {
+        this.temps = temps;
+    }
+
     @Override
     public String toString() {
-        return "Match{" + "score=" + score + ", lien_streaming=" + lien_streaming + ", status=" + status + ", gold=" + gold + ", duree=" + duree + ", heros=" + heros + ", Date=" + date + '}';
+        return "Match{" + "lien_streaming=" + lien_streaming + ", status=" + status + ", gold=" + gold + ", duree=" + duree + ", score=" + score + ", image1=" + image1 + ", image2=" + image2 + ", temps=" + temps + ", date=" + date + '}';
     }
+
+   
 
 
     @Override
