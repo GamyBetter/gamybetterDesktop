@@ -280,7 +280,7 @@ Alert alert = new Alert(Alert.AlertType.WARNING);
         if(CheckFields()){
             Commande c =new Commande();
         
-        Double price = Double.parseDouble(txtTotalPrice.getText());
+        Double price = Double.parseDouble(DiscountTotal.getText());
         int disc = Integer.parseInt(Discount.getText());
         
         c.setId_commande(Integer.parseInt(txtIcomCode.getText()));
