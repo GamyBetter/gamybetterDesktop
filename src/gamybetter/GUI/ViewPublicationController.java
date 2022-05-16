@@ -72,7 +72,6 @@ public class ViewPublicationController implements Initializable {
 @FXML 
 private JFXTextField tfRecherche;
         
-         @FXML
     private ImageView idImage;
     
             @FXML
@@ -93,8 +92,7 @@ private JFXTextField tfRecherche;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        Image imabak=new Image("/gamybetter/Ressources/valorant.jpg");
-       idImage.setImage(imabak);
+     
          Image icon=new Image("/gamybetter/Ressources");
        btback.setImage(icon);
         loadTableView();
@@ -242,6 +240,25 @@ private JFXTextField tfRecherche;
           
 
     } 
+    @FXML
+    void Goback(MouseEvent event) {
+Node node = (Node) event.getSource();
+         Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+        try {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("CommandForm.fxml"));
+    
+        
+    
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    
+        stage.show();
+      } catch (IOException e) {
+            System.err.println(String.format("Error: %s", e.getMessage()));
+    }
+    }
     
     
    @FXML 

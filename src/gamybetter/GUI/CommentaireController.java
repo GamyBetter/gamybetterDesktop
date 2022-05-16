@@ -51,7 +51,7 @@ public class CommentaireController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tfidPers.setVisible(false);
-        tfidPers.setText("2");
+        tfidPers.setText("1");
         
         //Image imabak=new Image("/gamybetter/Ressources/valorant.jpg");
        //idImage.setImage(imabak);
@@ -110,7 +110,7 @@ public class CommentaireController implements Initializable {
          }
          else{
              Commentaire c=new Commentaire (id_personne,date,cont_commentaire);
-          c.setId_personne(2);
+          c.setId_personne(1);
          sc.ajouter(c);
          String title = "Ajout Réussi";
         String message = "You've successfully created a new Comnt ";

@@ -9,27 +9,32 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="993.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.ViewPublicationController">
    <children>
-      <ImageView fx:id="idImage" fitHeight="633.0" fitWidth="1020.0" layoutX="-22.0" opacity="0.74" pickOnBounds="true">
+      <ImageView fitHeight="771.0" fitWidth="1135.0" layoutX="-135.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Ressources/valorant.jpg" />
+            <Image url="@../Ressources/valo.png" />
          </image>
       </ImageView>
       <JFXListView fx:id="tfListView" layoutX="10.0" layoutY="78.0" onMouseClicked="#onSelect" opacity="0.8" prefHeight="224.0" prefWidth="682.0" />
       <JFXTextField fx:id="tfidpub" layoutY="262.0" onMousePressed="#onSelect" prefHeight="31.0" prefWidth="121.0" promptText="id_publication" visible="false" />
       <JFXTextField fx:id="tfidpersonne" layoutX="121.0" layoutY="262.0" prefHeight="31.0" prefWidth="110.0" promptText="id_personne" visible="false" />
-      <JFXTextField fx:id="tfPublication" layoutX="6.0" layoutY="379.0" prefHeight="69.0" prefWidth="231.0" promptText="Publication" />
-      <JFXTextField fx:id="tftitre" layoutX="10.0" layoutY="317.0" prefHeight="41.0" prefWidth="101.0" promptText="titre" unFocusColor="#280202" />
+      <JFXTextField fx:id="tfPublication" layoutX="6.0" layoutY="379.0" prefHeight="69.0" prefWidth="231.0" promptText="Publication" unFocusColor="#f5f3f3" />
+      <JFXTextField fx:id="tftitre" layoutX="10.0" layoutY="317.0" prefHeight="41.0" prefWidth="101.0" promptText="titre" text="titre" unFocusColor="#f8f7f7" />
       <JFXTextField fx:id="tfnbr_comm" layoutX="482.0" layoutY="262.0" prefHeight="31.0" prefWidth="101.0" promptText="nbr_comm" visible="false" />
-      <JFXTextField fx:id="tfdate" layoutX="6.0" layoutY="462.0" promptText="date" />
-      <JFXButton fx:id="tfDelete" layoutX="721.0" layoutY="14.0" onAction="#delete" prefHeight="31.0" prefWidth="186.0" text="DELETE" />
-      <JFXButton fx:id="tfModifier" layoutX="753.0" layoutY="93.0" onAction="#Modifier" prefHeight="31.0" prefWidth="136.0" text="MODIFIER" />
-      <JFXButton fx:id="viewComents" layoutX="734.0" layoutY="163.0" onAction="#goToComments" prefHeight="53.0" prefWidth="186.0" text="VIEW COMMENTS" />
-      <ImageView fx:id="btback" fitHeight="53.0" fitWidth="55.0" layoutX="6.0" layoutY="559.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+      <JFXTextField fx:id="tfdate" layoutX="6.0" layoutY="462.0" promptText="date" unFocusColor="#f8f3f3" />
+      <JFXButton fx:id="tfDelete" layoutX="736.0" layoutY="19.0" onAction="#delete" prefHeight="53.0" prefWidth="186.0" style="-fx-background-color: dd163b;" styleClass="add-btn" stylesheets="@Css1.css" text="DELETE" textFill="#fffdfd" />
+      <JFXButton fx:id="tfModifier" layoutX="736.0" layoutY="93.0" onAction="#Modifier" prefHeight="53.0" prefWidth="186.0" style="-fx-background-color: dd163b;" styleClass="search-button" stylesheets="@Css1.css" text="MODIFIER" textFill="#f5f0f0" />
+      <JFXButton fx:id="viewComents" layoutX="736.0" layoutY="164.0" onAction="#goToComments" prefHeight="53.0" prefWidth="186.0" style="-fx-background-color: dd163b;" styleClass="search-button" stylesheets="@Css1.css" text="VIEW COMMENTS" textFill="#f5f0f0" />
+      <ImageView fx:id="btback" fitHeight="53.0" fitWidth="55.0" layoutX="10.0" layoutY="559.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Ressources/returnButn.jpg" />
+            <Image url="@../../../../../../Desktop/GamyBetter/src/gamybetter/Ressources/returnButn.jpg" />
          </image>
       </ImageView>
       <JFXTextField fx:id="tfRecherche" layoutX="175.0" layoutY="30.0" />
-      <JFXButton layoutX="351.0" layoutY="30.0" onAction="#Recherche" prefHeight="31.0" prefWidth="90.0" text="Recherche" />
+      <JFXButton layoutX="351.0" layoutY="30.0" onAction="#Recherche" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: dd163b;" styleClass="search-button" stylesheets="@Css1.css" text="Recherche" textFill="#fcf8f8" />
+      <ImageView fx:id="btback1" fitHeight="53.0" fitWidth="55.0" layoutX="915.0" layoutY="550.0" onMouseClicked="#Goback" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/GamyBetter/src/gamybetter/Ressources/returnButn.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

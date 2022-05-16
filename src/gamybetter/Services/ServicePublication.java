@@ -30,7 +30,7 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
     //Object id_personne, Object publication, Object titre, Object nbr_commentaire,Object date
     @Override
     public void ajouter(Publication p) {
-        String query = "INSERT INTO `publication` (`id_personne`,`publication`,`titre`,`nbr_commentaire`,`date`) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO `publication` (`id_personne`,`publication`,`titre`,`nbrCommentaire`,`date`,`image`) VALUES (?,?,?,?,?,?)";
         try {
 
             PreparedStatement ps = cnx.prepareStatement(query);
@@ -40,6 +40,7 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
             ps.setString(3, p.getTitre());
             ps.setInt(4, p.getNbr_commentaire());
             ps.setString(5,formatter.format(date));
+            ps.setString(6,p.getImage());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -48,7 +49,7 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
 
     @Override
     public boolean modifier(Publication p) {
-        String query = "UPDATE `publication` SET  publication=?, titre=?, nbr_commentaire=?  WHERE id_publication=?";
+        String query = "UPDATE `publication` SET  publication=?, titre=?, nbrCommentaire=?, image=? WHERE id=?";
         boolean rowUpdated;
         rowUpdated = false;
         try {
@@ -60,6 +61,7 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
             ps.setInt(3, p.getNbr_commentaire());
            // ps.setString(4, p.getDate());
             ps.setInt(4, p.getId_Publication());
+            ps.setString(5,p.getImage());
             //ps.setString(5,formatter.format(date));
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
@@ -75,7 +77,7 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
 
     @Override
     public boolean supprimer(Publication p) {
-        String query = "DELETE FROM publication WHERE id_publication=?";
+        String query = "DELETE FROM publication WHERE id=?";
         boolean rowDeleted = false;
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
@@ -102,7 +104,7 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 Publication p;
-                p = new Publication(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6));
+                p = new Publication(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getString(7));
                 System.out.println(p + "-------------------");
                 list.add(p);
             }
@@ -116,14 +118,14 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
 
     public Publication getById(int id) {
      
-        String query = "select * from publication where id_publication=" +id;
+        String query = "select * from publication where id=" +id;
         try {
           
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                  Publication p1;
-               p1 = new Publication(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+                p1 = new Publication(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getString(7));
                 System.out.println(p1 + "-------------------");
            
             }
@@ -137,12 +139,13 @@ public class ServicePublication implements gamybetter.Services.IService<Publicat
     public Publication getOne(Publication p) {
 
     System.out.println(p.getId_Publication());
-     String query = "select * from publication  WHERE  id_publication=" + p.getId_Publication();
+     String query = "select * from publication  WHERE  id=" + p.getId_Publication();
      try {
      Statement st = cnx.createStatement();
      ResultSet rs = st.executeQuery(query);
      if (rs.next()) {
-Publication p1 = new Publication(rs.getInt(1),  rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+Publication  p1 =new Publication(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getString(7));
+
 return p1;
      }
 
@@ -155,7 +158,7 @@ return p1;
     
     
     public void deleteById(int id) {
-             String query = "DELETE FROM publication WHERE id_publication=?";
+             String query = "DELETE FROM publication WHERE id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
            ps.setInt(1,id);

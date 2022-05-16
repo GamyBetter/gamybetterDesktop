@@ -35,7 +35,7 @@ public class ServiceCommentaire implements gamybetter.Services.ICommentaire<Comm
     @Override
     public void ajouter(Commentaire c) {
         System.out.println(c+"...............");
-        String query = "INSERT INTO `commentaire` (`id_personne`,`date`,`cont_commentaire`) VALUES(?,?,?)";
+        String query = "INSERT INTO `commentaire` (`id_personne`,`date`,`contCommentaire`) VALUES(?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
 
@@ -52,7 +52,7 @@ public class ServiceCommentaire implements gamybetter.Services.ICommentaire<Comm
 
     @Override
     public boolean modifier(Commentaire c) {
-        String sql = "UPDATE `commentaire` SET id_commentaire=?, id_personne=?, cont_commentaire=?, id_publication=?   WHERE id_commentaire=?";
+        String sql = "UPDATE `commentaire` SET id=?, id_personne=?, contCommentaire=?, id_publication=?   WHERE id_commentaire=?";
         boolean rowUpdated = false;
         try {
             PreparedStatement statement = cnx.prepareStatement(sql);
@@ -76,7 +76,7 @@ public class ServiceCommentaire implements gamybetter.Services.ICommentaire<Comm
 
     @Override
     public boolean supprimer(Commentaire c) {
-        String sql = "DELETE FROM commentaire WHERE id_commentaire=?";
+        String sql = "DELETE FROM commentaire WHERE id=?";
         boolean rowDeleted = false;
         try {
               PreparedStatement statement = cnx.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class ServiceCommentaire implements gamybetter.Services.ICommentaire<Comm
     @Override
     public Commentaire getById(int id) {
 
-        String query = "select * from commentaire where id_publication=" + id;
+        String query = "select * from commentaire where id=" + id;
         try {
 
             Statement st = cnx.createStatement();

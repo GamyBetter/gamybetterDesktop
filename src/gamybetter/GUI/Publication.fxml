@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -12,30 +13,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.PublicationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@Css1.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamybetter.GUI.PublicationController">
    <children>
+      <ImageView fx:id="idImage" fitHeight="818.0" fitWidth="1232.0" layoutX="-25.0" layoutY="-11.0" pickOnBounds="true">
+         <image>
+            <Image url="@../Ressources/valo.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="idavatr" fitHeight="59.0" fitWidth="119.0" layoutX="378.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../Ressources/Avatar.jpg" />
          </image></ImageView>
-      <ImageView fx:id="idImage" fitHeight="800.0" fitWidth="1300.0" layoutX="1.0" layoutY="-2.0" opacity="0.58" pickOnBounds="true">
-         <image>
-            <Image url="@../Ressources/valorant.jpg" />
-         </image>
-      </ImageView>
       <TextField fx:id="tfidpublication" layoutX="900.0" layoutY="501.0" opacity="0.76" prefHeight="31.0" prefWidth="86.0" promptText="id publication" visible="false" />
       <Text fx:id="errPublication" layoutX="419.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" wrappingWidth="199.99999058246613" />
-      <JFXTextArea fx:id="tfPublic" layoutX="254.0" layoutY="194.0" prefHeight="321.0" prefWidth="731.0" promptText="Que voulez-vous dire?" styleClass="shopping-online-card" stylesheets="@Css1.css">
+      <JFXTextArea fx:id="tfPublic" focusColor="#6478b2" layoutX="254.0" layoutY="278.0" prefHeight="321.0" prefWidth="731.0" promptText="Que voulez-vous dire?" styleClass="free-delivery-card" stylesheets="@Css1.css">
          <font>
-            <Font size="29.0" />
+            <Font size="18.0" />
          </font>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
       </JFXTextArea>
-      <JFXButton fx:id="tfPublier" layoutX="323.0" layoutY="567.0" onAction="#PublierPub" prefHeight="31.0" prefWidth="593.0" text="Publier">
+      <JFXButton fx:id="tfPublier" layoutX="307.0" layoutY="612.0" onAction="#PublierPub" prefHeight="31.0" prefWidth="593.0" style="-fx-background-color: dd163d;" styleClass="add-btn" text="Publier" textFill="#252323">
          <font>
-            <Font size="19.0" />
+            <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="tfNbrCom" layoutX="178.0" layoutY="649.0" />
+      <JFXTextField fx:id="tfNbrCom" layoutX="21.0" layoutY="724.0" />
       <JFXDatePicker fx:id="tfDate" layoutX="772.0" layoutY="169.0" visible="false" />
       <Label alignment="CENTER" layoutX="481.0" layoutY="48.0" prefHeight="47.0" prefWidth="339.0" styleClass="container" stylesheets="@Css1.css" text="Creer une publication" textAlignment="CENTER" textFill="#a12d2d">
          <font>
@@ -43,6 +47,12 @@
          </font>
       </Label>
       <Label layoutX="9.0" layoutY="61.0" prefHeight="21.0" prefWidth="77.0" text="&lt;&lt;Amis&gt;&gt;" />
-      <JFXTextField fx:id="tfTitre" alignment="CENTER" layoutX="256.0" layoutY="127.0" prefHeight="42.0" prefWidth="260.0" promptText="Titre" styleClass="free-delivery-card" stylesheets="@Css1.css" />
+      <JFXTextField fx:id="tfTitre" alignment="CENTER" focusColor="#eff1f5" layoutX="254.0" layoutY="216.0" prefHeight="42.0" prefWidth="260.0" promptText="Titre" style="-fx-background-color: dd163b;" styleClass="search-button" stylesheets="@Css1.css" unFocusColor="#e8e5e5" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="686.0">
+         <font>
+            <Font size="18.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="tfidPers" layoutX="21.0" layoutY="755.0" />
+      <JFXTextField fx:id="tfphoto" layoutX="772.0" layoutY="222.0" unFocusColor="#f8f7f7" />
+      <JFXButton fx:id="idImage1" layoutX="611.0" layoutY="227.0" onAction="#SelectImage" prefHeight="31.0" prefWidth="153.0" style="-fx-background-color: dd163b;" styleClass="add-btn" stylesheets="@Css1.css" />
    </children>
 </AnchorPane>
