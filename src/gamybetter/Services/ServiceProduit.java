@@ -56,8 +56,8 @@ public class ServiceProduit implements IProduit<Produit> {
             statement.setObject(1, t.getNom_produit());
             statement.setObject(2, t.getPrix());
             statement.setObject(3,t.getCategorie());
-            statement.setObject(8, t.getStars());
-            statement.setObject(9, t.getGame());
+            statement.setObject(9, t.getStars());
+            statement.setObject(8, t.getGame());
 
             statement.setObject(4, t.getDescription());
             statement.setObject(5, t.getQuantiteStock());
