@@ -1,7 +1,7 @@
 <h1> <p align="center" color="#989898">
  GamyBetter Desktop application built with Java/JavaFX
 </p></h1>
-<p>Tunisian E-Sports tournaments managing desktop application,to gaming in tunisia easier and professional.</p>
+<p>Tunisian E-Sports tournaments managing desktop application, to make gaming in tunisia easier and professional.</p>
 
 
 <h3> <p>
