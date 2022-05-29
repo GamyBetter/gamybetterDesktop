@@ -32,7 +32,7 @@ Getting started
 I Used NetBeans 8.0.2 , Scene builder 8.5 and JDK 1.8
 JARS used:
 
-- `Jfeonix 8.0` https://github.com/sshahine/JFoenix
+- `Jfoenix 8.0` https://github.com/sshahine/JFoenix
 - `AnimateFX-1-2-0.jar`
 - `activation.jar`
 - `TrayTester.jar`
