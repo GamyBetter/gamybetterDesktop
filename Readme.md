@@ -18,7 +18,7 @@
 </p>
 
 <h3> 
-APPLICATION PREVIEW
+App Demo
 </p></h3>
 <img align="center" src="https://user-images.githubusercontent.com/74874821/170849012-49302b28-169b-46d3-bd16-21c8486c2d29.png">
 <img align="center" src="https://user-images.githubusercontent.com/74874821/170849011-a98d6fba-e8e8-4e38-a674-bf579725d8dd.png">
